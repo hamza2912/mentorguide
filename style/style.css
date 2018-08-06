@@ -1,0 +1,25 @@
+form a {
+  margin-left: 5px;
+}
+
+
+h4 { text-align: center;}
+
+.main {
+  margin-top: 25px;
+}
+
+
+.main1 {
+  font-weight: bold;
+}
+
+
+.text-xs-center {margin-top: 25px;}
+
+body {background-image: url(education.jpg);}
+p { color : white; }
+
+h4 { font-size: 5rem, color: white;}
+
+h6 {color: black}
