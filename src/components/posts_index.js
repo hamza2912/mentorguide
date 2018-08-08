@@ -23,23 +23,20 @@ constructor(props) {
 
 componentDidMount() {
     this.props.fetchPosts();
+
   }
 
    
 renderPosts() {
    
-var check = false; 
 if (this.state.Area!== ""){
 return _.map(this.props.posts, post => {
   
-if (post.content===this.state.Area){  
+if (post.location===this.state.Area){  
 return (
         <li className="list-group-item" key={post.id}>
           
-<Link to={`/posts/${post.id}`}>
-            {post.title}
-          
-</Link>
+<Link to={`/posts/${post.id}`}> {post.title}</Link>
         </li>
       );
   }
@@ -93,6 +90,7 @@ render() {
 
 function mapStateToProps(state) {
   return { posts: state.posts };
+ 
 }
 
 

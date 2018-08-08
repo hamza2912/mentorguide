@@ -27,7 +27,7 @@ ReactDOM.render(
     
 <BrowserRouter>
       
-<div>
+
         
 <Switch>
           
@@ -41,7 +41,7 @@ ReactDOM.render(
         
 </Switch>
       
-</div>
+
    
  </BrowserRouter>
  
