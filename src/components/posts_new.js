@@ -137,9 +137,9 @@ class PostsNew extends Component {
       component={this.renderFieldNew}
       />
       
-      <button type="submit" className="btn btn-primary btn-lg btn-block">Continue</button>
+      <button type="submit" className="btn btn-success btn-lg">Continue</button>
       
-      <Link to="/" className="btn-danger btn-lg btn-block">Cancel</Link>
+      <Link to="/" className="btn  btn-danger btn-lg">Cancel</Link>
       </form>
       </div>
       </div>

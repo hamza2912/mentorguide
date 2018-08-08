@@ -20,8 +20,7 @@ var ID = 1;
 
 export function fetchPosts() {
   
-//const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-var mentors = localStorage.getItem('mentors');
+var mentors = JSON.parse(localStorage.getItem('mentors'));
 console.log(mentors);
 
   
@@ -35,13 +34,11 @@ return {
 
 export function createPost(values, callback) {
   
- // posts.push);
-  //const request = localStorage.setItem('posts',(JSON.stringify(values)))
-  //.then(()=> callback());
+
 values.id = ID;
 ID++;
-posts.push(JSON.stringify(values));
-localStorage.setItem('mentors',posts);
+posts.push(values);
+localStorage.setItem('mentors', JSON.stringify(posts));
 callback();
 
 
@@ -79,6 +76,3 @@ return {
     payload: id
   };
 }
-
-//export default request;
-//266409

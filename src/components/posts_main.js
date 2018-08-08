@@ -32,27 +32,7 @@ render() {
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <Link className="btn btn-outline-success my-2 my-sm-0" to="/posts"> Search      </Link>
-            <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" href="#exampleModal">
-              Login
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-               <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                </div>
-              </div>
-            </div>
+            <Link className="btn btn-outline-success my-2 my-sm-0" to="/sign"> Login      </Link>
           </form>
         </div>
       </nav>
@@ -102,9 +82,14 @@ render() {
       </div>
     </div>
     <hr class="featurette-divider"/>
-    <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; Hamza Developers, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <footer >
+          <div >
+            <h2>About Us</h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><span class="btn btn-secondary" > Contact us at: hamzaali2912@gmail.com</span></p>
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; Hamza Developers, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          </div>
     </footer>
   </main> 
 </body>  

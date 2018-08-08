@@ -29,19 +29,20 @@ componentDidMount() {
    
 renderPosts() {
    
-if (this.state.Area!== ""){
-return _.map(this.props.posts, post => {
-  
-if (post.location===this.state.Area){  
-return (
-        <li className="list-group-item" key={post.id}>
-          
-<Link to={`/posts/${post.id}`}> {post.title}</Link>
-        </li>
-      );
-  }
-} );
- } 
+  if (this.state.Area !== "") {
+    return this.props.posts.map((post) => {
+       if (post.location === this.state.Area) {
+        return (
+          <li
+            className="list-group-item"
+            key="post.id"
+          >
+            <Link to={`/posts/${post.id}`}> {post.name}</Link>
+          </li>
+        );
+      }
+    });
+  } 
 return (<p>Select your area above to get list of tutors in your area</p>);
 }
 
@@ -89,7 +90,7 @@ render() {
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts };
+  return { posts: state.posts.mentors };
  
 }
 
