@@ -19,13 +19,11 @@ var ID = 1;
 
 
 export function fetchPosts() {
-  
-//const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-var mentors = localStorage.getItem('mentors');
-console.log(mentors);
 
-  
-return {
+  //const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
+  var mentors = JSON.parse(localStorage.getItem('mentors'));
+
+  return {
     type: FETCH_POSTS,
     payload: mentors
   };
@@ -34,19 +32,15 @@ return {
 
 
 export function createPost(values, callback) {
-  
- // posts.push);
-  //const request = localStorage.setItem('posts',(JSON.stringify(values)))
-  //.then(()=> callback());
-values.id = ID;
-ID++;
-posts.push(JSON.stringify(values));
-localStorage.setItem('mentors',posts);
-callback();
+  values.id = ID;
+  ID++;
+  posts.push(values);
+  localStorage.setItem('mentors', JSON.stringify(posts));
+  callback();
 
 
-  
-return {
+
+  return {
     type: CREATE_POST,
     payload: values
   };
@@ -55,11 +49,10 @@ return {
 
 
 export function fetchPost(id) {
-  
-const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
 
-  
-return {
+  const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
     type: FETCH_POST,
     payload: request
   };
@@ -68,13 +61,13 @@ return {
 
 
 export function deletePost(id, callback) {
-  
-const request = axios
+
+  const request = axios
     .delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
     .then(() => callback());
 
-  
-return {
+
+  return {
     type: DELETE_POST,
     payload: id
   };
