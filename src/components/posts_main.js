@@ -85,10 +85,13 @@ render() {
     <footer >
           <div >
             <h2>About Us</h2>
+            <img class="rounded-circle" src="./style/Hamza.jpg" alt="Generic placeholder image" width="100" height="100"/>
             <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
             <p><span class="btn btn-secondary" > Contact us at: hamzaali2912@gmail.com</span></p>
             <p class="float-right"><a href="#">Back to top</a></p>
+            <blockquote class="blockquote text-center">
             <p>&copy; Hamza Developers, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            </blockquote>
           </div>
     </footer>
   </main> 

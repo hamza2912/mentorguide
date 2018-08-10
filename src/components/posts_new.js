@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createPost } from "../actions";
+//import Map from "./maps";
 
 
 //className="mark-selector"
@@ -80,7 +81,7 @@ class PostsNew extends Component {
     
     
     return (
-      <body class="bg-light">
+      <body >
       <div class="container">
       <div class="py-5 text-center">
         <h1><span class="badge badge-dark">Mentor Guide</span></h1>
@@ -119,6 +120,12 @@ class PostsNew extends Component {
       component={this.renderField}
       />
 
+      <Field
+      label="Mentoring Fee" placeholder="10000-15000 e.g.."
+      name="salary"
+      component={this.renderField}
+      />
+
        <Field
       label="Contact number or Email" placeholder="+92.."
       name="number"
@@ -135,6 +142,12 @@ class PostsNew extends Component {
       label="Target Location"
       name="location"
       component={this.renderFieldNew}
+      />
+
+       <Field
+      label="Address (optional)" placeholder="Enter your exact location if you want users to reach you"
+      name="mark"
+      component={this.renderField}
       />
       
       <button type="submit" className="btn btn-success btn-lg">Continue</button>
@@ -183,6 +196,15 @@ function validate(values) {
   if (!values.classes) {
     errors.classes = "Enter some content";
   }
+
+  if (!values.mark) {
+    errors.mark = "Enter Address or leave it while typing NA";
+  }
+
+  if (!values.salary) {
+    errors.salary = "Suggest Salary or leave it while typing NA";
+  }
+
 
   if (!values.password) {
     errors.password = "Enter password for username";

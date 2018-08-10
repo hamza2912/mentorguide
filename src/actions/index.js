@@ -21,7 +21,7 @@ var ID = 1;
 export function fetchPosts() {
   
 var mentors = JSON.parse(localStorage.getItem('mentors'));
-console.log(mentors);
+//console.log(mentors);
 
   
 return {
@@ -35,7 +35,7 @@ return {
 export function createPost(values, callback) {
   
 
-values.id = ID;
+values.id = `${ID}`;
 ID++;
 posts.push(values);
 localStorage.setItem('mentors', JSON.stringify(posts));
