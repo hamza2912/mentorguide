@@ -15,8 +15,11 @@ import reducers from "./reducers";
 import PostsIndex from "./components/posts_index";
 import SignIn from "./components/Sign";
 import ProfileShow from "./components/profile";
+import Requests from "./components/chats";
+import checkRequests from "./components/chats2";
 
 import PostsNew from "./components/posts_new";
+import Success from "./components/success";
 
 import PostsShow from "./components/posts_show";
 import PostsMain from "./components/posts_main";
@@ -39,6 +42,9 @@ ReactDOM.render(
 <Route path="/posts" component={PostsIndex} />
 <Route path="/sign" component={SignIn} />
 <Route path="/profile/:id" component={ProfileShow} />
+<Route path="/success" component={Success} />
+<Route path="/requests" component={Requests} />
+<Route path="/checkrequests" component={checkRequests} />
 <Route path="/" component={PostsMain} />
         
 </Switch>

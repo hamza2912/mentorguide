@@ -6,22 +6,76 @@ import { Link } from "react-router-dom";
 
 import { fetchPosts, deletePost } from "../actions";
 
+import ReactModal from "react-modal";
 
+//ReactModal.setAppElement('container');
 
 class ProfileShow extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {show1: false, show2: false};
   
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleOpenModalother = this.handleOpenModalother.bind(this);
+    this.handleCloseModalother = this.handleCloseModalother.bind(this);
+  }
+
+  handleOpenModal () {
+    this.setState({ show1: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ show1: false });
+  }
+  
+  handleOpenModalother () {
+    this.setState({ show2: true });
+  }
+  
+  handleCloseModalother () {
+    this.setState({ show2: false });
+  }
+
 componentDidMount() {
     //this.props.fetchPost(id);
     this.props.fetchPosts();
   }
-
   
+    
 onDeleteClick() {
-    //const { id } = this.props.match.params;
+    const { id } = this.props.match.params;
+    var mentors = JSON.parse(localStorage.getItem('mentors'));
+    var posts = [];
+    posts = mentors;
+    posts.map((post) => {
+      if (post.id === id) {
+       var val = posts.indexOf(post);
+       delete posts[val];
+       function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
+       posts = posts.filter(filterer);
+       localStorage.setItem('mentors', JSON.stringify(posts));
+       this.props.history.push("/");
+      }
+    });
+  }
 
-    //this.props.deletePost(id, () => {
-      //this.props.history.push("/");
-    //});
+  onDeleteClick1() {
+    const { id } = this.props.match.params;
+    var mentors = JSON.parse(localStorage.getItem('mentors'));
+    var posts = [];
+    posts = mentors;
+    posts.map((post) => {
+      if (post.id === id) {
+       var val = posts.indexOf(post);
+       delete posts[val];
+       function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
+       posts = posts.filter(filterer);
+       localStorage.setItem('mentors', JSON.stringify(posts));
+       this.props.history.push("/posts/new");
+      }
+    });
   }
 
  
@@ -30,6 +84,7 @@ render() {
     //const { post } = this.props;
     const { id } = this.props.match.params;
     console.log(id);
+
     
     if (!this.props.posts) {
       return <div>Loading...</div>;
@@ -41,58 +96,90 @@ render() {
       return (
       <body class="bg-light">
 
-      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="">Mentor Guide</a>
+        <ReactModal 
+           isOpen={this.state.show1}
+           contentLabel="Minimal Modal Example"
+           style={{
+              content : {
+                top                   : '50%',
+                left                  : '50%',
+                right                 : 'auto',
+                bottom                : 'auto',
+                marginRight           : '-50%',
+                transform             : 'translate(-50%, -50%)'
+              }
+          }} >
+          <p class="lead">You are about to delete your mentor profile!</p>
+          <button className="btn btn-danger" onClick={this.onDeleteClick.bind(this)} >
+            Continue
+          </button>
+          <button className="btn btn-success" onClick={this.handleCloseModal}>Cancel</button>
+        </ReactModal>
+
+        <ReactModal 
+           isOpen={this.state.show2}
+           contentLabel="Minimal Modal Example2"
+           style={{
+              content : {
+                top                   : '50%',
+                left                  : '50%',
+                right                 : 'auto',
+                bottom                : 'auto',
+                marginRight           : '-50%',
+                transform             : 'translate(-50%, -50%)'
+              }
+          }} >
+          <p class="lead">You are about to delete your this mentor profile and re create it with new details!</p>
+          <button className="btn btn-danger" onClick={this.onDeleteClick1.bind(this)} >
+             Continue
+          </button>
+          <button className="btn btn-success" onClick={this.handleCloseModalother}>Cancel</button>
+        </ReactModal>
+        
+      <nav class="navbar navbar-expand-lg fixed-top site-header">
+      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
             <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
           </li>
           <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-success my-2 my-sm-0" to="/sign"> Logout    </Link>
+            <Link className="btn btn-outline-info my-2 my-sm-0" to="/sign"> Log out    </Link>
           </form>
         </ul> 
       </nav>
 
-      <div class="nav-scroller bg-white shadow-sm">
+      <div class="bg-white shadow-sm">
       <nav class="nav nav-underline">
         <a class="nav-link active" href="">Profile</a>
-        <a class="nav-link active" href="">Re-create your profile</a>
+        <form class="form-inline mt-2 mt-md-0">
+            <button className="btn btn-outline-dark my-2 my-sm-0" onClick={this.handleOpenModalother}> Recreate    </button>
+          </form>
+        <form class="form-inline mt-2 mt-md-0">
+            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/checkrequests"> Mentor Requirments   </Link>
+          </form>
       </nav>
       </div>
       <div>
-      <button className="btn btn-danger pull-xs-right" onClick={this.onDeleteClick.bind(this)} >
+      <button className="btn btn-danger pull-xs-right" onClick={this.handleOpenModal} >
       Delete Profile
       </button>
       </div>
 
       <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h1 class="display-4">Hi! {post.name}</h1>
-        <h5 class="text-muted">@{post.username}</h5>
+        <h1 class="display-4 ">Hi! {post.name}</h1>
+        <h5 class="text-info">@{post.username}</h5>
         <hr class="featurette-divider"/>
         <h1 class="display-6">Details </h1>
-        <h5> Your Qualification
-          <h6 class="text-muted"> {post.content}</h6>
-        </h5>
-        <h5>You are Available for
-          <h6 class="text-muted"> {post.classes}</h6>
-        </h5>
-        <h5>Your Target Location
-          <h6 class="text-muted"> {post.location}</h6>
-        </h5>
-        <h5>Your Mentoring Fee
-          <h6 class="text-muted"> {post.salary}</h6>
-        </h5>
-        <h5>Your Personal details</h5>
-        <p><span class="btn btn-secondary" > Contact Number: {post.number}</span></p>
-        <p><span class="btn btn-secondary" > Address: {post.mark}</span></p>
+        <h5 class="text-muted"> Your Qualification: <span class="text-dark" > {post.content}</span></h5>
+        <h5 class="text-muted"> You are Available for: <span class="text-dark"> {post.classes}</span></h5>
+        <h5 class="text-muted"> Your Mentoring Fee: <span class="text-dark"> {post.salary}</span></h5>
+        <h5 class="text-muted"> Your Location: <span class="text-dark"> {post.location}</span></h5>
+        <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
+        <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
       </div>   
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
+        <a href="#">All Rights Reserved</a>
       </footer>
   </body>
     );

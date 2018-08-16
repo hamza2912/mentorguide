@@ -32,16 +32,27 @@ return {
 
 
 
-export function createPost(values, callback) {
+export function createPost(values,callback) {
   
-
+var mentors = JSON.parse(localStorage.getItem('mentors'));
+if(mentors!== null){
+if (mentors.length!== 0){
+  posts = mentors;
+  ID = mentors.length+1;
+  values.id = `${ID}`;
+  posts.push(values);
+  localStorage.setItem('mentors', JSON.stringify(posts));
+  callback();
+  
+}
+}
+else if(mentors=== null) {
 values.id = `${ID}`;
 ID++;
 posts.push(values);
 localStorage.setItem('mentors', JSON.stringify(posts));
 callback();
-
-
+}
   
 return {
     type: CREATE_POST,

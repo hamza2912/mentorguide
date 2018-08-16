@@ -30,14 +30,14 @@ render() {
       return (
       <body class="bg-light">
 
-      <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="">Mentor Guide</a>
+      <nav class="navbar navbar-expand-lg fixed-top site-header">
+      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
             <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/">Back to Home <span class="sr-only">(current)</span></a>
+          <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home    </Link>
           </li>
         </ul> 
       </nav>
@@ -45,7 +45,9 @@ render() {
       <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
         <a class="nav-link active" href="">Dashboard</a>
-        <a class="nav-link active" href="/posts">Back To List</a>
+        <form class="form-inline mt-2 mt-md-0">
+            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/posts"> Back to List    </Link>
+          </form>
       </nav>
       </div>
       <div>
@@ -53,28 +55,16 @@ render() {
 
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h1 class="display-5">{post.name}</h1>
-        <h5>Qualification
-          <h6 class="text-muted"> {post.content}</h6>
-        </h5>
-        <h5>Available for
-          <h6 class="text-muted"> {post.classes}</h6>
-        </h5>
-        <h5>Location
-          <h6 class="text-muted"> {post.location}</h6>
-        </h5>
-        <h5>Mentoring Fee
-          <h6 class="text-muted"> {post.salary}</h6>
-        </h5>
-        <p><span class="btn btn-secondary" > Contact Number: {post.number}</span></p>
-        <p><span class="btn btn-secondary" > Address: {post.mark}</span></p>
+        <h5 class="text-muted"> Qualification: <span class="text-dark" > {post.content}</span></h5>
+        <h5 class="text-muted"> Available for: <span class="text-dark"> {post.classes}</span></h5>
+        <h5 class="text-muted"> Mentoring Fee: <span class="text-dark"> {post.salary}</span></h5>
+        <h5 class="text-muted"> Location: <span class="text-dark"> {post.location}</span></h5>
+        <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
+        <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
       </div>   
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
+        <a href="#">All Rights Reserved</a>
       </footer>
   </body>
     );

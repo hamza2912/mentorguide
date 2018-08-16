@@ -3,11 +3,12 @@ import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createPost } from "../actions";
-//import Map from "./maps";
 
 
-//className="mark-selector"
+
+
 class PostsNew extends Component {
+
   
   renderField(field) {
     const { meta: { touched, error } } = field;
@@ -44,10 +45,11 @@ class PostsNew extends Component {
     <div className={className}>
       <label>{field.label}</label>
       <select className="form-control" type="text" {...field.input} ><option>Area</option>
-      <option>Baldia</option> <option>Defence</option> <option>Gadap</option> <option>Gulberg</option> 
+      <option>Baldia</option><option>Buffer-Zone</option> <option>Defence</option> <option>Fedral-B-Area</option>
+      <option>Gadap</option> <option>Gulberg</option><option>Gulshan-e-Meymar</option> 
       <option>Gulshan</option> <option>Jamshed Town</option> 
       <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option> 
-      <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>New Nazimabad</option>
+      <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
       <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option></select>
       <div className="text-help">
       {touched ? error : ""}
@@ -70,9 +72,10 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
+    
     this.props.createPost(values, () => {
-      //console.log(values);
-      this.props.history.push("/");
+      
+      this.props.history.push("/success");
     });
   }
   
@@ -82,6 +85,7 @@ class PostsNew extends Component {
     
     return (
       <body >
+    
       <div class="container">
       <div class="py-5 text-center">
         <h1><span class="badge badge-dark">Mentor Guide</span></h1>
@@ -151,18 +155,14 @@ class PostsNew extends Component {
       />
       
       <button type="submit" className="btn btn-success btn-lg">Continue</button>
-      
       <Link to="/" className="btn  btn-danger btn-lg">Cancel</Link>
       </form>
       </div>
       </div>
+      
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
+        <a href="#">All Rights Reserved</a>
       </footer>
       </body>
     );
@@ -190,7 +190,7 @@ function validate(values) {
   }
 
   if (!values.number) {
-    errors.number = "Enter contact details";
+    errors.number = "Enter contact or leave it while typing NA";
   }
 
   if (!values.classes) {

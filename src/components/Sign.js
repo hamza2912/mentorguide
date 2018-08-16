@@ -72,15 +72,11 @@ render() {
         </div>
         <button class="btn btn-lg btn-success btn-sm" type="submit">Sign in</button>
         <Link to="/" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
-        <p class="mt-5 mb-3 text-muted">Dont you have acount<a href="/posts/new"> Sign up </a>Now</p>
+        <p class="mt-5 mb-3 text-muted">Dont you have mentor profile<a href="/posts/new"> Sign up </a>Now</p>
       </form>
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
+        <a href="#">All Rights Reserved</a>
       </footer>
     </body>
 );
