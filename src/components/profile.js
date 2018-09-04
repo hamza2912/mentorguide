@@ -8,7 +8,6 @@ import { fetchPosts, deletePost } from "../actions";
 
 import ReactModal from "react-modal";
 
-//ReactModal.setAppElement('container');
 
 class ProfileShow extends Component {
 
@@ -42,6 +41,10 @@ componentDidMount() {
     //this.props.fetchPost(id);
     this.props.fetchPosts();
   }
+
+  componentDidUpdate() {
+    this.renderChats();
+  }
   
     
 onDeleteClick() {
@@ -56,6 +59,8 @@ onDeleteClick() {
        function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
        posts = posts.filter(filterer);
        localStorage.setItem('mentors', JSON.stringify(posts));
+       var Logged = false;
+       localStorage.setItem('UserLogin', JSON.stringify(Logged));
        this.props.history.push("/");
       }
     });
@@ -78,6 +83,30 @@ onDeleteClick() {
     });
   }
 
+  Logout() {
+    var Logged = false;
+    localStorage.setItem('Logged', JSON.stringify(Logged));
+    this.props.history.push("");
+  }
+
+  renderChats() {
+
+    const { id } = this.props.match.params;
+    return this.props.posts.map((post) => {
+      if (post.id === id) {
+      console.log(post.comments.length);
+      return post.comments.map((currentPost) => {
+        return (
+          <li>
+            <p class="pb-3 lh-125 border-bottom border-gray">
+              <strong className="d-block text-gray-dark">{currentPost}</strong>
+            </p>
+          </li>
+        );
+      });
+      }
+    });
+  }
  
 
 render() {
@@ -143,7 +172,10 @@ render() {
             <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
           </li>
           <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-info my-2 my-sm-0" to="/sign"> Log out    </Link>
+            <button className="btn btn-outline-info my-2 my-sm-0" onClick={this.Logout.bind(this)}> Log out    </button>
+          </form>
+          <form class="form-inline mt-2 mt-md-0">
+            <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home   </Link>
           </form>
         </ul> 
       </nav>
@@ -177,6 +209,14 @@ render() {
         <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
         <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
       </div>   
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
+        <div class="media text-muted pt-3">
+          <ul>
+          {this.renderChats()}
+          </ul>
+        </div>
+      </div>  
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
         <a href="#">All Rights Reserved</a>

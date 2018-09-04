@@ -47,7 +47,7 @@ render() {
           </li>
           <li class="nav-item active">
           <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-info my-2 my-sm-0" to="/sign"> Log out    </Link>
+            <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home   </Link>
           </form>
           </li>
         </ul> 
