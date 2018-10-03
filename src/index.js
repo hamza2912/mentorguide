@@ -34,18 +34,18 @@ const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 
 ReactDOM.render(
-  
-<Provider store={createStoreWithMiddleware(reducers)}>
-    
-<BrowserRouter>
-      
 
-        
+<Provider store={createStoreWithMiddleware(reducers)}>
+
+<BrowserRouter>
+
+
+
 <Switch>
-          
+
 <Route path="/posts/new" component={PostsNew} />
 <Route path="/usernew" component={UserNew} />
-<Route path="/mainnew" component={MainNew} />         
+<Route path="/mainnew" component={MainNew} />
 <Route path="/posts/:id" component={PostsShow} />
 <Route path="/posts" component={PostsIndex} />
 <Route path="/sign" component={SignIn} />
@@ -59,14 +59,14 @@ ReactDOM.render(
 <Route path="/posts/inbox" component={Inbox} />
 <Route path="/" component={PostsMain} />
 
-        
-</Switch>
-      
 
-   
+</Switch>
+
+
+
  </BrowserRouter>
- 
+
  </Provider>,
-  
-document.querySelector(".container")
+
+document.querySelector(".container-fluid")
 );

@@ -30,25 +30,25 @@ class Inbox extends Component {
       });
     });
   }
- 
+
 
 render() {
     //const { post } = this.props;
     const { id } = this.props.match.params;
     console.log(id);
 
-    
+
     if (!this.props.posts) {
       return <div>Loading...</div>;
     }
 
     return this.props.posts.map((post) => {
-  
+
     if (post.id === id) {
       return (
       <body class="bg-light">
 
-        <ReactModal 
+        <ReactModal
            isOpen={this.state.show1}
            contentLabel="Minimal Modal Example"
            style={{
@@ -68,7 +68,7 @@ render() {
           <button className="btn btn-success" onClick={this.handleCloseModal}>Cancel</button>
         </ReactModal>
 
-        <ReactModal 
+        <ReactModal
            isOpen={this.state.show2}
            contentLabel="Minimal Modal Example2"
            style={{
@@ -87,7 +87,7 @@ render() {
           </button>
           <button className="btn btn-success" onClick={this.handleCloseModalother}>Cancel</button>
         </ReactModal>
-        
+
       <nav class="navbar navbar-expand-lg fixed-top site-header">
       <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
         <ul class="navbar-nav mr-auto">
@@ -100,7 +100,7 @@ render() {
           <form class="form-inline mt-2 mt-md-0">
             <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home   </Link>
           </form>
-        </ul> 
+        </ul>
       </nav>
 
       <div class="bg-white shadow-sm">
@@ -134,7 +134,7 @@ render() {
         <h5 class="text-muted"> Your Location: <span class="text-dark"> {post.location}</span></h5>
         <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
         <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
-      </div>   
+      </div>
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
         <div class="media text-muted pt-3">
@@ -142,7 +142,7 @@ render() {
           {this.renderChats()}
           </ul>
         </div>
-      </div>  
+      </div>
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
         <a href="#">All Rights Reserved</a>
@@ -164,4 +164,4 @@ function mapStateToProps(state){
 
 
 
-export default connect(mapStateToProps, { fetchPosts, deletePost })(ProfileShow);
+export default connect(mapStateToProps, { fetchPosts, deletePost })(Inbox);
