@@ -26,7 +26,7 @@ class PostsMain extends Component {
       return (
         <main role="main">
           <header>
-            <nav class="site-header sticky-top py-1">
+            <nav class="site-header fixed-top py-1">
               <div class="container d-flex flex-column flex-md-row justify-content-between">
                 <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
                 <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
@@ -117,7 +117,7 @@ class PostsMain extends Component {
       return (
         <main role="main">
           <header>
-            <nav class="site-header sticky-top py-1">
+            <nav class="site-header fixed-top py-1">
               <div class="container d-flex flex-column flex-md-row justify-content-between">
                 <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
                 <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
@@ -208,7 +208,7 @@ class PostsMain extends Component {
       return (
         <main role="main">
           <header>
-            <nav class="site-header sticky-top py-1">
+            <nav class="site-header fixed-top py-1">
               <div class="container d-flex flex-column flex-md-row justify-content-between">
                 <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
                 <a class="py-2 d-none d-md-inline-block" href="#">Home</a>

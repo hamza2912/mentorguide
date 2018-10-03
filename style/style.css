@@ -2,6 +2,11 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+
+body {
+  padding-top: 70px;
+}
+
 .offcanvas-collapse {
   position: fixed;
   top: 56px; /* Height of navbar */
