@@ -6,17 +6,34 @@ import { Link } from "react-router-dom";
 
 import { fetchPosts } from "../actions";
 
+import ReactModal from "react-modal";
+
 
 
 class PostsShow extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { Messege: ""}
+    this.state = { Messege: "", Messege2: "",show1: false}
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmit2 = this.onSubmit2.bind(this);
+    this.onSubmit3 = this.onSubmit3.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
     
   
+  }
+
+  handleOpenModal () {
+    if(this.state.Messege !== ""){
+    this.setState({ show1: true });
+    }
+  }
+  
+  handleCloseModal () {
+    this.setState({ show1: false });
   }
 
   renderChats() {
@@ -24,15 +41,18 @@ class PostsShow extends Component {
     const { id } = this.props.match.params;
     return this.props.posts.map((post) => {
       if (post.id === id) {
-      for(var i=0; i<post.comments.length; i++){
-      return(
-        <li>
-      <p class=" pb-3   lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">{post.comments[i]}</strong>
-      </p>
-      </li>
-      );
-    } }
+      return post.comments.map((currentPost) => {
+        return (
+          <li>
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <p class="pb-3 lh-125">
+              <strong className="d-block text-gray-dark">{currentPost}</strong>
+            </p>
+            </div>
+          </li>
+        );
+      });
+      }
     });
   }
     
@@ -43,20 +63,54 @@ class PostsShow extends Component {
     
    }
 
+   handleChange2(event) {
+  
+    this.setState({Messege2: event.target.value});
+
+   }
+
    onSubmit(){
 
     const { id } = this.props.match.params;
     var mentors = JSON.parse(localStorage.getItem('mentors'));
+    var userName = JSON.parse(localStorage.getItem('UserName'));
+    if(this.state.Messege!== ""){
     mentors.map((post) => {
   
       if (post.id === id) {
         return (
-          post.comments.push(this.state.Messege)
+          post.comments.push(`${userName}: ${this.state.Messege}`)
         );
       }
-    });
+    }); 
     localStorage.setItem('mentors', JSON.stringify(mentors));
-    this.props.histrory.push(`/posts/${id}`);
+    this.props.history.push(`/posts/${id}`);
+  }
+  }
+
+  onSubmit2(){
+
+    this.setState({ show1: true });
+    
+  }
+
+  onSubmit3(){
+
+    const { id } = this.props.match.params;
+    if(this.state.Messege2!== ""){
+    var mentors = JSON.parse(localStorage.getItem('mentors'));
+    var userName = JSON.parse(localStorage.getItem('UserName'));
+    mentors.map((post) => {
+  
+      if (post.id === id) {
+        return (
+          post.messeges.push(`${userName}: ${this.state.Messege2}`)
+        );
+      }
+    }); 
+    localStorage.setItem('mentors', JSON.stringify(mentors));
+    this.setState({ show1: false });
+    }
     
   }
 
@@ -79,7 +133,27 @@ render() {
     if (post.id === id) {
       return (
       <body class="bg-light">
-
+      <ReactModal 
+           isOpen={this.state.show1}
+           contentLabel="Minimal Modal Example3"
+           style={{
+              content : {
+                top                   : '50%',
+                left                  : '50%',
+                right                 : 'auto',
+                bottom                : 'auto',
+                marginRight           : '-50%',
+                width                 : '50%',
+                transform             : 'translate(-50%, -50%)'
+              }
+          }} >
+           <div class="form-group">
+            <label for="message-text" class="col-form-label text-muted">Your Message:</label>
+            <textarea class="form-control" id="message-text"  onChange = {this.handleChange2}></textarea>
+          </div>
+          <button className="btn btn-success" onClick= {this.onSubmit3} >Send</button>
+          <button className="btn btn-danger" onClick= {this.handleCloseModal} >Cancel</button>
+        </ReactModal>
       <nav class="navbar navbar-expand-lg fixed-top site-header">
       <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
         <ul class="navbar-nav mr-auto">
@@ -91,7 +165,7 @@ render() {
           </li>
         </ul> 
       </nav>
-
+      
       <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
         <a class="nav-link active" href="">Dashboard</a>
@@ -101,6 +175,9 @@ render() {
       </nav>
       </div>
       <div>
+      <button className="btn btn-primary pull-xs-right"  onClick= {this.onSubmit2} >
+      Send a Messege 
+      </button>
       </div>
 
       <div class="my-3 p-3 bg-white rounded shadow-sm">

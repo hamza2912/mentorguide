@@ -26,6 +26,7 @@ import UserNew from "./components/UserNew";
 import MainNew from "./components/MainNew";
 import Success from "./components/success";
 import Success2 from "./components/success2";
+import Inbox from "./components/inbox";
 
 import PostsShow from "./components/posts_show";
 import PostsMain from "./components/posts_main";
@@ -55,6 +56,7 @@ ReactDOM.render(
 <Route path="/success2" component={Success2} />
 <Route path="/requests" component={Requests} />
 <Route path="/checkrequests" component={checkRequests} />
+<Route path="/posts/inbox" component={Inbox} />
 <Route path="/" component={PostsMain} />
 
         

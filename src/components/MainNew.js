@@ -29,6 +29,7 @@ render() {
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; Hamza's Developer Company</p>
         <a href="#">All Rights Reserved</a>
+        <a class="pt-9 text-grey text-type" href="/posts/post/api?=key">Developer techniques</a>
       </footer>
     </body>
 );
@@ -38,6 +39,8 @@ render() {
 
 function mapStateToProps(state) {
   return { posts: state.posts.mentors };
+  
+  
 }
 
 

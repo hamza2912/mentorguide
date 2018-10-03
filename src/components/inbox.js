@@ -9,91 +9,12 @@ import { fetchPosts, deletePost } from "../actions";
 import ReactModal from "react-modal";
 
 
-class ProfileShow extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {show1: false, show2: false};
-  
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleOpenModalother = this.handleOpenModalother.bind(this);
-    this.handleCloseModalother = this.handleCloseModalother.bind(this);
-  }
-
-  handleOpenModal () {
-    this.setState({ show1: true });
-  }
-  
-  handleCloseModal () {
-    this.setState({ show1: false });
-  }
-  
-  handleOpenModalother () {
-    this.setState({ show2: true });
-  }
-  
-  handleCloseModalother () {
-    this.setState({ show2: false });
-  }
-
-componentDidMount() {
-    //this.props.fetchPost(id);
-    this.props.fetchPosts();
-  }
-
-  componentDidUpdate() {
-    this.renderChats();
-  }
-  
-    
-onDeleteClick() {
-    const { id } = this.props.match.params;
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
-    var posts = [];
-    posts = mentors;
-    posts.map((post) => {
-      if (post.id === id) {
-       var val = posts.indexOf(post);
-       delete posts[val];
-       function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
-       posts = posts.filter(filterer);
-       localStorage.setItem('mentors', JSON.stringify(posts));
-       var Logged = false;
-       localStorage.setItem('UserLogin', JSON.stringify(Logged));
-       this.props.history.push("/");
-      }
-    });
-  }
-
-  onDeleteClick1() {
-    const { id } = this.props.match.params;
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
-    var posts = [];
-    posts = mentors;
-    posts.map((post) => {
-      if (post.id === id) {
-       var val = posts.indexOf(post);
-       delete posts[val];
-       function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
-       posts = posts.filter(filterer);
-       localStorage.setItem('mentors', JSON.stringify(posts));
-       this.props.history.push("/posts/new");
-      }
-    });
-  }
-
-  Logout() {
-    var Logged = false;
-    localStorage.setItem('Logged', JSON.stringify(Logged));
-    this.props.history.push("");
-  }
+class Inbox extends Component {
 
   renderChats() {
 
-    const { id } = this.props.match.params;
-    return this.props.posts.map((post) => {
-      if (post.id === id) {
+    var messeges = JSON.parse(localStorage.getItem('Messeges'));
+    return messeges.map((post) => {
       var messeges = post.messeges;
       localStorage.setItem('Messeges', JSON.stringify(messeges));
       return post.comments.map((currentPost) => {
@@ -107,7 +28,6 @@ onDeleteClick() {
           </li>
         );
       });
-      }
     });
   }
  

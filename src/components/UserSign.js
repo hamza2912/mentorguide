@@ -28,6 +28,8 @@ onSubmit(values) {
          {  
             var UserLogin = true;
             localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
+            var UserName = post.name;
+            localStorage.setItem('UserName', JSON.stringify(UserName));
             
           return (
             this.props.history.push("/")

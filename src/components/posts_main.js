@@ -16,15 +16,13 @@ Signout(){
   localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
   this.props.history.push("/");
 
-}
-  
-
+}  
 
 render() {
     var Logged = JSON.parse(localStorage.getItem('Logged'));
     var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
-    if(Logged === false && UserLogin === false){
+  if(Logged === false && UserLogin === false){
     return (
     
 
@@ -35,6 +33,7 @@ render() {
       <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
         <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
         <a class="py-2 d-none d-md-inline-block" href="/Usersign">Search</a>
+        <a class="py-2 d-none d-md-inline-block" href="/Mainsign">Requests</a>
         <a class="py-2 d-none d-md-inline-block" href="/Mainsign">Sign in</a>
       </div>
     </nav>
@@ -127,7 +126,8 @@ else if (Logged === true){
           <div class="container d-flex flex-column flex-md-row justify-content-between">
           <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
             <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
-            <a class="py-2 d-none d-md-inline-block" href="/posts">Search</a>  
+            <a class="py-2 d-none d-md-inline-block" href="/posts">Search</a>
+            <a class="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>  
             <a class="py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>          
           </div>
         </nav>
@@ -224,6 +224,7 @@ else if (UserLogin === true){
           <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
             <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
             <a class="py-2 d-none d-md-inline-block" href="/posts">Search</a>
+            <a class="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>
             <button class="btn btn-outline-dark inline-block" onClick={this.Signout.bind(this)}>Sign out</button>          
           </div>
         </nav>

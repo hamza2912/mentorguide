@@ -16,6 +16,7 @@ const API_KEY = "?key=PAPERCLIP1";
 
 var posts = [];
 var comments = [];
+var messeges = [];
 var ID = 1;
 
 
@@ -42,6 +43,7 @@ if (mentors.length!== 0){
   ID = mentors.length+1;
   values.id = `${ID}`;
   values.comments = comments;
+  values.messeges = messeges;
   posts.push(values);
   localStorage.setItem('mentors', JSON.stringify(posts));
   var Logged = true;
