@@ -174,11 +174,7 @@ render() {
           </form>
       </nav>
       </div>
-      <div>
-      <button className="btn btn-primary pull-xs-right"  onClick= {this.onSubmit2} >
-      Send a Messege 
-      </button>
-      </div>
+      
 
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <h1 class="display-5">{post.name}</h1>
@@ -189,6 +185,11 @@ render() {
         <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
         <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
       </div>
+      <div class = "my-3 p-3">
+      <button className="btn btn-primary pull-xs-right"  onClick= {this.onSubmit2} >
+        Send a Messege 
+        </button>
+        </div>
       <div class="my-3 p-3 bg-white rounded shadow-sm">
         <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a comment.." 
           onChange = {this.handleChange}></textarea>

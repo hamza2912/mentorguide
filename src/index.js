@@ -56,7 +56,7 @@ ReactDOM.render(
 <Route path="/success2" component={Success2} />
 <Route path="/requests" component={Requests} />
 <Route path="/checkrequests" component={checkRequests} />
-<Route path="/posts/inbox" component={Inbox} />
+<Route path="/inbox" component={Inbox} />
 <Route path="/" component={PostsMain} />
 
 

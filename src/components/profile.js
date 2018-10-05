@@ -197,7 +197,7 @@ render() {
           </form>
       </nav>
       </div>
-      <div>
+      <div class ="my-3 p-3">
       <button className="btn btn-danger pull-xs-right" onClick={this.handleOpenModal} >
       Delete Profile
       </button>
