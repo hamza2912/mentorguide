@@ -44,6 +44,7 @@ if (mentors.length!== 0){
   values.id = `${ID}`;
   values.comments = comments;
   values.messeges = messeges;
+  values.rating = 1;
   posts.push(values);
   localStorage.setItem('mentors', JSON.stringify(posts));
   var Logged = true;

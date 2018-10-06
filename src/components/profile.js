@@ -190,7 +190,7 @@ render() {
             <button className="btn btn-outline-dark my-2 my-sm-0" onClick={this.handleOpenModalother}> Recreate    </button>
           </form>
           <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/checkrequests"> Messeges   </Link>
+            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/posts/inbox"> Messeges   </Link>
           </form>
         <form class="form-inline mt-2 mt-md-0">
             <Link className="btn btn-outline-dark my-2 my-sm-0" to="/checkrequests"> Mentor Requirments   </Link>

@@ -18,11 +18,35 @@ class PostsMain extends Component {
 
   }
 
+  ShowRatings() {
+    var mentors = JSON.parse(localStorage.getItem('mentors'));
+    var count = 0;
+    var i = 0;
+    mentors.map((post) => {
+      count = count + post.rating ;
+      i++;
+    });
+    count = count/i;
+    count = count + 1;
+    mentors.map((post) => {
+      if(post.rating>count){
+        var goto = `/posts/${post.id}`
+        return(
+          <div>
+          <h1 class="display-6 font-weight-normal">{post.name}</h1>
+            <p class="lead font-weight-normal">{post.content}</p>  
+          <Link className="btn btn-info" to= {goto}> Show Profile >>     </Link>
+           </div>
+        );
+      }
+    });
+  }
+
   render() {
     var Logged = JSON.parse(localStorage.getItem('Logged'));
     var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
-    if ((Logged === false && UserLogin === false) || Logged === null) {
+    if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
       return (
         <main role="main">
           <header>
@@ -93,6 +117,14 @@ class PostsMain extends Component {
               <div class="col-md-5">
                 <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
               </div>
+            </div>
+
+            <hr class="featurette-divider" />
+            <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Top rated mentors</h2>
+              {this.ShowRatings.bind(this)}
+            </div>
             </div>
 
             <hr class="featurette-divider" />
@@ -184,6 +216,26 @@ class PostsMain extends Component {
               <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
             </div>
           </div>
+          <hr class="featurette-divider" />
+          <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific mentor requests</span></h2>
+              <p class="lead">Create your mentor request by adding details about your requirments and conditions. We
+                 will show it to our mentors and they will approach you by your contact details if they find themselves appropraite.</p>
+              <Link className="btn btn-lg btn-primary" to="/requests"> Create Mentor Request       </Link>
+            </div>
+            <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
+            </div>
+          </div>
+
+          <hr class="featurette-divider" />
+            <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Top rated mentors</h2>
+              {this.ShowRatings.bind(this)}
+            </div>
+            </div>
 
           <hr class="featurette-divider" />
           <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
@@ -275,6 +327,14 @@ class PostsMain extends Component {
               <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
             </div>
           </div>
+
+          <hr class="featurette-divider" />
+            <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Top rated mentors</h2>
+              {this.ShowRatings.bind(this)}
+            </div>
+            </div>
 
           <hr class="featurette-divider" />
           <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
