@@ -18,7 +18,7 @@ class PostsMain extends Component {
 
   }
 
-  ShowRatings() {
+  /*ShowRatings() {
     var mentors = JSON.parse(localStorage.getItem('mentors'));
     var count = 0;
     var i = 0;
@@ -40,7 +40,7 @@ class PostsMain extends Component {
         );
       }
     });
-  }
+  }*/
 
   render() {
     var Logged = JSON.parse(localStorage.getItem('Logged'));
@@ -78,6 +78,7 @@ class PostsMain extends Component {
               </div>
             </div>
           </div>
+
 
 
 

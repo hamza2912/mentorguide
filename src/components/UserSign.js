@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
-import { fetchPosts } from "../actions";
+import { fetchPosts2 } from "../actions";
 
 
 
@@ -21,7 +21,7 @@ constructor(props) {
   
 onSubmit(values) {
 
-  var Users = JSON.parse(localStorage.getItem('users'));
+  var Users = this.props.posts;
     return Users.map((post) => {
        if (post.username === this.state.Username) {
          if(post.password===this.state.pass)
@@ -90,10 +90,10 @@ render() {
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts.mentors };
+  return { posts: state.posts };
 }
 
 
-export default connect(mapStateToProps, { fetchPosts })(UserSignIn);
+export default connect(mapStateToProps, { fetchPosts2 })(UserSignIn);
 
 

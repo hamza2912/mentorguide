@@ -9,13 +9,9 @@ import { fetchPosts, deletePost } from "../actions";
 
 class Inbox extends Component {
 
-  renderChats() {
-
-    var messeges = JSON.parse(localStorage.getItem('Messeges'));
-    return messeges.map((post) => {
-      var messeges = post.messeges;
-      localStorage.setItem('Messeges', JSON.stringify(messeges));
-      return post.comments.map((currentPost) => {
+  renderChats(variable) {
+    
+      return variable.map((currentPost) => {
         return (
           <li>
             <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -26,8 +22,9 @@ class Inbox extends Component {
           </li>
         );
       });
-    });
   }
+
+  
   Logout() {
     var Logged = false;
     localStorage.setItem('Logged', JSON.stringify(Logged));
@@ -36,7 +33,17 @@ class Inbox extends Component {
 
 render() {
 
-    var messeges = JSON.parse(localStorage.getItem('Messeges'));
+  const { id } = this.props.match.params;
+
+  if (!this.props.posts) {
+    return <div>Loading...</div>;
+  }
+
+  return this.props.posts.map((post) => {
+  
+    if (post.id === id) {
+
+    var messeges = post.messeges;
 
     if (messeges === null) {
     
@@ -77,7 +84,7 @@ render() {
         <h6 class="border-bottom border-gray pb-2 mb-0">Messeges</h6>
         <div class="media text-muted pt-3">
           <ul>
-          {this.renderChats()}
+          {this.renderChats(messeges)}
           </ul>
         </div>
       </div>
@@ -87,7 +94,13 @@ render() {
       </footer>
   </body>
       );
-  }
+
+    }
+    
+  });
+  
+    }
+
 }
 
 

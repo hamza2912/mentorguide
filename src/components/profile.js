@@ -49,16 +49,9 @@ componentDidMount() {
     
 onDeleteClick() {
     const { id } = this.props.match.params;
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
-    var posts = [];
-    posts = mentors;
-    posts.map((post) => {
+    this.props.posts.map((post) => {
       if (post.id === id) {
-       var val = posts.indexOf(post);
-       delete posts[val];
-       function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
-       posts = posts.filter(filterer);
-       localStorage.setItem('mentors', JSON.stringify(posts));
+       this.props.deletePost(id);
        var Logged = false;
        localStorage.setItem('UserLogin', JSON.stringify(Logged));
        this.props.history.push("/");
@@ -239,7 +232,7 @@ render() {
 //function mapStateToProps({ posts }, ownProps)
 function mapStateToProps(state){
   // return { post: posts[ownProps.match.params.id] };
-  return { posts: state.posts.mentors };
+  return { posts: state.posts };
 }
 
 

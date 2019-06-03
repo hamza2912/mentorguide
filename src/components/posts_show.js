@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-import { fetchPosts } from "../actions";
+import { fetchPosts  } from "../actions";
+
+import { addComments  } from "../actions";
+
+import { addMesseges  } from "../actions";
 
 import ReactModal from "react-modal";
 
@@ -72,18 +76,22 @@ class PostsShow extends Component {
    onSubmit(){
 
     const { id } = this.props.match.params;
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
+    var mentors = this.props.posts ;
     var userName = JSON.parse(localStorage.getItem('UserName'));
     if(this.state.Messege!== ""){
     mentors.map((post) => {
   
       if (post.id === id) {
-        return (
-          post.comments.push(`${userName}: ${this.state.Messege}`)
-        );
+        var comments = post.comments;
+        comments.push(`${userName}: ${this.state.Messege}`)
+        //return (
+          //post.comments.push(`${userName}: ${this.state.Messege}`)
+          this.props.addComments(id,`${userName}: ${this.state.Messege}`);
+
+        //);
       }
     }); 
-    localStorage.setItem('mentors', JSON.stringify(mentors));
+    //localStorage.setItem('mentors', JSON.stringify(mentors));
     this.props.history.push(`/posts/${id}`);
   }
   }
@@ -98,17 +106,22 @@ class PostsShow extends Component {
 
     const { id } = this.props.match.params;
     if(this.state.Messege2!== ""){
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
+      var mentors = this.props.posts ;
     var userName = JSON.parse(localStorage.getItem('UserName'));
     mentors.map((post) => {
   
       if (post.id === id) {
-        return (
-          post.messeges.push(`${userName}: ${this.state.Messege2}`)
-        );
+        var messeges = post.messeges;
+        messeges.push(`${userName}: ${this.state.Messege2}`)
+        //return (
+          //post.messeges.push(`${userName}: ${this.state.Messege2}`)
+          this.props.addMesseges(id,`${userName}: ${this.state.Messege2}`);
+
+        //);
+
       }
     }); 
-    localStorage.setItem('mentors', JSON.stringify(mentors));
+    //localStorage.setItem('mentors', JSON.stringify(mentors));
     this.setState({ show1: false });
     }
     
@@ -221,9 +234,9 @@ render() {
 //function mapStateToProps({ posts }, ownProps)
 function mapStateToProps(state){
   // return { post: posts[ownProps.match.params.id] };
-  return { posts: state.posts.mentors };
+  return { posts: state.posts };
 }
 
 
 
-export default connect(mapStateToProps, { fetchPosts })(PostsShow);
+export default connect(mapStateToProps, { fetchPosts , addComments , addMesseges })(PostsShow);

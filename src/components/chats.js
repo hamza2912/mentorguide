@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-import { fetchPosts } from "../actions";
+import { fetchChats } from "../actions";
+import { createChat } from "../actions";
 
 import ReactModal from "react-modal";
 
@@ -40,7 +41,7 @@ handleCloseModal () {
 
 onSubmit(){
 
-  var chats = JSON.parse(localStorage.getItem('chats'));
+  var chats = tis.props.fetchChats;
   if(chats!== null){
      if (chats.length!== 0){
      this.state.Messeges = chats;
@@ -48,7 +49,7 @@ onSubmit(){
            this.state.Body.Messege = this.state.Messege;
            this.state.Body.Email = this.state.Email;
            this.state.Messeges.push(this.state.Body);
-           localStorage.setItem('chats', JSON.stringify(this.state.Messeges));
+           this.props.createChat(JSON.stringify(this.state.Messeges));
            this.setState({ show1: true });
          } 
      }
@@ -59,7 +60,7 @@ onSubmit(){
     this.state.Body.Messege = this.state.Messege;
     this.state.Body.Email = this.state.Email;
      this.state.Messeges.push(this.state.Body);
-     localStorage.setItem('chats', JSON.stringify(this.state.Messeges));
+     this.props.createChat(JSON.stringify(this.state.Messeges));
      this.setState({ show1: true });
    } 
 
@@ -144,4 +145,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, { fetchPosts })(Requests);
+export default connect(mapStateToProps, { fetchChats , createChat })(Requests);

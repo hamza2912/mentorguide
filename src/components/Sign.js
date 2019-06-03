@@ -93,7 +93,7 @@ render() {
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts.mentors };
+  return { posts: state.posts };
 }
 
 

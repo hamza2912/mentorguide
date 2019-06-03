@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-import { fetchPosts } from "../actions";
+import { fetchChats } from "../actions";
 
 
 
@@ -15,7 +15,7 @@ class checkRequests extends Component {
   
 
 renderChats() {
-  var chats = JSON.parse(localStorage.getItem('chats'));
+  var chats = this.props.posts;
   if (!chats) {
     return <div>Loading...</div>;
   }
@@ -82,10 +82,10 @@ render() {
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts.mentors };
+  return { posts: state.posts };
  
 }
 
 
 
-export default connect(mapStateToProps, { fetchPosts })(checkRequests);
+export default connect(mapStateToProps, { fetchChats })(checkRequests);
