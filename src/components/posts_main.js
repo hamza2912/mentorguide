@@ -329,14 +329,7 @@ class PostsMain extends Component {
             </div>
           </div>
 
-          <hr class="featurette-divider" />
-            <div class="row featurette">
-            <div class="col-md-7">
-              <h2 class="featurette-heading">Top rated mentors</h2>
-              {this.ShowRatings.bind(this)}
-            </div>
-            </div>
-
+        
           <hr class="featurette-divider" />
           <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
             <div class="col-md-5 p-lg-5 mx-auto my-5">
@@ -369,4 +362,12 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { fetchPosts })(PostsMain);
 
-
+/*
+<hr class="featurette-divider" />
+            <div class="row featurette">
+            <div class="col-md-7">
+              <h2 class="featurette-heading">Top rated mentors</h2>
+              {this.ShowRatings.bind(this)}
+            </div>
+            </div>
+            */
