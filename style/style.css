@@ -7,6 +7,31 @@ body {
   padding-top: 70px;
 }
 
+.fit-screen{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-color {
+  
+  background-color: #000000;
+  
+}
+
+.font-style {
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.footer-color {
+  
+  background-color:rgb(34, 33, 33);
+  
+}
+
+
 .offcanvas-collapse {
   position: fixed;
   top: 56px; /* Height of navbar */
@@ -102,7 +127,7 @@ color: #343a40;
   border-top-right-radius: 0;
 }
 
-.container123 {
+.container {
   max-width: 960px;
 }
 
@@ -116,6 +141,7 @@ color: #343a40;
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
+  
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -128,7 +154,8 @@ color: #343a40;
   background-size: cover;
   height: 32rem;
   background-color: #777;
-  background: url('education.jpg');
+  background: url('education1.jpg');
+  
 }
 .carousel-item > img {
   position: absolute;
@@ -194,7 +221,7 @@ color: #343a40;
 }
 
 .site-header {
-  background-color: rgba(0, 0, 0, .85);
+  background-color:rgb(34, 33, 33);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
