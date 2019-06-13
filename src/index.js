@@ -68,5 +68,5 @@ ReactDOM.render(
 
  </Provider>,
 
-document.querySelector(".container-fluid")
+document.querySelector(".myapp-container")
 );

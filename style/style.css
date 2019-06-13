@@ -4,7 +4,7 @@
 
 
 body {
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .fit-screen{
@@ -15,9 +15,9 @@ body {
 }
 
 .main-color {
-  
+
   background-color: #000000;
-  
+
 }
 
 .font-style {
@@ -26,9 +26,9 @@ body {
 }
 
 .footer-color {
-  
+
   background-color:rgb(34, 33, 33);
-  
+
 }
 
 
@@ -141,7 +141,7 @@ color: #343a40;
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
-  
+
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -155,7 +155,7 @@ color: #343a40;
   height: 32rem;
   background-color: #777;
   background: url('education1.jpg');
-  
+
 }
 .carousel-item > img {
   position: absolute;
