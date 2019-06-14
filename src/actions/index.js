@@ -65,6 +65,8 @@ export function createPost(values, callback) {
   localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
   localStorage.setItem('Logged', JSON.stringify(Logged));
 
+  console.log(values);
+
   const request = axios
     .post(`${ROOT_URL}/newmentor`, values)
     .then(() => callback());
@@ -80,6 +82,7 @@ export function createPost2(values, callback) {
   
   var UserLogin = true;
   localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
+  console.log(values);
 
   const request = axios
       .post(`${ROOT_URL}/newuser`, values)
@@ -93,6 +96,7 @@ export function createPost2(values, callback) {
   }
 
   export function createChat(values) {
+
   
   
     const request = axios

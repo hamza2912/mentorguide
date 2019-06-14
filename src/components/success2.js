@@ -12,14 +12,16 @@ render() {
     
     return (
 
-    <body>
-    <div class="container">
-      <div class="jumbotron mt-3">
-        <h1>You're Done!</h1>
-        <p class="lead">Your Student/User account has been successfully created.</p>
+    <body class="text-center main-color">
+      <div class = "center-place">
+      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+      <div class="main-color">
+        <h1 class = "text-light">You're Done!</h1>
+        <h4 class="text-light">Your Student/User account has been successfully created.</h4>
         <Link to= "/" class="btn btn-lg btn-success">Continue &raquo;</Link>
       </div>
     </div>
+    
 
     </body> );
 

@@ -18,29 +18,6 @@ class PostsMain extends Component {
 
   }
 
-  /*ShowRatings() {
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
-    var count = 0;
-    var i = 0;
-    mentors.map((post) => {
-      count = count + post.rating ;
-      i++;
-    });
-    count = count/i;
-    count = count + 1;
-    mentors.map((post) => {
-      if(post.rating>count){
-        var goto = `/posts/${post.id}`
-        return(
-          <div>
-          <h1 class="display-6 font-weight-normal">{post.name}</h1>
-            <p class="lead font-weight-normal">{post.content}</p>  
-          <Link className="btn btn-info" to= {goto}> Show Profile >>     </Link>
-           </div>
-        );
-      }
-    });
-  }*/
 
   render() {
     var Logged = JSON.parse(localStorage.getItem('Logged'));
@@ -52,9 +29,8 @@ class PostsMain extends Component {
           <header>
             <nav class="site-header fixed-top py-1">
               <div class="container d-flex flex-column flex-md-row justify-content-between">
-                <span class="navbar-brand  text-light font-style" href="#">
-                <img  src="./style/guide.png" alt="Generic placeholder image" width="35" height="35" /> 
-                -Mentor Guide</span>
+                <img  class="navbar-brand" src="./style/tutorlogo1.png" 
+                alt="Generic placeholder image" width="120" height="50" /> 
                 <span class="py-2 d-md-inline-block text-muted" href="#">Home</span>
                 <a class="py-2 d-none d-md-inline-block" href="/Usersign">Search</a>
                 <a class="py-2 d-none d-md-inline-block" href="/Mainsign">Requests</a>
@@ -67,8 +43,8 @@ class PostsMain extends Component {
           <div class="carousel-item active">
                 <div class="container">
                   <div class="carousel-caption text-left">
-                    <h1>Mentor Guide</h1>
-                    <p>Now get to know all about mentors in your city while sitting at your home.</p>
+                    <h2>Tutor Guide</h2>
+                    <p>Now get to know all about Tutors in your city while sitting at your home.</p>
                     <Link className="btn btn-lg btn-warning text-light" to="/mainnew"> Get Started   </Link>
                   </div>
                 </div>
@@ -78,9 +54,9 @@ class PostsMain extends Component {
             <hr class="featurette-divider" />
             <div class="row featurette">
               <div class="col-md-7">
-                <h2 class="featurette-heading text-light">Search for a Mentor, <span class="text-danger">more than thousands of mentors.</span></h2>
-                <p class="text-light">We have the best mentors and tutors throughout the city. You can find mentors available in your areas and could reach them easily.</p>
-                <Link className="btn btn-lg btn-primary" to="/Usersign"> Search Mentor       </Link>
+                <h2 class="featurette-heading text-light">Search for a Tutor, <span class="text-danger">more than thousands of Tutors.</span></h2>
+                <p class="text-light">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
+                <Link className="btn btn-lg btn-primary" to="/Usersign"> Search Tutor       </Link>
               </div>
               <div class="col-md-5">
                 <img class="featurette-image img-fluid mx-auto" src="./style/search.png" alt="Generic placeholder image" />
@@ -89,11 +65,11 @@ class PostsMain extends Component {
             <hr class="featurette-divider" />
             <div class="row featurette">
               <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading text-light">Become a Mentor, <span class="text-danger">See for yourself.</span></h2>
-                <p class="text-light">You can easily get mentors and tutions while siiting at home. All you need
-                is to submit a short form here and become part of our mentors team. We will show your pofile to our users
+                <h2 class="featurette-heading text-light">Become a Tutor, <span class="text-danger">See for yourself.</span></h2>
+                <p class="text-light">You can easily get Tutors and tutions while siiting at home. All you need
+                is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
             and they would respond to you if they find you suitable for them</p>
-                <Link className="btn btn-lg btn-primary" to="/posts/new"> Become Mentor         </Link>
+                <Link className="btn btn-lg btn-primary" to="/posts/new"> Become Tutor         </Link>
               </div>
               <div class="col-md-5 order-md-1">
                 <img class="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
@@ -102,9 +78,9 @@ class PostsMain extends Component {
             <hr class="featurette-divider" />
             <div class="row featurette">
               <div class="col-md-7">
-                <h2 class="featurette-heading text-light">Do the needful, <span class="text-danger">post specific mentor requests</span></h2>
-                <p class="text-light">Create your mentor request by adding details about your requirments and conditions. We
-             will show it to our mentors and they will approach you by your contact details if they find themselves appropraite.</p>
+                <h2 class="featurette-heading text-light">Do the needful, <span class="text-danger">post specific Tutor requests</span></h2>
+                <p class="text-light">Create your Tutor request by adding details about your requirments and conditions. We
+             will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
                 <Link className="btn btn-lg btn-primary" to="/Usersign"> Create Request       </Link>
               </div>
               <div class="col-md-5">
@@ -116,8 +92,8 @@ class PostsMain extends Component {
             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
               <div class="col-md-5 p-lg-5 mx-auto my-5">
                 <h1 class="display-4 font-weight-normal text-light">About us</h1>
-                <p class="lead font-weight-normal">We at mentor guide strive to create an educational network
-                which can promote education by linking mentors with students</p>
+                <p class="lead font-weight-normal">We at Tutor guide strive to create an educational network
+                which can promote education by linking Tutors with students</p>
                 <span class="btn btn-outline-secondary text-light" ><img class="rounded-circle" src="./style/email.png" 
                 alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
               </div>
@@ -138,7 +114,7 @@ class PostsMain extends Component {
           <header>
             <nav class="site-header fixed-top py-1">
               <div class="container d-flex flex-column flex-md-row justify-content-between">
-                <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
+                <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Tutor Guide</span>
                 <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
                 <a class="py-2 d-none d-md-inline-block" href="/posts">Search</a>
                 <a class="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>
@@ -156,8 +132,8 @@ class PostsMain extends Component {
               <div class="carousel-item active">
                 <div class="container">
                   <div class="carousel-caption text-left">
-                    <h1>Mentor Guide</h1>
-                    <p>Now get to know all about mentors in your city while sitting at your home.</p>
+                    <h1>Tutor Guide</h1>
+                    <p>Now get to know all about Tutors in your city while sitting at your home.</p>
                     <Link className="btn btn-lg btn-primary" to="/mainnew"> Get Started   </Link>
                   </div>
                 </div>
@@ -170,9 +146,9 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading">Search for a Mentor, <span class="text-muted">more than thousands of mentors.</span></h2>
-              <p class="lead">We have the best mentors and tutors throughout the city. You can find mentors available in your areas and could reach them easily.</p>
-              <Link className="btn btn-lg btn-primary" to="/posts"> Search for a mentor       </Link>
+              <h2 class="featurette-heading">Search for a Tutor, <span class="text-muted">more than thousands of Tutors.</span></h2>
+              <p class="lead">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
+              <Link className="btn btn-lg btn-primary" to="/posts"> Search for a Tutor       </Link>
             </div>
             <div class="col-md-5">
               <img class="featurette-image img-fluid mx-auto" src="./style/2.jpg" alt="Generic placeholder image" />
@@ -181,11 +157,11 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">Become a Mentor. <span class="text-muted">See for yourself.</span></h2>
-              <p class="lead">You can easily get mentors and tutions while siiting at home. All you need
-              is to submit a short form here and become part of our mentors team. We will show your pofile to our users
+              <h2 class="featurette-heading">Become a Tutor. <span class="text-muted">See for yourself.</span></h2>
+              <p class="lead">You can easily get Tutors and tutions while siiting at home. All you need
+              is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
                 and they would respond to you if they find you suitable for them</p>
-              <Link className="btn btn-lg btn-primary" to="/posts/new"> Become a mentor         </Link>
+              <Link className="btn btn-lg btn-primary" to="/posts/new"> Become a Tutor         </Link>
             </div>
             <div class="col-md-5 order-md-1">
               <img class="featurette-image img-fluid mx-auto" src="./style/1.jpg" alt="Generic placeholder image" />
@@ -194,10 +170,10 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific mentor requests</span></h2>
-              <p class="lead">Create your mentor request by adding details about your requirments and conditions. We
-                 will show it to our mentors and they will approach you by your contact details if they find themselves appropraite.</p>
-              <Link className="btn btn-lg btn-primary" to="/requests"> Create Mentor Request       </Link>
+              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific Tutor requests</span></h2>
+              <p class="lead">Create your Tutor request by adding details about your requirments and conditions. We
+                 will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
+              <Link className="btn btn-lg btn-primary" to="/requests"> Create Tutor Request       </Link>
             </div>
             <div class="col-md-5">
               <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
@@ -206,10 +182,10 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific mentor requests</span></h2>
-              <p class="lead">Create your mentor request by adding details about your requirments and conditions. We
-                 will show it to our mentors and they will approach you by your contact details if they find themselves appropraite.</p>
-              <Link className="btn btn-lg btn-primary" to="/requests"> Create Mentor Request       </Link>
+              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific Tutor requests</span></h2>
+              <p class="lead">Create your Tutor request by adding details about your requirments and conditions. We
+                 will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
+              <Link className="btn btn-lg btn-primary" to="/requests"> Create Tutor Request       </Link>
             </div>
             <div class="col-md-5">
               <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
@@ -241,7 +217,7 @@ class PostsMain extends Component {
           <header>
             <nav class="site-header fixed-top py-1">
               <div class="container d-flex flex-column flex-md-row justify-content-between">
-                <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
+                <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Tutor Guide</span>
                 <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
                 <a class="py-2 d-none d-md-inline-block" href="/posts">Search</a>
                 <a class="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>
@@ -259,8 +235,8 @@ class PostsMain extends Component {
               <div class="carousel-item active">
                 <div class="container">
                   <div class="carousel-caption text-left">
-                    <h1>Mentor Guide</h1>
-                    <p>Now get to know all about mentors in your city while sitting at your home.</p>
+                    <h1>Tutor Guide</h1>
+                    <p>Now get to know all about Tutors in your city while sitting at your home.</p>
                     <Link className="btn btn-lg btn-primary" to="/posts/new"> Get Started   </Link>
                   </div>
                 </div>
@@ -273,9 +249,9 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading">Search for a Mentor, <span class="text-muted">more than thousands of mentors.</span></h2>
-              <p class="lead">We have the best mentors and tutors throughout the city. You can find mentors available in your areas and could reach them easily.</p>
-              <Link className="btn btn-lg btn-primary" to="/posts"> Search for a mentor       </Link>
+              <h2 class="featurette-heading">Search for a Tutor, <span class="text-muted">more than thousands of Tutors.</span></h2>
+              <p class="lead">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
+              <Link className="btn btn-lg btn-primary" to="/posts"> Search for a Tutor       </Link>
             </div>
             <div class="col-md-5">
               <img class="featurette-image img-fluid mx-auto" src="./style/2.jpg" alt="Generic placeholder image" />
@@ -284,11 +260,11 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">Become a Mentor. <span class="text-muted">See for yourself.</span></h2>
-              <p class="lead">You can easily get mentors and tutions while siiting at home. All you need
-              is to submit a short form here and become part of our mentors team. We will show your pofile to our users
+              <h2 class="featurette-heading">Become a Tutor. <span class="text-muted">See for yourself.</span></h2>
+              <p class="lead">You can easily get Tutors and tutions while siiting at home. All you need
+              is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
                 and they would respond to you if they find you suitable for them</p>
-              <Link className="btn btn-lg btn-primary" to="/posts/new"> Become a mentor         </Link>
+              <Link className="btn btn-lg btn-primary" to="/posts/new"> Become a Tutor         </Link>
             </div>
             <div class="col-md-5 order-md-1">
               <img class="featurette-image img-fluid mx-auto" src="./style/1.jpg" alt="Generic placeholder image" />
@@ -297,10 +273,10 @@ class PostsMain extends Component {
           <hr class="featurette-divider" />
           <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific mentor requests</span></h2>
-              <p class="lead">Create your mentor request by adding details about your requirments and conditions. We
-                 will show it to our mentors and they will approach you by your contact details if they find themselves appropraite.</p>
-              <Link className="btn btn-lg btn-primary" to="/requests"> Create Mentor Request       </Link>
+              <h2 class="featurette-heading">Do the needful, <span class="text-muted">post specific Tutor requests</span></h2>
+              <p class="lead">Create your Tutor request by adding details about your requirments and conditions. We
+                 will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
+              <Link className="btn btn-lg btn-primary" to="/requests"> Create Tutor Request       </Link>
             </div>
             <div class="col-md-5">
               <img class="featurette-image img-fluid mx-auto" src="./style/3.jpg" alt="Generic placeholder image" />
@@ -340,11 +316,36 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, { fetchPosts })(PostsMain);
 
+/*ShowRatings() {
+    var Tutors = JSON.parse(localStorage.getItem('Tutors'));
+    var count = 0;
+    var i = 0;
+    Tutors.map((post) => {
+      count = count + post.rating ;
+      i++;
+    });
+    count = count/i;
+    count = count + 1;
+    Tutors.map((post) => {
+      if(post.rating>count){
+        var goto = `/posts/${post.id}`
+        return(
+          <div>
+          <h1 class="display-6 font-weight-normal">{post.name}</h1>
+            <p class="lead font-weight-normal">{post.content}</p>  
+          <Link className="btn btn-info" to= {goto}> Show Profile >>     </Link>
+           </div>
+        );
+      }
+    });
+  }*/
+
+
 /*
 <hr class="featurette-divider" />
             <div class="row featurette">
             <div class="col-md-7">
-              <h2 class="featurette-heading">Top rated mentors</h2>
+              <h2 class="featurette-heading">Top rated Tutors</h2>
               {this.ShowRatings.bind(this)}
             </div>
             </div>

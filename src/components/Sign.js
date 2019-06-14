@@ -64,11 +64,12 @@ render() {
     
     return (
     
-    <body class="text-center">
+    <body class="text-center main-color">
+      <div class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>
-      <h1><span class="badge badge-dark">Mentor Guide</span></h1>
-      <p class="lead">Please Sign in below</p>
+      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+      <p class="font-cursive text-light">Please Sign in below</p>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" class="form-control"  placeholder="Username" required autofocus/>
         <label for="inputPassword" class="sr-only">Password</label>
@@ -83,9 +84,10 @@ render() {
         <p class="mt-5 mb-3 text-muted">Dont you have mentor profile<a href="/posts/new"> Sign up </a>Now</p>
       </form>
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
+        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
         <a href="#">All Rights Reserved</a>
       </footer>
+      </div>
     </body>
 );
 }

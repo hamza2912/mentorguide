@@ -17,19 +17,21 @@ render() {
     
     return (
     
-    <body class="text-center">
+      <body class="text-center main-color">
+      <div class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>
-      <h1><span class="badge badge-dark">Mentor Guide</span></h1>
-      <p class="lead">Please Choose Sign in options</p>
+      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+      <p class="font-cursive text-light">Please Choose Sign in options</p>
         <Link to="/UserSign" className="btn btn-block  btn-info btn-sm">Sign in as student/user</Link>
         <Link to="/sign" className="btn btn-block  btn-info btn-sm">Sign in as mentor</Link>
         <Link to="/" className="btn btn-block  btn-danger btn-sm">Cancel</Link>
       </form>
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
+        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
         <a href="#">All Rights Reserved</a>
       </footer>
+      </div>
     </body>
 );
 }

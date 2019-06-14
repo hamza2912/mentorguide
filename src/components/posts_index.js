@@ -61,64 +61,81 @@ handleChange(event) {
 
 render() {
     return (
+
+    <main role="main">
+      <header>
+            <nav class="site-header fixed-top py-1">
+              <div class="container d-flex flex-column flex-md-row justify-content-between">
+                <img  class="navbar-brand" src="./style/tutorlogo1.png" 
+                alt="Generic placeholder image" width="120" height="50" /> 
+                <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home    </Link>
+              </div>
+            </nav>
+      </header>
       
-    <body class="bg-light">
-
-      <nav class="navbar navbar-expand-lg fixed-top site-header ">
-      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-          <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home    </Link>
-          </form>
-          </li>
-        </ul> 
-      </nav>
-
-      <div class=" bg-white shadow-sm">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="">Dashboard</a>
-        <a class="nav-link active text-warning" href="">Search</a>
-        <form class="form-inline my-2 my-lg-0">
-          <select  class="form-control" placeholder = "Select Your area" onChange = {this.handleChange}>
-            <option>Area</option> <option>Baldia</option> <option>Buffer-Zone</option> <option>Defence</option>  
-            <option>Fedral-B-Area</option><option>Gadap</option> <option>Gulberg</option> <option>Gulshan</option> 
-            <option>Gulshan-e-Meymar</option><option>Jamsh1ed Town</option> 
-            <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option> 
-            <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
-            <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option>
-          </select>
-        </form>
-      </nav>
-      </div>
-
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Mentors</h6>
-        <div class="media text-muted pt-3">
-          <ul>
-          {this.renderPosts()}
-          </ul>
+      <div class="main-color">
+        
+        <div class=" bg-black shadow-sm">
+          <nav class="nav nav-underline">
+            <a class="nav-link active" href="">Dashboard</a>
+            <a class="nav-link active text-warning" href="">Search</a>
+            <form class="form-inline my-2 my-lg-0">
+              <select  class="form-control" placeholder = "Select Your area" onChange = {this.handleChange}>
+                <option>Area</option> <option>Baldia</option> <option>Buffer-Zone</option> <option>Defence</option>  
+                <option>Fedral-B-Area</option><option>Gadap</option> <option>Gulberg</option> <option>Gulshan</option> 
+                <option>Gulshan-e-Meymar</option><option>Jamsh1ed Town</option> 
+                <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option> 
+                <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
+                <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option>
+              </select>
+            </form>
+          </nav>
         </div>
-        <small class="d-block text-right mt-3">
-          <a href="">Recent list</a>
-        </small>
-      </div>  
-      
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <a href="#">All Rights Reserved</a>
-      </footer> 
 
-  </body>  );  }
+        <div class="my-3 p-3 bg-black rounded shadow-sm">
+          <h6 class="border-bottom border-gray pb-2 mb-0 text-light">Search Tutors around You!</h6>
+          <div class="media text-muted pt-3">
+          <form class="form-inline my-2 my-lg-0">
+            <select  class="form-control" placeholder = "Select Your area" onChange = {this.handleChange}>
+              <option>Area</option> <option>Baldia</option> <option>Buffer-Zone</option> <option>Defence</option>  
+              <option>Fedral-B-Area</option><option>Gadap</option> <option>Gulberg</option> <option>Gulshan</option> 
+              <option>Gulshan-e-Meymar</option><option>Jamsh1ed Town</option> 
+              <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option> 
+              <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
+              <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option>
+            </select>
+          </form>
+          </div>
+        </div> 
+
+        <div class="my-3 p-3 bg-black rounded shadow-sm">
+          <h6 class="border-bottom border-gray pb-2 mb-0 text-light">Tutors</h6>
+          <div class="media text-muted pt-3">
+            <ul>
+            {this.renderPosts()}
+            </ul>
+          </div>
+          <small class="d-block text-right mt-3">
+            <a href="">Recent list</a>
+          </small>
+        </div>  
+        
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
+          <a href="#">All Rights Reserved</a>
+        </footer> 
+
+    </div>
+     
+  </main> 
+  
+  );  }
 }
 
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts.mentors };
+  return { posts: state.posts.Tutors };
  
 }
 

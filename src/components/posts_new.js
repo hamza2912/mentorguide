@@ -84,17 +84,17 @@ class PostsNew extends Component {
     
     
     return (
-      <body >
-    
+      <body class = "main-color" >
+      
       <div class="container">
       <div class="py-5 text-center">
-        <h1><span class="badge badge-dark">Mentor Guide</span></h1>
-        <p class="lead">Fill the required information below for creating your mentor profile</p>
+        <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+        <p class="text-light font-cursive">Fill the required information below for creating your Tutor profile</p>
       </div>
       <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">General</h4>
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
-      <Field          label="Name" placeholder="Enter your name"
+          <h4 class="mb-3 text-light">General Information</h4>
+      <form class= "text-info"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
+      <Field         label="Name" placeholder="Enter your name"
       name="name"
       component={this.renderField}
       />
@@ -111,7 +111,7 @@ class PostsNew extends Component {
       name="password"
       component={this.renderFieldPass}
       />
-      <h4 class="mb-3">About Mentoring</h4>
+      <h4 class="mb-3 text-light">Tutor Career</h4>
       <Field
       label="Qualification"  placeholder="Studies"
       name="content"
@@ -119,13 +119,13 @@ class PostsNew extends Component {
       />
       
       <Field
-      label="Target Classes" placeholder="Can mentor O levels/Matric e.g.."
+      label="Target Classes" placeholder="Can Tutor O levels/Matric e.g.."
       name="classes"
       component={this.renderField}
       />
 
       <Field
-      label="Mentoring Fee" placeholder="10000-15000 e.g.."
+      label="Tution Fee" placeholder="10000-15000 e.g.."
       name="salary"
       component={this.renderField}
       />
@@ -154,14 +154,14 @@ class PostsNew extends Component {
       component={this.renderField}
       />
       
-      <button type="submit" className="btn btn-success btn-lg">Continue</button>
+      <button type="submit" className="btn btn-primary text-light btn-lg">Continue</button>
       <Link to="/" className="btn  btn-danger btn-lg">Cancel</Link>
       </form>
       </div>
       </div>
       
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
+        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
         <a href="#">All Rights Reserved</a>
       </footer>
       </body>

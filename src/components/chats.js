@@ -82,7 +82,8 @@ handleChange1(event) {
 render() {
     return (
       
-    <body class="bg-light">
+    <body class="main-color">
+      
       <ReactModal 
            isOpen={this.state.show1}
            contentLabel="Minimal Modal Example3"
@@ -96,50 +97,41 @@ render() {
                 transform             : 'translate(-50%, -50%)'
               }
           }} >
-          <p class="lead">Your mentor request has been successfully posted.</p>
+          <p class="lead">Your Tutor request has been successfully posted.</p>
           <Link className="btn btn-primary" to= "/" >Close</Link>
-        </ReactModal>
+      </ReactModal>
 
-      <nav class="navbar navbar-expand-lg fixed-top site-header">
-      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-          <form class="form-inline mt-2 mt-md-0">
+       <nav class="site-header fixed-top py-1">
+          <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <img  class="navbar-brand" src="./style/tutorlogo1.png" 
+              alt="Generic placeholder image" width="120" height="50" /> 
             <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home    </Link>
-          </form>
-          </li>
-        </ul> 
-      </nav>
+          </div>
+        </nav>
 
-      <div class=" bg-white shadow-sm">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="">Dashboard</a>
-      </nav>
-      </div>
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-      <label for="exampleTextarea"><h1 class="display-8 text-warning ">Create Mentor Request</h1></label>
-      <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a mentor for my child which is in 5 class. Mentor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
-      <input className="form-control" type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />
-      <button className="btn btn-success "  onClick={this.onSubmit}>
-          Submit
-      </button>
+      <div class="my-3 p-3  rounded shadow-sm">
+        <label for="exampleTextarea"><h1 class="display-8 text-light ">Create Tutor Request</h1></label>
+        <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a Tutor for my child which is in 5 class. Tutor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
+        <input className="form-control" type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />
+          <button className="btn btn-success "  onClick={this.onSubmit}>
+            Submit
+          </button>
       </div>
       
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
+        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
         <a href="#">All Rights Reserved</a>
       </footer> 
 
-  </body>  );  }
+  </body>  
+  
+);  }
 }
 
 
 
 function mapStateToProps(state) {
-  return { posts: state.posts.mentors };
+  return { posts: state.posts.Tutors };
  
 }
 

@@ -52,16 +52,16 @@ class UserNew extends Component {
     
     
     return (
-      <body >
+      <body class = "main-color">
     
       <div class="container">
       <div class="py-5 text-center">
-        <h1><span class="badge badge-dark">Mentor Guide</span></h1>
-        <p class="lead">Fill the required information below for creating your Student/User account</p>
+      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+        <p class="text-light font-cursive">Fill the required information below for creating your Student/User account</p>
       </div>
       <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">General</h4>
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
+          <h4 class="mb-3 text-light">General</h4>
+          <form class = "text-info" onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
       <Field          label="Name" placeholder="Enter your name"
       name="name"
       component={this.renderField}
@@ -81,14 +81,14 @@ class UserNew extends Component {
       />
       
       
-      <button type="submit" className="btn btn-success btn-lg">Continue</button>
+      <button type="submit" className="btn btn-primary text-light btn-lg">Continue</button>
       <Link to="/" className="btn  btn-danger btn-lg">Cancel</Link>
       </form>
       </div>
       </div>
       
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
+      <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
         <a href="#">All Rights Reserved</a>
       </footer>
       </body>
