@@ -6,10 +6,17 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../actions";
+import AOS from 'aos';
 
 
 
 class MainNew extends Component {
+
+componentDidMount() {
+    AOS.init({
+      duration : 2000
+    })
+  }
 
 
 render() {
@@ -22,7 +29,7 @@ render() {
     <div class = "center-place">
     
     <form class="text-center form-signin" >
-      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+      <img data-aos="fade-right"data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="500" src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
       <p class="font-cursive text-light">Please Choose Sign up options</p>
         <Link to="/posts/new" className="btn btn-block  btn-info btn-sm">Create Mentor Account</Link>
         <Link to="/usernew" className="btn btn-block  btn-info btn-sm">Create Student/User Account</Link>

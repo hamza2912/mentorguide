@@ -30,10 +30,14 @@ import Inbox from "./components/inbox";
 
 import PostsShow from "./components/posts_show";
 import PostsMain from "./components/posts_main";
+
+
+
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 
 ReactDOM.render(
+
 
 <Provider store={createStoreWithMiddleware(reducers)}>
 

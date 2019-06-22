@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../actions";
+import AOS from 'aos';
 
 
 
@@ -58,6 +59,9 @@ onSubmit(values) {
 
 componentDidMount() {
     this.props.fetchPosts();
+    AOS.init({
+      duration : 2000
+    })
   }
 
 render() {
@@ -66,10 +70,10 @@ render() {
     return (
     
     <body class="text-center dark-color">
-      <div class = "center-place">
+      <div  class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>
-      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+      <img  data-aos="fade-right"data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="500" src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
       <p class="font-cursive text-light">Please Sign in below</p>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" class="form-control"  placeholder="Username" required autofocus/>

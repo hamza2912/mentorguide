@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../actions";
 
-
+import AOS from 'aos';
 
 class PostsMain extends Component {
 
@@ -16,6 +16,12 @@ class PostsMain extends Component {
     localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
     this.props.history.push("/");
 
+  }
+
+  componentDidMount() {
+    AOS.init({
+      duration : 2000
+    })
   }
 
 
@@ -42,7 +48,7 @@ class PostsMain extends Component {
 
           <div class="carousel-item active">
                 <div class="container">
-                  <div class="carousel-caption text-left">
+                  <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" class="carousel-caption text-left">
                     <h2>Tutor Guide</h2>
                     <p>Now get to know all about Tutors in your city while sitting at your home.</p>
                     <Link className="btn btn-lg btn-warning text-light" to="/mainnew"> Get Started   </Link>
@@ -53,48 +59,48 @@ class PostsMain extends Component {
           <div className="container">
             <hr class="featurette-divider" />
             <div class="row featurette">
-              <div class="col-md-7">
+              <div data-aos='fade-up-right' class="col-md-7">
                 <h2 class="featurette-heading text-light">Search for a Tutor, <span class="text-danger">more than thousands of Tutors.</span></h2>
                 <p class="text-light">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
                 <Link className="btn btn-lg btn-primary" to="/Usersign"> Search Tutor       </Link>
               </div>
-              <div class="col-md-5">
+              <div data-aos='fade-up-left' class="col-md-5">
                 <img class="featurette-image img-fluid mx-auto" src="./style/search.png" alt="Generic placeholder image" />
               </div>
             </div>
             <hr class="featurette-divider" />
             <div class="row featurette">
-              <div class="col-md-7 order-md-2">
+              <div data-aos='fade-up-right' class="col-md-7 order-md-2">
                 <h2 class="featurette-heading text-light">Become a Tutor, <span class="text-danger">See for yourself.</span></h2>
                 <p class="text-light">You can easily get Tutors and tutions while siiting at home. All you need
                 is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
             and they would respond to you if they find you suitable for them</p>
                 <Link className="btn btn-lg btn-primary" to="/posts/new"> Become Tutor         </Link>
               </div>
-              <div class="col-md-5 order-md-1">
+              <div data-aos='fade-up-left' class="col-md-5 order-md-1">
                 <img class="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
               </div>
             </div>
             <hr class="featurette-divider" />
             <div class="row featurette">
-              <div class="col-md-7">
+              <div data-aos='fade-up-right' class="col-md-7">
                 <h2 class="featurette-heading text-light">Do the needful, <span class="text-danger">post specific Tutor requests</span></h2>
                 <p class="text-light">Create your Tutor request by adding details about your requirments and conditions. We
              will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
                 <Link className="btn btn-lg btn-primary" to="/Usersign"> Create Request       </Link>
               </div>
-              <div class="col-md-5">
+              <div  data-aos='fade-up-left' class="col-md-5">
                 <img class="featurette-image img-fluid mx-auto" src="./style/request.png" alt="Generic placeholder image" />
               </div>
             </div>
 
         
             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
-              <div class="col-md-5 p-lg-5 mx-auto my-5">
+              <div data-aos='zoom-in' class="col-md-5 p-lg-5 mx-auto my-5">
                 <h1 class="display-4 font-weight-normal text-light">About us</h1>
                 <p class="lead font-weight-normal">We at Tutor guide strive to create an educational network
                 which can promote education by linking Tutors with students</p>
-                <span class="btn btn-outline-secondary text-light" ><img class="rounded-circle" src="./style/email.png" 
+                <span data-aos='zoom-in' class="btn btn-outline-secondary text-light" ><img class="rounded-circle" src="./style/email.png" 
                 alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
               </div>
               <div class="product-device shadow-sm d-none d-md-block"></div>

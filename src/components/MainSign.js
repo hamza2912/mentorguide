@@ -6,11 +6,17 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../actions";
+import AOS from 'aos';
 
 
 
 class MainSignIn extends Component {
 
+  componentDidMount() {
+    AOS.init({
+      duration : 2000
+    })
+  }
 
 render() {
 
@@ -21,7 +27,7 @@ render() {
       <div class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>
-      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+      <img data-aos="fade-right"data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="500" src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
       <p class="font-cursive text-light">Please Choose Sign in options</p>
         <Link to="/UserSign" className="btn btn-block  btn-info btn-sm">Sign in as student/user</Link>
         <Link to="/sign" className="btn btn-block  btn-info btn-sm">Sign in as mentor</Link>
