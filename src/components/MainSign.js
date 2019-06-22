@@ -17,7 +17,7 @@ render() {
     
     return (
     
-      <body class="text-center main-color">
+      <body class="text-center dark-color">
       <div class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>

@@ -84,7 +84,7 @@ class PostsNew extends Component {
     
     
     return (
-      <body class = "main-color" >
+      <body class = "dark-color" >
       
       <div class="container">
       <div class="py-5 text-center">
@@ -93,7 +93,7 @@ class PostsNew extends Component {
       </div>
       <div class="col-md-8 order-md-1">
           <h4 class="mb-3 text-light">General Information</h4>
-      <form class= "text-info"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
+      <form class= "text-muted"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
       <Field         label="Name" placeholder="Enter your name"
       name="name"
       component={this.renderField}

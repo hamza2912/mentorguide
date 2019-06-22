@@ -10,28 +10,57 @@ export const CREATE_POST = "create_post";
 export const UPDATE_POST = "update_post";
 
 export const DELETE_POST = "delete_post";
-var posts = [];
-var comments = [];
-var messeges = [];
-var ID = 1;
 
+
+var ID = 1;
 
 const ROOT_URL = "http://localhost:8000";
 
 //const API_KEY = "?key=PAPERCLIP1";
 
+//Creating New Tutor Account
+export function createPost(values, callback) {
+
+  values.userId = ID;
+  ID++;
+  const request = axios
+    .post(`${ROOT_URL}/newmentor`, values)
+    .then(() => callback());
+
+  
+return {
+    type: CREATE_POST,
+    payload: request
+  };
+}
+
+//Fetching All tutor Accounts
 
 export function fetchPosts() {
   
 const request = axios.get(`${ROOT_URL}/mentorposts`);
 
-  
 return {
     type: FETCH_POSTS,
     payload: request
   };
 }
 
+//creating User Account
+export function createPost2(values, callback) {
+  
+  const request = axios
+      .post(`${ROOT_URL}/newuser`, values)
+      .then(() => callback());
+  
+    
+  return {
+      type: CREATE_POST,
+      payload: request
+    };
+  }
+
+//getting all user accounts
 export function fetchPosts2() {
   
   const request = axios.get(`${ROOT_URL}/userposts`);
@@ -54,46 +83,6 @@ export function fetchPosts2() {
       };
     }
 
-export function createPost(values, callback) {
-
-  values.userId = ID;
-  ID++;
-  //values.comments = comments;
-  //values.messeges = messeges;
-  var Logged = true;
-  var ProfilePage = `/profile/${values.userId}`;
-  localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
-  localStorage.setItem('Logged', JSON.stringify(Logged));
-
-  console.log(values);
-
-  const request = axios
-    .post(`${ROOT_URL}/newmentor`, values)
-    .then(() => callback());
-
-  
-return {
-    type: CREATE_POST,
-    payload: request
-  };
-}
-
-export function createPost2(values, callback) {
-  
-  var UserLogin = true;
-  localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
-  console.log(values);
-
-  const request = axios
-      .post(`${ROOT_URL}/newuser`, values)
-      .then(() => callback());
-  
-    
-  return {
-      type: CREATE_POST,
-      payload: request
-    };
-  }
 
   export function createChat(values) {
 

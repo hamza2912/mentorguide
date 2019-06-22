@@ -24,6 +24,12 @@ body {
 
 }
 
+.dark-color {
+
+  background-color: rgb(34, 33, 33);
+
+}
+
 .font-style {
 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

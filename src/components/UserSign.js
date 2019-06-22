@@ -55,13 +55,17 @@ onSubmit(values) {
     });
   }
 
+  componentDidMount() {
+    var users = this.props.fetchPosts2();
+    console.log(users);
+  }
 
 render() {
 
     
     return (
     
-    <body class="text-center main-color">
+    <body class="text-center dark-color">
       <div class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>

@@ -21,18 +21,19 @@ constructor(props) {
   
 onSubmit(values) {
 
-
+  console.log("HEREEE");
+  console.log(this.props.posts);
     return this.props.posts.map((post) => {
        if (post.username === this.state.Username) {
          if(post.password===this.state.pass)
          {  
             var Logged = true;
-            var ProfilePage = `/profile/${post.id}`;
+            var ProfilePage = `/profile/${post.userId}`;
             localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
             localStorage.setItem('Logged', JSON.stringify(Logged));
             
           return (
-            this.props.history.push(`/profile/${post.id}`)
+            this.props.history.push(`/`)
           );
 
           
@@ -64,7 +65,7 @@ render() {
     
     return (
     
-    <body class="text-center main-color">
+    <body class="text-center dark-color">
       <div class = "center-place">
     
       <form class="form-signin" onSubmit={this.onSubmit}>

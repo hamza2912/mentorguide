@@ -23,7 +23,7 @@ class PostsMain extends Component {
     var Logged = JSON.parse(localStorage.getItem('Logged'));
     var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
-    if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
+    if ((Logged === false || UserLogin === false) || Logged === null || UserLogin === null) {
       return (
         <main role="main">
           <header>

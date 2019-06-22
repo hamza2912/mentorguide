@@ -12,14 +12,18 @@ render() {
     
     return (
 
-    <body class="text-center main-color">
+    <body class="text-center dark-color">
       <div class = "center-place">
       <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-      <div class="main-color">
+      <div class="dark-color">
         <h1 class = "text-light">You're Done!</h1>
         <h4 class="text-light">Your Student/User account has been successfully created.</h4>
-        <Link to= "/" class="btn btn-lg btn-success">Continue &raquo;</Link>
+        <Link to= "/Usersign" class="btn btn-lg btn-success">Continue &raquo;</Link>
       </div>
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
+        <a href="#">All Rights Reserved</a>
+      </footer>
     </div>
     
 

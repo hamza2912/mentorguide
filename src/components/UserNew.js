@@ -5,10 +5,7 @@ import { connect } from "react-redux";
 import { createPost2 } from "../actions";
 
 
-
-
 class UserNew extends Component {
-
   
   renderField(field) {
     const { meta: { touched, error } } = field;
@@ -52,7 +49,7 @@ class UserNew extends Component {
     
     
     return (
-      <body class = "main-color">
+      <body class = "dark-color">
     
       <div class="container">
       <div class="py-5 text-center">
@@ -61,7 +58,7 @@ class UserNew extends Component {
       </div>
       <div class="col-md-8 order-md-1">
           <h4 class="mb-3 text-light">General</h4>
-          <form class = "text-info" onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
+          <form class = "text-muted" onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
       <Field          label="Name" placeholder="Enter your name"
       name="name"
       component={this.renderField}
