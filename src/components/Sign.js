@@ -14,12 +14,12 @@ class SignIn extends Component {
 
 constructor(props) {
     super(props);
-    this.state = { Username: "" , pass: ""};    
+    this.state = { Username: "" , pass: ""};
     this.updateUsername = this.updateUsername.bind(this);
     this.updatePass = this.updatePass.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  
+
 onSubmit(values) {
 
   console.log("HEREEE");
@@ -27,20 +27,20 @@ onSubmit(values) {
     return this.props.posts.map((post) => {
        if (post.username === this.state.Username) {
          if(post.password===this.state.pass)
-         {  
+         {
             var Logged = true;
             var ProfilePage = `/profile/${post.userId}`;
             localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
             localStorage.setItem('Logged', JSON.stringify(Logged));
-            
+
           return (
             this.props.history.push(`/`)
           );
 
-          
+
         }
       }
-    
+
     });
 }
 
@@ -50,7 +50,7 @@ onSubmit(values) {
       Username: event.target.value
     });
   }
-  
+
   updatePass(event) {
     this.setState({
       pass: event.target.value
@@ -66,12 +66,12 @@ componentDidMount() {
 
 render() {
 
-    
+
     return (
-    
+
     <body class="text-center dark-color">
       <div  class = "center-place">
-    
+
       <form class="form-signin" onSubmit={this.onSubmit}>
       <img  data-aos="fade-right"data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="500" src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
       <p class="font-cursive text-light">Please Sign in below</p>

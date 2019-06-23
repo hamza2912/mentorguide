@@ -27,7 +27,7 @@ export function createPost(values, callback) {
     .post(`${ROOT_URL}/newmentor`, values)
     .then(() => callback());
 
-  
+
 return {
     type: CREATE_POST,
     payload: request
@@ -37,7 +37,7 @@ return {
 //Fetching All tutor Accounts
 
 export function fetchPosts() {
-  
+
 const request = axios.get(`${ROOT_URL}/mentorposts`);
 
 return {
@@ -48,12 +48,12 @@ return {
 
 //creating User Account
 export function createPost2(values, callback) {
-  
+
   const request = axios
       .post(`${ROOT_URL}/newuser`, values)
       .then(() => callback());
-  
-    
+
+
   return {
       type: CREATE_POST,
       payload: request
@@ -62,10 +62,9 @@ export function createPost2(values, callback) {
 
 //getting all user accounts
 export function fetchPosts2() {
-  
+
   const request = axios.get(`${ROOT_URL}/userposts`);
-  
-    
+
   return {
       type: FETCH_POSTS,
       payload: request
@@ -73,10 +72,10 @@ export function fetchPosts2() {
   }
 
   export function fetchChats() {
-  
+
     const request = axios.get(`${ROOT_URL}/allchats`);
-    
-      
+
+
     return {
         type: FETCH_POSTS,
         payload: request
@@ -86,12 +85,12 @@ export function fetchPosts2() {
 
   export function createChat(values) {
 
-  
-  
+
+
     const request = axios
         .post(`${ROOT_URL}/newchat`, values);
-    
-      
+
+
     return {
         type: CREATE_POST,
         payload: request
@@ -101,10 +100,10 @@ export function fetchPosts2() {
 
 
 export function fetchPost(id) {
-  
+
 const request = axios.get(`${ROOT_URL}/mentorposts:noteId`);
 
-  
+
 return {
     type: FETCH_POST,
     payload: request
@@ -112,10 +111,10 @@ return {
 }
 
 export function addMesseges(id, Messeges) {
-  
+
   const request = axios.put(`${ROOT_URL}/mentorMesseges:${id}`,Messeges);
-  
-    
+
+
   return {
       type: UPDATE_POST,
       payload: request
@@ -123,10 +122,10 @@ export function addMesseges(id, Messeges) {
   }
 
   export function addComments(id, Comments) {
-  
+
     const request = axios.put(`${ROOT_URL}/mentorComments:${id}`, Comments);
-    
-      
+
+
     return {
         type: UPDATE_POST,
         payload: request
@@ -137,11 +136,11 @@ export function addMesseges(id, Messeges) {
 
 
 export function deletePost(id) {
-  
+
 const request = axios
     .delete(`${ROOT_URL}/posts/:${id}`);
 
-  
+
 return {
     type: DELETE_POST,
     payload: id
@@ -171,11 +170,11 @@ var ID = 1;
 
 
 export function fetchPosts() {
-  
+
 var mentors = JSON.parse(localStorage.getItem('mentors'));
 //console.log(mentors);
 
-  
+
 return {
     type: FETCH_POSTS,
     payload: mentors
@@ -185,7 +184,7 @@ return {
 
 
 export function createPost(values,callback) {
-  
+
 var mentors = JSON.parse(localStorage.getItem('mentors'));
 if(mentors!== null){
 if (mentors.length!== 0){
@@ -202,7 +201,7 @@ if (mentors.length!== 0){
   localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
   localStorage.setItem('Logged', JSON.stringify(Logged));
   callback();
-  
+
 }
 }
 else if(mentors=== null) {
@@ -217,7 +216,7 @@ localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
 localStorage.setItem('Logged', JSON.stringify(Logged));
 callback();
 }
-  
+
 return {
     type: CREATE_POST,
     payload: values
@@ -225,7 +224,7 @@ return {
 }
 
 export function createPost2(values,callback) {
-  
+
   var mentors = JSON.parse(localStorage.getItem('users'));
   if(mentors!== null){
   if (mentors.length!== 0){
@@ -237,7 +236,7 @@ export function createPost2(values,callback) {
     var UserLogin = true;
     localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
     callback();
-    
+
   }
   }
   else if(mentors=== null) {
@@ -252,16 +251,16 @@ export function createPost2(values,callback) {
   return {
     payload: values
   };
-    
+
   }
 
 
 
 export function fetchPost(id) {
-  
+
 const request = axios.get(`${ROOT_URL}/posts/${id}`);
 
-  
+
 return {
     type: FETCH_POST,
     payload: request
@@ -271,12 +270,12 @@ return {
 
 
 export function deletePost(id, callback) {
-  
+
 const request = axios
     .delete(`${ROOT_URL}/posts/${id}${API_KEY}`)
     .then(() => callback());
 
-  
+
 return {
     type: DELETE_POST,
     payload: id

@@ -7,40 +7,34 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPosts2 } from "../actions";
 
-
-
 class UserSignIn extends Component {
 
-constructor(props) {
+  constructor(props) {
     super(props);
-    this.state = { Username: "" , pass: ""};    
+    this.state = { Username: "", pass: "" };
     this.updateUsername = this.updateUsername.bind(this);
     this.updatePass = this.updatePass.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  
-onSubmit(values) {
 
-  var Users = this.props.posts;
-    return Users.map((post) => {
-       if (post.username === this.state.Username) {
-         if(post.password===this.state.pass)
-         {  
-            var UserLogin = true;
-            localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
-            var UserName = post.name;
-            localStorage.setItem('UserName', JSON.stringify(UserName));
-            
+  onSubmit(values) {
+    var Users = this.props.posts;
+    return _.map(this.props.posts, post => {
+      console.log(post.username);
+      if (post.username === this.state.Username) {
+        if (post.password === this.state.pass) {
+          var UserLogin = true;
+          localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
+          var UserName = post.name;
+          localStorage.setItem('UserName', JSON.stringify(UserName));
+
           return (
             this.props.history.push("/")
           );
-
-          
         }
       }
-    
     });
-}
+  }
 
 
   updateUsername(event) {
@@ -48,7 +42,7 @@ onSubmit(values) {
       Username: event.target.value
     });
   }
-  
+
   updatePass(event) {
     this.setState({
       pass: event.target.value
@@ -57,45 +51,42 @@ onSubmit(values) {
 
   componentDidMount() {
     var users = this.props.fetchPosts2();
-    console.log(users);
   }
 
-render() {
-
-    
+  render() {
     return (
-    
-    <body class="text-center dark-color">
-      <div class = "center-place">
-    
-      <form class="form-signin" onSubmit={this.onSubmit}>
-      <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-      <p class="font-cursive text-light">Please Sign in below</p>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" class="form-control"  placeholder="Student Username" required autofocus/>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" class="form-control" placeholder="Password" required/>
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"/> Remember me
+      <div className="text-center dark-color">
+        <div className="center-place">
+
+          <form className="form-signin" onSubmit={this.onSubmit}>
+            <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+            <p className="font-cursive text-light">Please Sign in below</p>
+            <label htmlFor="inputEmail" className="sr-only">Username</label>
+            <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control" placeholder="Student Username" required autoFocus />
+            <label htmlFor="inputPassword" className="sr-only">Password</label>
+            <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required />
+            <div className="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me" /> Remember me
           </label>
+            </div>
+            <button className="btn btn-lg btn-success btn-sm" type="submit">Sign in</button>
+            <Link to="/" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
+            <p className="mt-5 mb-3 text-muted">Dont you have Student/User account<a href="/usernew"> Sign up </a>Now</p>
+          </form>
+          <footer className="my-5 pt-5 text-muted text-center text-small">
+            <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
+            <a href="#">All Rights Reserved</a>
+          </footer>
         </div>
-        <button class="btn btn-lg btn-success btn-sm" type="submit">Sign in</button>
-        <Link to="/" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
-        <p class="mt-5 mb-3 text-muted">Dont you have Student/User account<a href="/usernew"> Sign up </a>Now</p>
-      </form>
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-        <a href="#">All Rights Reserved</a>
-      </footer>
       </div>
-    </body>
-);
-}
+    );
+  }
 }
 
 
 function mapStateToProps(state) {
+  console.log(state.posts);
   return { posts: state.posts };
 }
 
