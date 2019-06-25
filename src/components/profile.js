@@ -8,6 +8,7 @@ import { fetchPosts, deletePost } from "../actions";
 
 import ReactModal from "react-modal";
 
+import AOS from 'aos';
 
 class ProfileShow extends Component {
 
@@ -37,9 +38,11 @@ class ProfileShow extends Component {
     this.setState({ show2: false });
   }
 
-componentDidMount() {
-    //this.props.fetchPost(id);
+  componentDidMount() {
     this.props.fetchPosts();
+    AOS.init({
+      duration : 1000
+    })
   }
 
   componentDidUpdate() {
@@ -47,39 +50,42 @@ componentDidMount() {
   }
   
     
-onDeleteClick() {
+  onDeleteClick() {
+    
     const { id } = this.props.match.params;
-    this.props.posts.map((post) => {
-      if (post.id === id) {
-       this.props.deletePost(id);
-       var Logged = false;
-       localStorage.setItem('UserLogin', JSON.stringify(Logged));
-       this.props.history.push("/");
-      }
+
+    return _.map(this.props.posts, post => {
+        var tutorId = post.userId.toString();      
+        if (tutorId === id) {
+          this.props.deletePost(id);
+          var Logged = false;
+          localStorage.setItem('UserLogin', JSON.stringify(Logged));
+          this.props.history.push("/");
+        }
     });
   }
 
   onDeleteClick1() {
     const { id } = this.props.match.params;
-    var mentors = JSON.parse(localStorage.getItem('mentors'));
-    var posts = [];
-    posts = mentors;
-    posts.map((post) => {
-      if (post.id === id) {
-       var val = posts.indexOf(post);
-       delete posts[val];
-       function filterer(arr) {return arr > 0|| isNaN(arr) === true;}
-       posts = posts.filter(filterer);
-       localStorage.setItem('mentors', JSON.stringify(posts));
-       this.props.history.push("/posts/new");
+
+    return _.map(this.props.posts, post => {
+      var tutorId = post.userId.toString();
+      if (tutorId === id) {
+        this.props.deletePost(id);
+        var Logged = false;
+        localStorage.setItem('UserLogin', JSON.stringify(Logged));
+        this.props.history.push("/posts/new");
       }
     });
   }
 
   Logout() {
+
     var Logged = false;
-    localStorage.setItem('Logged', JSON.stringify(Logged));
+    var UserLogin = false;
+    localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
     this.props.history.push("");
+
   }
 
   renderChats() {
@@ -92,8 +98,8 @@ onDeleteClick() {
       return post.comments.map((currentPost) => {
         return (
           <li>
-            <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <p class="pb-3 lh-125">
+            <div className="my-3 p-3 bg-white rounded shadow-sm">
+            <p className="pb-3 lh-125">
               <strong className="d-block text-gray-dark">{currentPost}</strong>
             </p>
             </div>
@@ -110,131 +116,150 @@ render() {
     const { id } = this.props.match.params;
     console.log(id);
 
-    
     if (!this.props.posts) {
       return <div>Loading...</div>;
     }
 
-    return this.props.posts.map((post) => {
-  
-    if (post.id === id) {
-      return (
-      <body class="bg-light">
-
-        <ReactModal 
-           isOpen={this.state.show1}
-           contentLabel="Minimal Modal Example"
-           style={{
-              content : {
-                top                   : '50%',
-                left                  : '50%',
-                right                 : 'auto',
-                bottom                : 'auto',
-                marginRight           : '-50%',
-                transform             : 'translate(-50%, -50%)'
-              }
-          }} >
-          <p class="lead">You are about to delete your mentor profile!</p>
-          <button className="btn btn-danger" onClick={this.onDeleteClick.bind(this)} >
-            Continue
-          </button>
-          <button className="btn btn-success" onClick={this.handleCloseModal}>Cancel</button>
-        </ReactModal>
-
-        <ReactModal 
-           isOpen={this.state.show2}
-           contentLabel="Minimal Modal Example2"
-           style={{
-              content : {
-                top                   : '50%',
-                left                  : '50%',
-                right                 : 'auto',
-                bottom                : 'auto',
-                marginRight           : '-50%',
-                transform             : 'translate(-50%, -50%)'
-              }
-          }} >
-          <p class="lead">You are about to delete your this mentor profile and re create it with new details!</p>
-          <button className="btn btn-danger" onClick={this.onDeleteClick1.bind(this)} >
-             Continue
-          </button>
-          <button className="btn btn-success" onClick={this.handleCloseModalother}>Cancel</button>
-        </ReactModal>
+    return _.map(this.props.posts, post => {
         
-      <nav class="navbar navbar-expand-lg fixed-top site-header">
-      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
-          </li>
-          <form class="form-inline mt-2 mt-md-0">
-            <button className="btn btn-outline-info my-2 my-sm-0" onClick={this.Logout.bind(this)}> Log out    </button>
-          </form>
-          <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home   </Link>
-          </form>
-        </ul> 
-      </nav>
+        var tutorId = post.userId.toString();
+      
+        if (tutorId === id) {
 
-      <div class="bg-white shadow-sm">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="">Profile</a>
-        <form class="form-inline mt-2 mt-md-0">
-            <button className="btn btn-outline-dark my-2 my-sm-0" onClick={this.handleOpenModalother}> Recreate    </button>
-          </form>
-          <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/posts/inbox"> Messeges   </Link>
-          </form>
-        <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/checkrequests"> Mentor Requirments   </Link>
-          </form>
-      </nav>
-      </div>
-      <div class ="my-3 p-3">
-      <button className="btn btn-danger pull-xs-right" onClick={this.handleOpenModal} >
-      Delete Profile
-      </button>
-      </div>
+          var ProfilePage = `/inbox/${id}/inbox`;
+          
+          return (                
+            
+            <div className="container-fluid dark-color">
+              
+              <ReactModal 
+                  isOpen={this.state.show1}
+                  contentLabel="Minimal Modal Example"
+                  style={{
+                       content : {
+                         top                   : '50%',
+                         left                  : '50%',
+                         right                 : 'auto',
+                         bottom                : 'auto',
+                         marginRight           : '-50%',
+                       transform             : 'translate(-50%, -50%)'
+                     }
+                  }} >
+                  <p className="lead">You are about to delete your mentor profile!</p>
+                  <button className="btn btn-dark" onClick={this.onDeleteClick.bind(this)} >
+                     Continue
+                  </button>
+                  <button className="btn btn-info" onClick={this.handleCloseModal}>Cancel</button>
+              </ReactModal>
+              <ReactModal 
+                  isOpen={this.state.show2}
+                  contentLabel="Minimal Modal Example2"
+                  style={{
+                     content : {
+                         top                   : '50%',
+                         left                  : '50%',
+                         right                 : 'auto',
+                       bottom                : 'auto',
+                         marginRight           : '-50%',
+                         transform             : 'translate(-50%, -50%)'
+                       }
+                   }} >
+                  <p className="lead">You are about to delete your this mentor profile and re create it with new details!</p>
+                  <button className="btn btn-dark" onClick={this.onDeleteClick1.bind(this)} >
+                     Continue
+                  </button>
+                  <button className="btn btn-info" onClick={this.handleCloseModalother}>Cancel</button>
+              </ReactModal>
 
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h1 class="display-4 ">Hi! {post.name}</h1>
-        <h5 class="text-info">@{post.username}</h5>
-        <hr class="featurette-divider"/>
-        <h1 class="display-6">Details </h1>
-        <h5 class="text-muted"> Your Qualification: <span class="text-dark" > {post.content}</span></h5>
-        <h5 class="text-muted"> You are Available for: <span class="text-dark"> {post.classes}</span></h5>
-        <h5 class="text-muted"> Your Mentoring Fee: <span class="text-dark"> {post.salary}</span></h5>
-        <h5 class="text-muted"> Your Location: <span class="text-dark"> {post.location}</span></h5>
-        <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
-        <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
-      </div>   
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
-        <div class="media text-muted pt-3">
-          <ul>
-          {this.renderChats()}
-          </ul>
-        </div>
-      </div>  
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <a href="#">All Rights Reserved</a>
-      </footer>
-  </body>
-    );
+              <header>
+                <nav className="site-header fixed-top py-1">
+                  <div className="container d-flex flex-column flex-md-row justify-content-between">
+                    <img  className="navbar-brand" src="./style/tutorlogo1.png"
+                          alt="Generic placeholder image" width="120" height="50" />
+                    <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
+                  </div>
+                </nav>
+              </header>
+              <div className="row">
+                <nav data-aos='fade-right' className="col-md-2 d-none d-md-block bg-light sidebar">
+                  <div className="sidebar-sticky">
+                    <ul className="nav flex-column">
+                      <li className="nav-item">
+                        <a className="nav-link active" href="#">
+                        <span data-feather="home"></span>Profile <span className="sr-only">(current)</span>
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href={ProfilePage} >
+                        <span data-feather="file"></span>
+                          Messeges
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/checkrequests">
+                        <span data-feather="shopping-cart"></span>
+                          Tutor Requests
+                        </a>
+                      </li>
+                    </ul>
+                    <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                      <span>Account</span>
+                      <a className="d-flex align-items-center text-muted" href="#">
+                      <span data-feather="plus-circle"></span>
+                      </a>
+                    </h6>
+                    <ul className="nav flex-column mb-2">
+                      <li className="nav-item">
+                        <button className="nav-link btnnn" onClick={this.handleOpenModal}>
+                        <span data-feather="file-text"></span>
+                            Delete Account
+                        </button>
+                      </li>
+                      <li className="nav-item">
+                        <button className="nav-link btnnn" onClick={this.handleOpenModalother}>
+                        <span data-feather="file-text"></span>
+                          Recreate Account
+                        </button>
+                      </li>
+                      <li className="nav-item">
+                        <button className="nav-link btnnn " onClick={this.Logout.bind(this)}>
+                          <span data-feather="file-text"></span>
+                            Sign Out
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+                <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                  <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 className="display-5 text-light ">Hi! {post.name}</h1>
+                  </div>
+                  <h6 className=" text-primary">@{post.username} </h6>
+                  <h6 className="text-muted"> Qualification: <span className="text-light" > {post.content}</span></h6>
+                  <h6 className="text-muted"> Available for: <span className="text-light"> {post.classNamees}</span></h6>
+                  <h6 className="text-muted"> Tution Fee: <span className="text-light"> {post.salary}</span></h6>
+                  <h6 className="text-muted"> Location: <span className="text-light"> {post.location}</span></h6>
+                  <h6 className="text-muted"> Contact Number: <span className="text-light"> {post.number}</span></h6>
+                  <h6 className="text-muted"> Address: <span className="text-light"> {post.mark}</span></h6>
+                  <h6 className="border-bottom text-light">Reviews</h6>
+                  <div className="media text-dark pt-3">        
+                    <ul>
+                      {this.renderChats()}
+                    </ul>
+                  </div>
+                </main>
+              </div>
+            </div>
+          );
         }
-      });
+      }
+    );
   }
 }
 
 
-
-//function mapStateToProps({ posts }, ownProps)
-function mapStateToProps(state){
-  // return { post: posts[ownProps.match.params.id] };
+function mapStateToProps(state){  
   return { posts: state.posts };
 }
-
-
 
 export default connect(mapStateToProps, { fetchPosts, deletePost })(ProfileShow);

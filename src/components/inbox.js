@@ -6,24 +6,34 @@ import { Link } from "react-router-dom";
 
 import { fetchPosts, deletePost } from "../actions";
 
+import AOS from 'aos';
+
 
 class Inbox extends Component {
 
-  renderChats(variable) {
-    
-      return variable.map((currentPost) => {
-        return (
-          <li>
-            <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <p class="pb-3 lh-125">
-              <strong className="d-block text-gray-dark">{currentPost}</strong>
-            </p>
-            </div>
-          </li>
-        );
-      });
-  }
+  renderChats() {
 
+    const { id } = this.props.match.params;
+    return _.map(this.props.posts, post => {
+
+      var tutorId = post.userId.toString();
+
+      if (tutorId === id) {
+        return post.messeges.map((currentPost) => {
+          return (
+            <li>
+              <div class="my-3 p-3 bg-white rounded shadow-sm">
+              <p class="pb-3 lh-125">
+                <strong className="d-block text-gray-dark">{currentPost}</strong>
+              </p>
+              </div>
+            </li>
+          );
+        });
+      }
+    });    
+
+  }
   
   Logout() {
     var Logged = false;
@@ -31,86 +41,100 @@ class Inbox extends Component {
     this.props.history.push("");
   }
 
-render() {
+  componentDidMount() {
+    
+    this.props.fetchPosts();
+    AOS.init({
+      duration : 1000
+    })
 
-  const { id } = this.props.match.params;
-
-  if (!this.props.posts) {
-    return <div>Loading...</div>;
   }
 
-  return this.props.posts.map((post) => {
-  
-    if (post.id === id) {
+  render() {
 
-    var messeges = post.messeges;
-
-    if (messeges === null) {
+    var ProfilePage = "/profile/7";
     
-    return <div>No messeges...</div>;
+    const { id } = this.props.match.params;
+      
+    if (!this.props.posts) {
+        return <div>Loading...</div>;
     }
 
+    return _.map(this.props.posts, post => {
+    
+    var tutorId = post.userId.toString();
+
+    if (tutorId === id) {
+
+      var messeges = post.messeges;
+
+      if (messeges === null) {
+            
+        return <div>No messeges...</div>;
+      }
+
+      else{      
+            
       return (
-      <body class="bg-light">
 
-  
-      <nav class="navbar navbar-expand-lg fixed-top site-header">
-      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
-          </li>
-          <form class="form-inline mt-2 mt-md-0">
-            <button className="btn btn-outline-info my-2 my-sm-0" onClick={this.Logout.bind(this)}> Log out    </button>
-          </form>
-          <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home   </Link>
-          </form>
-        </ul>
-      </nav>
+      <div class="dark-color">
 
-      <div class="bg-white shadow-sm">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="">Profile</a>
-        <form class="form-inline mt-2 mt-md-0">
-            <button className="btn btn-outline-dark my-2 my-sm-0" onClick={this.handleOpenModalother}> Recreate    </button>
-          </form>
-        <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/checkrequests"> Mentor Requirments   </Link>
-          </form>
-      </nav>
-      </div>
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Messeges</h6>
-        <div class="media text-muted pt-3">
-          <ul>
-          {this.renderChats(messeges)}
-          </ul>
-        </div>
-      </div>
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <a href="#">All Rights Reserved</a>
-      </footer>
-  </body>
+        <header>
+          <nav className="site-header fixed-top py-1">
+            <div className="container d-flex flex-column flex-md-row justify-content-between">
+              <img  className="navbar-brand" src="./style/tutorlogo1.png"
+                    alt="Generic placeholder image" width="120" height="50" />
+              <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
+            </div>
+          </nav>
+        </header>
+
+        <div class="row">
+          <nav data-aos='fade-right' class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">
+                    <span data-feather="home"></span>Messeges <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href={ProfilePage}>
+                  <span data-feather="home"></span>Back to Profile <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="my-3 p-3 dark-color rounded shadow-sm">
+              <h6 class="border-bottom border-gray pb-2 mb-0 text-light">Messeges</h6>
+              <div class="media text-dark mb-0">
+                <ul>
+                  {this.renderChats()}
+                </ul>
+              </div>
+              <small class="d-block text-right mt-3">
+                <a href="">Recent list</a>
+              </small>
+            </div>       
+          </main>
+          <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
+              <a href="#">All Rights Reserved</a>
+          </footer>
+        </div>      
+      </div>                  
       );
-
-    }
-    
-  });
-  
-    }
+      }}   
+    }); 
+  }
 
 }
 
-
-
-//function mapStateToProps({ posts }, ownProps)
 function mapStateToProps(state){
-  // return { post: posts[ownProps.match.params.id] };
+  
   return { posts: state.posts.mentors };
 }
-
-
 
 export default connect(mapStateToProps, { fetchPosts, deletePost })(Inbox);

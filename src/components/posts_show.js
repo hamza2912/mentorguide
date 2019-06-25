@@ -12,6 +12,7 @@ import { addMesseges  } from "../actions";
 
 import ReactModal from "react-modal";
 
+import AOS from 'aos';
 
 
 class PostsShow extends Component {
@@ -32,13 +33,34 @@ class PostsShow extends Component {
 
   handleOpenModal () {
     if(this.state.Messege !== ""){
-    this.setState({ show1: true });
+        this.setState({ show1: true });
     }
   }
   
   handleCloseModal () {
     this.setState({ show1: false });
   }
+
+  handleChange(event) {
+  
+    this.setState({Messege: event.target.value});
+    
+   }
+
+  handleChange2(event) {
+  
+    this.setState({Messege2: event.target.value});
+
+  }
+
+  componentDidMount() {
+      
+    this.props.fetchPosts();
+    AOS.init({
+      duration : 1000
+    })
+    
+}
 
   renderChats() {
 
@@ -48,8 +70,8 @@ class PostsShow extends Component {
       return post.comments.map((currentPost) => {
         return (
           <li>
-            <div class="my-3 p-3 bg-white rounded shadow-sm">
-            <p class="pb-3 lh-125">
+            <div className="my-3 p-3 bg-white rounded shadow-sm">
+            <p className="pb-3 lh-125">
               <strong className="d-block text-gray-dark">{currentPost}</strong>
             </p>
             </div>
@@ -59,39 +81,24 @@ class PostsShow extends Component {
       }
     });
   }
-    
-  
-  handleChange(event) {
-  
-    this.setState({Messege: event.target.value});
-    
-   }
 
-   handleChange2(event) {
-  
-    this.setState({Messege2: event.target.value});
-
-   }
-
-   onSubmit(){
+  onSubmit(){
 
     const { id } = this.props.match.params;
     var mentors = this.props.posts ;
     var userName = JSON.parse(localStorage.getItem('UserName'));
     if(this.state.Messege!== ""){
-    mentors.map((post) => {
+    
+      _.map(this.props.posts, post => {
   
-      if (post.id === id) {
-        var comments = post.comments;
-        comments.push(`${userName}: ${this.state.Messege}`)
-        //return (
-          //post.comments.push(`${userName}: ${this.state.Messege}`)
-          this.props.addComments(id,`${userName}: ${this.state.Messege}`);
+        var tutorId = post.userId.toString();
 
-        //);
-      }
+        if (tutorId === id) {
+            var reviews = post.comments;
+            reviews.push(`${userName}: ${this.state.Messege}`);
+            this.props.addComments(id,reviews);
+        }
     }); 
-    //localStorage.setItem('mentors', JSON.stringify(mentors));
     this.props.history.push(`/posts/${id}`);
   }
   }
@@ -110,133 +117,137 @@ class PostsShow extends Component {
     var userName = JSON.parse(localStorage.getItem('UserName'));
     mentors.map((post) => {
   
-      if (post.id === id) {
-        var messeges = post.messeges;
-        messeges.push(`${userName}: ${this.state.Messege2}`)
-        //return (
-          //post.messeges.push(`${userName}: ${this.state.Messege2}`)
-          this.props.addMesseges(id,`${userName}: ${this.state.Messege2}`);
+          var tutorId = post.userId.toString();
 
-        //);
-
+          if (tutorId === id) {
+              var messeges = post.messeges;
+              messeges.push(`${userName}: ${this.state.Messege2}`)
+              this.props.addMesseges(id,messeges);
+          }
+      }); 
+      this.setState({ show1: false });
       }
-    }); 
-    //localStorage.setItem('mentors', JSON.stringify(mentors));
-    this.setState({ show1: false });
-    }
-    
   }
 
+  render() {
 
-componentDidMount() {
-    
-    this.props.fetchPosts();
-  }
-
-render() {
-
-    const { id } = this.props.match.params;
-    
-    if (!this.props.posts) {
-      return <div>Loading...</div>;
-    }
-
-    return this.props.posts.map((post) => {
-  
-    if (post.id === id) {
-      return (
-      <body class="bg-light">
-      <ReactModal 
-           isOpen={this.state.show1}
-           contentLabel="Minimal Modal Example3"
-           style={{
-              content : {
-                top                   : '50%',
-                left                  : '50%',
-                right                 : 'auto',
-                bottom                : 'auto',
-                marginRight           : '-50%',
-                width                 : '50%',
-                transform             : 'translate(-50%, -50%)'
-              }
-          }} >
-           <div class="form-group">
-            <label for="message-text" class="col-form-label text-muted">Your Message:</label>
-            <textarea class="form-control" id="message-text"  onChange = {this.handleChange2}></textarea>
-          </div>
-          <button className="btn btn-success" onClick= {this.onSubmit3} >Send</button>
-          <button className="btn btn-danger" onClick= {this.handleCloseModal} >Cancel</button>
-        </ReactModal>
-      <nav class="navbar navbar-expand-lg fixed-top site-header">
-      <span class="navbar-brand mr-auto mr-lg-0 text-light" href="#">Mentor Guide</span>
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-          <Link className="btn btn-outline-info my-2 my-sm-0" to="/"> Back to Home    </Link>
-          </li>
-        </ul> 
-      </nav>
+      const { id } = this.props.match.params;
       
-      <div class="nav-scroller bg-white shadow-sm">
-      <nav class="nav nav-underline">
-        <a class="nav-link active" href="">Dashboard</a>
-        <form class="form-inline mt-2 mt-md-0">
-            <Link className="btn btn-outline-dark my-2 my-sm-0" to="/posts"> Back to List    </Link>
-          </form>
-      </nav>
-      </div>
-      
+      if (!this.props.posts) {
+        return <div>Loading...</div>;
+      }
 
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h1 class="display-5">{post.name}</h1>
-        <h5 class="text-muted"> Qualification: <span class="text-dark" > {post.content}</span></h5>
-        <h5 class="text-muted"> Available for: <span class="text-dark"> {post.classes}</span></h5>
-        <h5 class="text-muted"> Mentoring Fee: <span class="text-dark"> {post.salary}</span></h5>
-        <h5 class="text-muted"> Location: <span class="text-dark"> {post.location}</span></h5>
-        <h4><span class="badge badge-danger">Contact Number: {post.number}</span></h4>
-        <h4><span class="badge badge-warning">Address: {post.mark}</span></h4>
-      </div>
-      <div class = "my-3 p-3">
-      <button className="btn btn-primary pull-xs-right"  onClick= {this.onSubmit2} >
-        Send a Messege 
-        </button>
-        </div>
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Leave a comment.." 
-          onChange = {this.handleChange}></textarea>
-          <button className="btn btn-success "  onClick={this.onSubmit}>
-          Submit
-      </button>
-      </div>   
-      <div class="my-3 p-3 bg-white rounded shadow-sm">
-        <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
-        <div class="media text-muted pt-3">
-          <ul>
-          {this.renderChats()}
-          </ul>
-        </div>
-      </div>  
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; Hamza's Developer Company</p>
-        <a href="#">All Rights Reserved</a>
-      </footer>
-  </body>
-    );
+      return _.map(this.props.posts, post => {
+    
+        var tutorId = post.userId.toString();
+
+        if (tutorId === id) {
+          return (
+
+            <div className="container-fluid dark-color">
+
+              <ReactModal 
+                  isOpen={this.state.show1}
+                  contentLabel="Minimal Modal Example3"
+                  style={{
+                      content : {
+                        top                   : '50%',
+                        left                  : '50%',
+                        right                 : 'auto',
+                        bottom                : 'auto',
+                        marginRight           : '-50%',
+                        width                 : '50%',
+                        transform             : 'translate(-50%, -50%)'
+                      }
+                  }} >
+                  <div className="form-group">
+                    <p for="message-text" className="col-form-label text-muted">Please notify the tutor about
+                    necessary details for example your className, location and tution fee. Dont forget to mention
+                    your email or conatct number so that tutor can contact you back!</p>
+                    <label for="message-text" className="col-form-label text-muted">Your Message:</label>
+                    <textarea className="form-control" id="message-text"  onChange = {this.handleChange2}></textarea>
+                  </div>
+                  <button className="btn btn-info" onClick= {this.onSubmit3} >Send</button>
+                  <button className="btn btn-dark" onClick= {this.handleCloseModal} >Cancel</button>
+              </ReactModal>
+                
+              <header>
+                <nav className="site-header fixed-top py-1">
+                  <div className="container d-flex flex-column flex-md-row justify-content-between">
+                    <img  className="navbar-brand" src="./style/tutorlogo1.png"
+                        alt="Generic placeholder image" width="120" height="50" />
+                    <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
+                  </div>
+                </nav>
+              </header>
+              <div className="row">
+                <nav data-aos='fade-right' className="col-md-2 d-none d-md-block bg-light sidebar">
+                  <div className="sidebar-sticky">
+                    <ul className="nav flex-column">
+                      <li className="nav-item">
+                        <a className="nav-link active" href="#">
+                        <span data-feather="home"></span>Tutor Profile <span className="sr-only">(current)</span>
+                        </a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/posts">
+                        <span data-feather="file"></span>
+                           Back to list
+                        </a>
+                      </li>
+                    </ul>
+                    <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Contact This Tutor</span>
+                    <a className="d-flex align-items-center text-muted" href="#">
+                    <span data-feather="plus-circle"></span>
+                    </a>
+                    </h6>
+                      <ul className="nav flex-column mb-2">
+                        <li className="nav-item">
+                          <button className="nav-link btnnn" onClick= {this.onSubmit2}>
+                            <span data-feather="file-text"></span>
+                              Send Messege
+                          </button>
+                        </li>                           
+                      </ul>
+                    </div>
+                  </nav>
+                  <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                      <h1 className="display-5 text-light ">Hi! {post.name}</h1>
+                    </div>
+                    <h6 className=" text-primary">@{post.username} </h6>
+                    <h6 className="text-muted"> Qualification: <span className="text-light" > {post.content}</span></h6>
+                    <h6 className="text-muted"> Available for: <span className="text-light"> {post.classes}</span></h6>
+                    <h6 className="text-muted"> Tution Fee: <span className="text-light"> {post.salary}</span></h6>
+                    <h6 className="text-muted"> Location: <span className="text-light"> {post.location}</span></h6>
+                    <h6 className="text-muted"> Contact Number: <span className="text-light"> {post.number}</span></h6>
+                    <h6 className="text-muted"> Address: <span className="text-light"> {post.mark}</span></h6>
+                    <h6 className="border-bottom text-light">Reviews</h6>
+                    <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="Leave a comment.." 
+                        onChange = {this.handleChange}>
+                    </textarea>
+                    <button className="btn btn-outline-info "  onClick={this.onSubmit}>
+                      Submit
+                    </button>
+                    <div className="media text-dark pt-3">
+                      <ul>
+                        {this.renderChats()}
+                      </ul>
+                    </div>    
+                  </main>                              
+                </div>
+              </div>
+            );
+          }
         }
-      });
-  }
+      );
+    } 
 }
 
 
-
-//function mapStateToProps({ posts }, ownProps)
 function mapStateToProps(state){
-  // return { post: posts[ownProps.match.params.id] };
   return { posts: state.posts };
 }
-
-
 
 export default connect(mapStateToProps, { fetchPosts , addComments , addMesseges })(PostsShow);

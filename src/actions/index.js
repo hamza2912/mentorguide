@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const FETCH_POSTS = "fetch_posts";
 
 export const FETCH_POST = "fetch_post";
@@ -11,57 +10,65 @@ export const UPDATE_POST = "update_post";
 
 export const DELETE_POST = "delete_post";
 
+const ROOT_URL = "http://localhost:8000";
 
 var ID = 1;
 
-const ROOT_URL = "http://localhost:8000";
-
-//const API_KEY = "?key=PAPERCLIP1";
-
-//Creating New Tutor Account
+//Creating  Tutor Account
 export function createPost(values, callback) {
 
   values.userId = ID;
   ID++;
+
   const request = axios
     .post(`${ROOT_URL}/newmentor`, values)
     .then(() => callback());
-
-
-return {
-    type: CREATE_POST,
-    payload: request
-  };
-}
-
-//Fetching All tutor Accounts
-
-export function fetchPosts() {
-
-const request = axios.get(`${ROOT_URL}/mentorposts`);
-
-return {
-    type: FETCH_POSTS,
-    payload: request
-  };
-}
-
-//creating User Account
-export function createPost2(values, callback) {
-
-  const request = axios
-      .post(`${ROOT_URL}/newuser`, values)
-      .then(() => callback());
-
 
   return {
       type: CREATE_POST,
       payload: request
     };
-  }
+}
+
+//Fetching All tutor Accounts
+export function fetchPosts() {
+
+  const request = axios.get(`${ROOT_URL}/mentorposts`);
+
+  return {
+      type: FETCH_POSTS,
+      payload: request
+    };
+}
+
+//Deleting tutor account
+export function deletePost(id) {
+
+  const request = axios
+      .delete(`${ROOT_URL}/posts/:${id}`);
+  
+  
+  return {
+      type: DELETE_POST,
+      payload: id
+    };
+}
+
+//creating User Account
+export function createUsers(values, callback) {
+
+  const request = axios
+      .post(`${ROOT_URL}/newuser`, values)
+      .then(() => callback());
+
+  return {
+      type: CREATE_POST,
+      payload: request
+    };
+}
 
 //getting all user accounts
-export function fetchPosts2() {
+export function fetchUsers() {
 
   const request = axios.get(`${ROOT_URL}/userposts`);
 
@@ -69,82 +76,51 @@ export function fetchPosts2() {
       type: FETCH_POSTS,
       payload: request
     };
-  }
-
-  export function fetchChats() {
-
-    const request = axios.get(`${ROOT_URL}/allchats`);
-
-
-    return {
-        type: FETCH_POSTS,
-        payload: request
-      };
-    }
-
-
-  export function createChat(values) {
-
-
-
-    const request = axios
-        .post(`${ROOT_URL}/newchat`, values);
-
-
-    return {
-        type: CREATE_POST,
-        payload: request
-      };
-    }
-
-
-
-export function fetchPost(id) {
-
-const request = axios.get(`${ROOT_URL}/mentorposts:noteId`);
-
-
-return {
-    type: FETCH_POST,
-    payload: request
-  };
 }
 
-export function addMesseges(id, Messeges) {
+//getting all tutor requests
+export function fetchTutorRequests() {
 
-  const request = axios.put(`${ROOT_URL}/mentorMesseges:${id}`,Messeges);
+  const request = axios.get(`${ROOT_URL}/allchats`);
 
+  return {
+    type: FETCH_POSTS,
+    payload: request
+    };
+}
+
+//create tutor requests
+export function createTutorRequest(values) {
+
+  const request = axios
+        .post(`${ROOT_URL}/newTutorRequest`, values);
+
+  return {
+    type: CREATE_POST,
+    payload: request
+    };
+}
+
+//Add messeges into tutor account
+export function addMesseges(id, values) {
+
+  const request = axios.put(`${ROOT_URL}/mentorMesseges/:${id}`,values);
 
   return {
       type: UPDATE_POST,
       payload: request
     };
-  }
+}
 
-  export function addComments(id, Comments) {
+//Add comments into tutor account
+export function addComments(id, values) {
 
     const request = axios.put(`${ROOT_URL}/mentorComments:${id}`, Comments);
 
-
-    return {
+  return {
         type: UPDATE_POST,
         payload: request
-      };
-    }
-
-
-
-
-export function deletePost(id) {
-
-const request = axios
-    .delete(`${ROOT_URL}/posts/:${id}`);
-
-
-return {
-    type: DELETE_POST,
-    payload: id
-  };
+    };
 }
 
 /*import axios from "axios";
@@ -168,6 +144,17 @@ var comments = [];
 var messeges = [];
 var ID = 1;
 
+    
+export function fetchPost(id) {
+
+const request = axios.get(`${ROOT_URL}/mentorposts:noteId`);
+
+
+return {
+    type: FETCH_POST,
+    payload: request
+  };
+}
 
 export function fetchPosts() {
 
@@ -281,4 +268,3 @@ return {
     payload: id
   };
 }*/
-
