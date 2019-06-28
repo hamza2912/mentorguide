@@ -39,8 +39,8 @@ class HomePage extends Component {
           <header>
             <nav className="site-header fixed-top py-1">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                alt="Generic placeholder image" width="120" height="50" />
+                <img  src="./style/tutorlogo1.png"
+                alt="Generic placeholder image" width="120" height="41" />
                 <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
                 <a className="py-2 d-none d-md-inline-block" href="/sign_user">Search</a>
                 <a className="py-2 d-none d-md-inline-block" href="/create">Requests</a>
@@ -124,8 +124,8 @@ class HomePage extends Component {
           <header>
             <nav className="site-header fixed-top py-1">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                alt="Generic placeholder image" width="120" height="50" />
+                <img src="./style/tutorlogo1.png"
+                 alt="Generic placeholder image" width="120" height="41" />
                 <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
                 <a className="py-2 d-none d-md-inline-block" href="/posts">Search</a>
                 <a className="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>
@@ -210,8 +210,8 @@ class HomePage extends Component {
           <header>
             <nav className="site-header fixed-top py-1">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                alt="Generic placeholder image" width="120" height="50" />
+                <img  src="./style/tutorlogo1.png"
+                alt="Generic placeholder image" width="120" height="41" />
                 <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
                 <a className="py-2 d-none d-md-inline-block" href="/posts">Search</a>
                 <a className="py-2 d-none d-md-inline-block" href="/create_request">Requests</a>

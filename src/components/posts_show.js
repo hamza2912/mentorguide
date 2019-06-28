@@ -76,9 +76,9 @@ class PostsShow extends Component {
         return post.comments.map((currentPost) => {
           return (
             <li>
-              <div className="my-3 p-3 bg-white rounded shadow-sm">
+              <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
               <p className="pb-3 lh-125">
-                <strong className="d-block text-gray-dark">{currentPost}</strong>
+                <strong className="d-block text-light">{currentPost}</strong>
               </p>
               </div>
             </li>
@@ -151,7 +151,7 @@ class PostsShow extends Component {
         if (tutorId === id) {
           return (
 
-            <div className="container-fluid dark-color">
+            <div className="container-fluid bg-bowl">
 
               <ReactModal 
                   isOpen={this.state.show1}
@@ -181,9 +181,8 @@ class PostsShow extends Component {
               <header>
                 <nav className="site-header fixed-top py-1">
                   <div className="container d-flex flex-column flex-md-row justify-content-between">
-                    <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                        alt="Generic placeholder image" width="120" height="50" />
-                    <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
+                    <img  src="/style/tutorlogo1.png" alt="Generic placeholder image" width="120" height="41" />
+                    <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
                   </div>
                 </nav>
               </header>
@@ -221,23 +220,29 @@ class PostsShow extends Component {
                   </nav>
                   <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                      <h1 className="display-5 text-light ">Hi! {post.name}</h1>
+                      <h1 className="display-5 text-light ">{post.name}</h1>
                     </div>
                     <h6 className=" text-primary">@{post.username} </h6>
-                    <h6 className="text-muted"> Qualification: <span className="text-light" > {post.content}</span></h6>
-                    <h6 className="text-muted"> Available for: <span className="text-light"> {post.classes}</span></h6>
-                    <h6 className="text-muted"> Tution Fee: <span className="text-light"> {post.salary}</span></h6>
-                    <h6 className="text-muted"> Location: <span className="text-light"> {post.location}</span></h6>
-                    <h6 className="text-muted"> Contact Number: <span className="text-light"> {post.number}</span></h6>
-                    <h6 className="text-muted"> Address: <span className="text-light"> {post.mark}</span></h6>
-                    <h6 className="border-bottom text-light">Reviews</h6>
+                    <h6 className="text-warning"><img  src="/style/qua.png" width="20" height="20" />
+                    Qualification: <span className="text-light" > {post.content}</span></h6>
+                    <h6 className="text-warning"><img  src="/style/ava.png" width="20" height="20" />
+                     Available for: <span className="text-light"> {post.classes}</span></h6>
+                    <h6 className="text-warning"><img  src="/style/credit.png" width="20" height="20" />
+                     Tution Fee: <span className="text-light"> {post.salary}</span></h6>
+                    <h6 className="text-warning"><img  src="/style/loc.png" width="20" height="20" />
+                     Location: <span className="text-light"> {post.location}</span></h6>
+                    <h6 className="text-warning"><img  src="/style/cont.png" width="20" height="20" />
+                     Contact Details: <span className="text-light"> {post.number}</span></h6>
+                    <h6 className="text-warning"><img  src="/style/address.png" width="20" height="20" />
+                     Address: <span className="text-light"> {post.mark}</span></h6>
+                    <h5 className="border-bottom text-light">Reviews</h5>
                     <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="Leave a comment.." 
                         onChange = {this.handleChange}>
                     </textarea>
                     <button className="btn btn-outline-info "  onClick={this.onSubmit}>
                       Submit
                     </button>
-                    <div className="media text-dark pt-3">
+                    <div className="media text-warning pt-3">
                       <ul>
                         {this.renderChats()}
                       </ul>

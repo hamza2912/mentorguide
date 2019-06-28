@@ -46,7 +46,7 @@ class SearchTutor extends Component {
                 return (
                   <li>
                     <p className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                      <strong className="d-block text-gray-dark"><Link to={`/posts/${post.userId}`}> {post.name}</Link></strong>
+                      <h6 className="d-block text-dark"><a href={`/posts/${post.userId}`}> {post.name}</a></h6>
                       {post.content}, Available for {post.classes}
                     </p>
                   </li>
@@ -64,14 +64,13 @@ class SearchTutor extends Component {
   render() {
       return (
 
-      <div className="dark-color">       
+      <div className="bg-bowl">       
         
         <header>
           <nav className="site-header fixed-top py-1">
             <div className="container d-flex flex-column flex-md-row justify-content-between">
-              <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                  alt="Generic placeholder image" width="120" height="50" />
-              <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
+              <img  src="./style/tutorlogo1.png" alt="Generic placeholder image" width="120" height="41" />
+              <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
             </div>
           </nav>
         </header>
@@ -107,7 +106,7 @@ class SearchTutor extends Component {
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div className="my-3 p-3 bg-black rounded shadow-sm">
               <h6 className="border-bottom border-gray pb-2 mb-0 text-light">Tutors</h6>
-                <div className="media text-muted pt-3">
+                <div className="media text-light pt-3">
                   <ul>
                     {this.renderPosts()}
                   </ul>
@@ -117,10 +116,6 @@ class SearchTutor extends Component {
                 </small>
             </div>      
           </main>
-          <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-            <a href="#">All Rights Reserved</a>
-          </footer>
         </div>      
       </div> 
     );  

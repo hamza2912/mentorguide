@@ -51,13 +51,13 @@ class checkRequests extends Component {
       
     return ( 
       
-      <div class="dark-color">
+      <div class="tea-bac">
         <header>
           <nav className="site-header fixed-top py-1">
             <div className="container d-flex flex-column flex-md-row justify-content-between">
-              <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                    alt="Generic placeholder image" width="120" height="50" />
-              <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
+              <img  src="/style/tutorlogo1.png"
+                    alt="Generic placeholder image" width="120" height="41" />
+              <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
             </div>
           </nav>
         </header>
@@ -79,7 +79,7 @@ class checkRequests extends Component {
             </div>
           </nav>
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div className="my-3 p-3 dark-color rounded shadow-sm">
+            <div className="my-3 p-3 rounded shadow-sm">
               <h6 className="border-bottom border-gray pb-2 mb-0 text-light">Tutor Requests</h6>
                 <div className="media text-muted mb-0">
                   <ul>

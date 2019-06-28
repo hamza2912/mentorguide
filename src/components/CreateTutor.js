@@ -142,7 +142,7 @@ class CreateTutor extends Component {
               />
 
               <Field
-              label="Contact number or Email" placeholder="+92.."
+              label="Contact number or Email" placeholder="+92.. OR abc@gmail.com"
               name="number"
               component={this.renderField}
               />
