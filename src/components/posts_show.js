@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
@@ -65,18 +67,22 @@ class PostsShow extends Component {
   renderChats() {
 
     const { id } = this.props.match.params;
-    return this.props.posts.map((post) => {
-      if (post.id === id) {
-      return post.comments.map((currentPost) => {
-        return (
-          <li>
-            <div className="my-3 p-3 bg-white rounded shadow-sm">
-            <p className="pb-3 lh-125">
-              <strong className="d-block text-gray-dark">{currentPost}</strong>
-            </p>
-            </div>
-          </li>
-        );
+    
+    return _.map(this.props.posts, post => {
+
+      var tutorId = post.userId.toString();
+
+      if (tutorId === id) {
+        return post.comments.map((currentPost) => {
+          return (
+            <li>
+              <div className="my-3 p-3 bg-white rounded shadow-sm">
+              <p className="pb-3 lh-125">
+                <strong className="d-block text-gray-dark">{currentPost}</strong>
+              </p>
+              </div>
+            </li>
+          );
       });
       }
     });
@@ -85,8 +91,9 @@ class PostsShow extends Component {
   onSubmit(){
 
     const { id } = this.props.match.params;
-    var mentors = this.props.posts ;
+
     var userName = JSON.parse(localStorage.getItem('UserName'));
+    
     if(this.state.Messege!== ""){
     
       _.map(this.props.posts, post => {
@@ -113,10 +120,10 @@ class PostsShow extends Component {
 
     const { id } = this.props.match.params;
     if(this.state.Messege2!== ""){
-      var mentors = this.props.posts ;
+    
     var userName = JSON.parse(localStorage.getItem('UserName'));
-    mentors.map((post) => {
-  
+    return _.map(this.props.posts, post => {
+
           var tutorId = post.userId.toString();
 
           if (tutorId === id) {

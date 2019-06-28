@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
@@ -134,7 +136,7 @@ class Inbox extends Component {
 
 function mapStateToProps(state){
   
-  return { posts: state.posts.mentors };
+  return { posts: state.posts };
 }
 
 export default connect(mapStateToProps, { fetchPosts, deletePost })(Inbox);

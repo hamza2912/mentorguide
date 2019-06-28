@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
@@ -91,10 +93,12 @@ class ProfileShow extends Component {
   renderChats() {
 
     const { id } = this.props.match.params;
-    return this.props.posts.map((post) => {
-      if (post.id === id) {
-      var messeges = post.messeges;
-      localStorage.setItem('Messeges', JSON.stringify(messeges));
+    return _.map(this.props.posts, post => {
+
+      var tutorId = post.userId.toString();
+
+      if (tutorId === id) {
+    
       return post.comments.map((currentPost) => {
         return (
           <li>
