@@ -83,7 +83,7 @@ class CreateUser extends Component {
                 component={this.renderFieldPass}
                 />
                 <button type="submit" className="btn btn-outline-info text-light btn-lg">Continue</button>
-                <Link to="/" className="btn btn-outline-danger text-light btn-lg">Cancel</Link>
+                <Link to="/create" className="btn btn-outline-danger text-light btn-lg">Cancel</Link>
               </form>
           </div>
         </div>

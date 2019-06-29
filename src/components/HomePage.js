@@ -42,8 +42,8 @@ class HomePage extends Component {
                 <img  src="./style/tutorlogo1.png"
                 alt="Generic placeholder image" width="120" height="41" />
                 <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
-                <a className="py-2 d-none d-md-inline-block" href="/sign_user">Search</a>
-                <a className="py-2 d-none d-md-inline-block" href="/create">Requests</a>
+                <a className="py-2 d-none d-md-inline-block" href="/sign">Search</a>
+                <a className="py-2 d-none d-md-inline-block" href="/sign">Requests</a>
                 <a className="py-2 d-none d-md-inline-block" href="/sign">Sign in</a>
               </div>
             </nav>
@@ -68,7 +68,7 @@ class HomePage extends Component {
                   <div data-aos='fade-up-right' className="col-md-7">
                     <h2 className="featurette-heading text-light">Search for a Tutor, <span className="text-danger">more than thousands of Tutors.</span></h2>
                     <p className="text-light">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btn btn-lg btn-primary" to="/sign_user"> Search Tutor       </Link>
+                    <Link className="btn btn-lg btn-primary" to="/sign"> Search Tutor       </Link>
                   </div>
                   <div data-aos='fade-up-left' className="col-md-5">
                   <img className="featurette-image img-fluid mx-auto" src="./style/search.png" alt="Generic placeholder image" />
@@ -94,7 +94,7 @@ class HomePage extends Component {
                     <h2 className="featurette-heading text-light">Do the needful, <span className="text-danger">post specific Tutor requests</span></h2>
                     <p className="text-light">Create your Tutor request by adding details about your requirments and conditions. We
                       will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
-                    <Link className="btn btn-lg btn-primary" to="/sign_user"> Create Request       </Link>
+                    <Link className="btn btn-lg btn-primary" to="/sign"> Create Request       </Link>
                   </div>
                   <div  data-aos='fade-up-left' className="col-md-5">
                     <img className="featurette-image img-fluid mx-auto" src="./style/request.png" alt="Generic placeholder image" />
@@ -102,13 +102,14 @@ class HomePage extends Component {
                 </div>
                 <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
                   <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5">
+                    <img className="featurette-image img-fluid mx-auto" src="./style/about.png" alt="Generic placeholder image"
+                     width="180" height="180" />
                     <h1 className="display-4 font-weight-normal text-light">About us</h1>
-                    <p className="lead font-weight-normal">We at Tutor guide strive to create an educational network
-                    which can promote education by linking Tutors with students</p>
-                    <span data-aos='zoom-in' className="btn btn-outline-secondary text-light" ><img className="rounded-circle" src="./style/email.png"
+                    <p className="text-light font-weight-normal">We at Tutor guide strive to create an educational network
+                    which can promote education by linking Tutors with students. Contact us at</p>
+                    <span data-aos='zoom-in' className="btn btn-outline-warning text-light" ><img className="rounded-circle" src="./style/email.png"
                     alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
                   </div>
-                  <div className="product-device shadow-sm d-none d-md-block"></div>
                 </div>
             </div>
             <footer className="footer-color">
@@ -129,7 +130,19 @@ class HomePage extends Component {
                 <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
                 <a className="py-2 d-none d-md-inline-block" href="/posts">Search</a>
                 <a className="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>
-                <a className="py-2 d-none d-md-inline-block" href={ProfilePage}>My Profile</a>
+                <div class="dropdown py-2 d-none d-md-inline-block text-light">
+                  <span>. . .</span>
+                  <div class="dropdown-content">
+                  <ul>
+                    <li>
+                      <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                    </li>
+                    <li>
+                      <a className="text-light py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
+                    </li>
+                  </ul>
+                  </div>
+                </div>
               </div>
             </nav>
           </header>
@@ -141,7 +154,7 @@ class HomePage extends Component {
                     <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
                       <h2>Tutor Guide</h2>
                       <p>Now get to know all about Tutors in your city while sitting at your home.</p>
-                      <Link className="btn btn-lg btn-warning text-light" to="/create"> Get Started   </Link>
+                      <Link className="btn btn-lg btn-warning text-light" to="/"> Get Started   </Link>
                     </div>
                   </div>
             </div>
@@ -166,7 +179,7 @@ class HomePage extends Component {
                     <p className="text-light">You can easily get Tutors and tutions while siiting at home. All you need
                     is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
                 and they would respond to you if they find you suitable for them</p>
-                    <Link className="btn btn-lg btn-primary" to="/create_tutor"> Become Tutor         </Link>
+                    <Link className="btn btn-lg btn-primary" to="/"> Become Tutor         </Link>
                   </div>
                   <div data-aos='fade-up-left' className="col-md-5 order-md-1">
                     <img className="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
@@ -187,10 +200,12 @@ class HomePage extends Component {
 
 
                 <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
-                  <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5">
+                  <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5 ">
+                  <img className="featurette-image img-fluid mx-auto" src="./style/about.png" alt="Generic placeholder image"
+                     width="180" height="180" />
                     <h1 className="display-4 font-weight-normal text-light">About us</h1>
-                    <p className="lead font-weight-normal">We at Tutor guide strive to create an educational network
-                    which can promote education by linking Tutors with students</p>
+                    <p className="text-light font-weight-normal">We at Tutor guide strive to create an educational network
+                    which can promote education by linking Tutors with students. Contact us at</p>
                     <span data-aos='zoom-in' className="btn btn-outline-secondary text-light" ><img className="rounded-circle" src="./style/email.png"
                     alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
                   </div>
@@ -215,7 +230,12 @@ class HomePage extends Component {
                 <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
                 <a className="py-2 d-none d-md-inline-block" href="/posts">Search</a>
                 <a className="py-2 d-none d-md-inline-block" href="/create_request">Requests</a>
-                <button className="btn btn-outline-dark py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                <div class="dropdown py-2 d-none d-md-inline-block text-light">
+                  <span>. . .</span>
+                  <div class="dropdown-content">
+                    <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                  </div>
+                </div>
               </div>
             </nav>
           </header>
@@ -227,7 +247,7 @@ class HomePage extends Component {
                     <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
                       <h2>Tutor Guide</h2>
                       <p>Now get to know all about Tutors in your city while sitting at your home.</p>
-                      <Link className="btn btn-lg btn-warning text-light" to="/create"> Get Started   </Link>
+                      <Link className="btn btn-lg btn-warning text-light" to="/"> Get Started   </Link>
                     </div>
                   </div>
             </div>
@@ -252,7 +272,7 @@ class HomePage extends Component {
                     <p className="text-light">You can easily get Tutors and tutions while siiting at home. All you need
                        is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
                        and they would respond to you if they find you suitable for them</p>
-                    <Link className="btn btn-lg btn-primary" to="/create_tutor"> Become Tutor         </Link>
+                    <Link className="btn btn-lg btn-primary" to="/create"> Become Tutor         </Link>
                   </div>
                   <div data-aos='fade-up-left' className="col-md-5 order-md-1">
                     <img className="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
@@ -272,13 +292,14 @@ class HomePage extends Component {
               </div>
               <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
                 <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5">
-                  <h1 className="display-4 font-weight-normal text-light">About us</h1>
-                  <p className="lead font-weight-normal">We at Tutor guide strive to create an educational network
-                  which can promote education by linking Tutors with students</p>
+                    <img className="featurette-image img-fluid mx-auto" src="./style/about.png" alt="Generic placeholder image"
+                     width="180" height="180" />
+                    <h1 className="display-4 font-weight-normal text-light">About us</h1>
+                    <p className="text-light font-weight-normal">We at Tutor guide strive to create an educational network
+                    which can promote education by linking Tutors with students. Contact us at</p>
                   <span data-aos='zoom-in' className="btn btn-outline-secondary text-light" ><img className="rounded-circle" src="./style/email.png"
                   alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
                 </div>
-                <div className="product-device shadow-sm d-none d-md-block"></div>
               </div>
             </div>
             <footer className="footer-color">

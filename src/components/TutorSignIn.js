@@ -80,7 +80,7 @@ class TutorSignIn extends Component {
               </label>
             </div>
             <button className="btn btn-lg btn-success btn-sm" type="submit">Sign in</button>
-            <Link to="/" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
+            <Link to="/sign" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
             <p className="mt-5 mb-3 text-muted">Dont you have mentor profile<a href="/posts/new"> Sign up </a>Now</p>
           </form>
           <footer className="my-5 pt-5 text-muted text-center text-small">

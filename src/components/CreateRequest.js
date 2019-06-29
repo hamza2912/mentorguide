@@ -10,6 +10,8 @@ import { createTutorRequest } from "../actions";
 
 import ReactModal from "react-modal";
 
+import AOS from 'aos';
+
 
 class CreateRequest extends Component {
   
@@ -21,6 +23,13 @@ class CreateRequest extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+
+  }
+
+  componentDidMount() {
+    AOS.init({
+      duration : 1000
+    })
 
   }
 
@@ -65,10 +74,10 @@ class CreateRequest extends Component {
   render() {
       
     return (
-        
-      <div className="dark-color">
-        
-        <ReactModal 
+
+  
+    <div className="bk-book">  
+      <ReactModal 
             isOpen={this.state.show1}
             contentLabel="Minimal Modal Example3"
             style={{
@@ -83,32 +92,41 @@ class CreateRequest extends Component {
             }} >
             <p className="lead">Your Tutor request has been successfully posted.</p>
             <Link className="btn btn-primary" to= "/" >Close</Link>
-        </ReactModal>
-
-        <header>
-          <nav className="site-header fixed-top py-1">
-            <div className="container d-flex flex-column flex-md-row justify-content-between">
-              <img  className="navbar-brand" src="./style/tutorlogo1.png"
-                    alt="Generic placeholder image" width="120" height="50" />
-              <a className="py-2 d-none d-md-inline-block" href="/">Home</a>
-            </div>
-          </nav>
-        </header>
-
-        <div className="my-3 p-3  rounded shadow-sm">
-          <label for="exampleTextarea"><h1 className="display-8 text-light ">Create Tutor Request</h1></label>
-          <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a Tutor for my child which is in 5 class. Tutor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
-          <input className="form-control" type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />
-          <button className="btn btn-success "  onClick={this.onSubmit}>
-              Submit
-          </button>
-        </div>
-        
-        <footer className="my-5 pt-5 text-muted text-center text-small">
-          <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-          <a href="#">All Rights Reserved</a>
-        </footer> 
-    </div>  
+        </ReactModal>     
+            <header>
+              <nav className="site-header fixed-top py-1">
+                <div className="container d-flex flex-column flex-md-row justify-content-between">
+                  <img  src="./style/tutorlogo1.png" alt="Generic placeholder image" width="120" height="41" />
+                  <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
+                </div>
+              </nav>
+            </header>
+            <div className="row">
+              <nav  data-aos='fade-right' className="col-md-2 d-none d-md-block bg-light sidebar">
+                <div className="sidebar-sticky">
+                  <ul className="nav flex-column">
+                    <li className="nav-item">
+                      <a className="nav-link active" href="#">
+                      <span data-feather="home"></span>Create Requests <span className="sr-only">(current)</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div className="my-3 p-3 bg-black rounded shadow-sm">
+                  <div className="my-3 p-3  rounded shadow-sm">
+                    <label for="exampleTextarea"><h3 className="display-8 text-light ">Create Tutor Request</h3></label>
+                    <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a Tutor for my child which is in 5 class. Tutor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
+                    <input className="form-control" type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />
+                    <button className="btn btn-outline-info "  onClick={this.onSubmit}>
+                    Submit
+                    </button>
+                  </div>
+                </div>      
+              </main>
+            </div>      
+    </div> 
     );  
   } 
   

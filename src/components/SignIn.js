@@ -31,6 +31,7 @@ class SignIn extends Component {
             <Link to="/sign_user" className="btn btn-block  btn-info btn-sm">Sign in as student/user</Link>
             <Link to="/sign_tutor" className="btn btn-block  btn-info btn-sm">Sign in as mentor</Link>
             <Link to="/" className="btn btn-block  btn-danger btn-sm">Cancel</Link>
+            <p className="mt-5 mb-3 text-muted">Dont you have an account<a href="/create"> Sign up </a>Now</p>
           </form>
           <footer className="my-5 pt-5 text-muted text-center text-small">
             <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
