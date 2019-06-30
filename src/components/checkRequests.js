@@ -47,7 +47,7 @@ class checkRequests extends Component {
 
   render() {
 
-    var ProfilePage = "/profile/7";
+    var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
       
     return ( 
       

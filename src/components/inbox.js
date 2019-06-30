@@ -54,7 +54,7 @@ class Inbox extends Component {
 
   render() {
 
-    var ProfilePage = "/profile/7";
+    var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
     
     const { id } = this.props.match.params;
       
