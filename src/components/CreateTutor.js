@@ -8,9 +8,58 @@ import { connect } from "react-redux";
 
 import { createPost } from "../actions";
 
+import AOS from 'aos';
+
 
 class CreateTutor extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {file: '',imagePreviewUrl: ''};
+  }
+
+  _handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  _handleImageChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file)
+  }
+
+  componentDidMount() {
+    AOS.init({
+      duration : 500
+    })
+  }
+
+  renderFieldPhoto(field) {
+    
+    const { meta: { touched, error } } = field;
+    const className = `form-group ${touched && error ? "has-danger" : ""}`;
+    
+    return (    
+      <div className={className}>
+        <label>{field.label}</label>
+        <input className="form-account" placeholder={field.placeholder}  type="file" onChange={(e)=>this._handleImageChange(e)} />
+        <div className="text-help">
+          {touched ? error : ""}
+        </div>
+      </div>
+    );
+  }
+  
   renderField(field) {
     
     const { meta: { touched, error } } = field;
@@ -19,7 +68,7 @@ class CreateTutor extends Component {
     return (    
       <div className={className}>
         <label>{field.label}</label>
-        <input className="form-control" placeholder={field.placeholder} type="text" {...field.input} />
+        <input className="form-account" placeholder={field.placeholder} type="tutor" {...field.input} />
         <div className="text-help">
           {touched ? error : ""}
         </div>
@@ -35,7 +84,7 @@ class CreateTutor extends Component {
     return (    
       <div className={className}>
         <label>{field.label}</label>
-        <input className="form-control" placeholder={field.placeholder} type="password" name="password" {...field.input} />
+        <input className="form-account" placeholder={field.placeholder} type="password" name="password" {...field.input} />
         <div className="text-help">
           {touched ? error : ""}
         </div>
@@ -51,7 +100,7 @@ class CreateTutor extends Component {
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <select className="form-control" type="text" {...field.input} ><option>Area</option>
+        <select className="form-account" type="tutor" {...field.input} ><option>Target Area</option>
           <option>Baldia</option><option>Buffer-Zone</option> <option>Defence</option> <option>Fedral-B-Area</option>
           <option>Gadap</option> <option>Gulberg</option><option>Gulshan-e-Meymar</option> 
           <option>Gulshan</option> <option>Jamshed Town</option> 
@@ -74,7 +123,7 @@ class CreateTutor extends Component {
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <select className="form-control" type="text"  ><option>Karachi</option></select>
+        <select className="form-account" type="tutor"  ><option>Karachi</option></select>
         <div className="text-help">
           {touched ? error : ""}
         </div> 
@@ -86,7 +135,7 @@ class CreateTutor extends Component {
     
     this.props.createPost(values, () => {
     
-      this.props.history.push("/success");
+      this.props.history.push("/sign_tutor");
 
     });
   }
@@ -96,85 +145,109 @@ class CreateTutor extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className = "dark-color" >
-        <div className="container">
-          <div className="py-5 text-center">
-            <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-            <p className="text-light font-cursive">Fill the required information below for creating your Tutor profile</p>
-          </div>
-          <div className="col-md-8 order-md-1">
-            <h4 className="mb-3 text-light">General Information</h4>
-            <form className= "text-muted"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
-              <Field         label="Name" placeholder="Enter your name"
+      <main>
+        <header>
+        <nav className="site-header fixed-top py-1">
+              <div className="container d-flex flex-column flex-md-row justify-content-between">
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
+                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+              </div>
+            </nav>
+            </header>
+      <div className = "text-center bgCreate" >
+        <div className="center-place">
+        <h4 className="Sans6" >Create Account</h4>
+              <div className="Sans6border mx-50" ></div>
+              <p data-aos="fade-up" className="font-ylish text-muted my-4 mx-25">Please fill in below information to create your account. Do you have an account already? <a href="/sign_user"> Sign In </a>now</p>
+            <form className= "form-account"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
+              <Field         
+              placeholder="Name"
               name="name"
               component={this.renderField}
               />
               
               <Field
-              label="Username"
-              placeholder="@Username"
+              placeholder="Username"
               name="username"
               component={this.renderField}
               />
               
               <Field
-              label="Password"  placeholder="****"
+              placeholder="Password"
               name="password"
               component={this.renderFieldPass}
               />
-              <h4 className="mb-3 text-light">Tutor Career</h4>
               <Field
-              label="Qualification"  placeholder="Studies"
+              placeholder="Qualification"
               name="content"
               component={this.renderField}
               />
               
               <Field
-              label="Target Classes" placeholder="Can Tutor O levels/Matric e.g.."
+              placeholder="Tution classes"
               name="classes"
               component={this.renderField}
               />
 
               <Field
-              label="Tution Fee" placeholder="10000-15000 e.g.."
-              name="salary"
+              placeholder="Core Subjects"
+              name="subjects"
               component={this.renderField}
               />
 
               <Field
-              label="Contact number or Email" placeholder="+92.. OR abc@gmail.com"
-              name="number"
+              placeholder="Tution fee"
+              name="salary"
               component={this.renderField}
               />
               
               <Field
-              label="City"
               name="city"
               component={this.renderFieldCity}
               />
 
               <Field
-              label="Target Location"
               name="location"
               component={this.renderFieldNew}
               />
 
+               <Field
+              placeholder="Email"
+              name="email"
+              component={this.renderField}
+              />
+
               <Field
-              label="Address (optional)" placeholder="Enter your exact location if you want users to reach you"
+              placeholder="Contact (optional)"
+              name="number"
+              component={this.renderField}
+              />
+
+              <Field
+              placeholder="Address (optional)"
               name="mark"
               component={this.renderField}
               />
+
               
-              <button type="submit" className="btn btn-outline-info text-light btn-lg">Continue</button>
-              <Link to="/create" className="btn  btn-outline-danger text-light btn-lg">Cancel</Link>
+              <Field
+              placeholder="Description (One or two Liner)"
+              name="description"
+              component={this.renderField}
+              />
+              
+              
+              
+              <button type="submit" className="btnn btnfont">Continue</button>
             </form>
-          </div>
         </div>
-        <footer className="my-5 pt-5 text-muted text-center text-small">
-          <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-          <a href="#">All Rights Reserved</a>
-        </footer>
       </div>
+      </main>
     );
   }
 }
@@ -230,3 +303,11 @@ export default reduxForm({
   validate,
   form: "PostsNewForm"
 })(connect(null, { createPost })(CreateTutor));
+
+/* 
+<Field
+              placeholder="Photo (optional)"
+              name="photo"
+              component={this.renderFieldPhoto}
+              />
+              */

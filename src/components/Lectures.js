@@ -16,8 +16,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faMapMarkerAlt , faStar , faSearch } from '@fortawesome/free-solid-svg-icons';
 
+import { Player } from 'video-react';
 
-class CreateRequest extends Component {
+
+class Lectures extends Component {
   
   constructor(props) {
     super(props);
@@ -80,7 +82,7 @@ class CreateRequest extends Component {
     return (
 
   
-    <div className="bg-req">  
+    <div className="bg-vid">  
       <ReactModal 
             isOpen={this.state.show1}
             contentLabel="Minimal Modal Example3"
@@ -111,19 +113,33 @@ class CreateRequest extends Component {
             </nav>
         </header>
             <div className="row">
-              <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-              <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Post your own request for tutor</h2>
-              <p className="pl-5 text-info loca" >
-              <FontAwesomeIcon icon={ faMapMarkerAlt }/>
-              <span className='pl-1'>Karachi, Pakistan</span></p>
-                <div className="myBox2 mt-4 ml-3">
-                <h6 className="smhd pb-3">Post Request</h6>
-                    <textarea className='form-request' id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a Tutor for my child which is in 5 class. Tutor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
-                    <input className='form-request' type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />
-                    <button className="btnn btnfont mt-2"  onClick={this.onSubmit}>
-                    Submit
-                    </button>
-                  
+              <main role="main" className="pl-5 ml-5">
+              <h2 className="Sans21 pt-8 pl-5 ml-5 text-light mb-0" >Lectures Gallery</h2>
+              <form className="pl-5 ml-5 mt-3 mb-5 form-lectures" role="search">
+              <label for="srch-term" className="sr-only"><FontAwesomeIcon icon={ faSearch }/>
+              </label>
+                  <input className="form-search" placeholder="Search" name="srch-term" id="srch-term" type="text"/>
+                  </form>
+                  <form className="navbar-form" role="search">
+                    <div className="input-group add-on">
+                    </div>
+                  </form>
+                <div className="myBox9 mt-4 ml-5">
+                <h6 className="smhd pb-2">Most Popular</h6>
+                <div className='d-flex flex-column flex-md-row justify-content-between'> 
+                <Player fluid={false}  width={320} height={200} >
+                <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+
+                </Player>
+                <Player fluid={false}  width={320} height={200} >
+                <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+
+                </Player>
+                <Player fluid={false}  width={320} height={200} >
+                <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+
+                </Player>
+                </div>
                 </div>      
               </main>
             </div>      
@@ -140,4 +156,4 @@ function mapStateToProps(state) {
  
 }
 
-export default connect(mapStateToProps, {createTutorRequest})(CreateRequest);
+export default connect(mapStateToProps, {createTutorRequest})(Lectures);

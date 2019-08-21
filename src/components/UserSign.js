@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 import { fetchUsers } from "../actions";
 
+import AOS from 'aos';
+
 class UserSignIn extends Component {
 
   constructor(props) {
@@ -32,6 +34,9 @@ class UserSignIn extends Component {
 
   componentDidMount() {
       this.props.fetchUsers();
+      AOS.init({
+        duration : 500
+      })
   }
 
   onSubmit(values) {
@@ -53,30 +58,35 @@ class UserSignIn extends Component {
 
   render() {
     return (
-      <div className="text-center dark-color">
-        <div className="center-place">
-          <form className="form-signin" onSubmit={this.onSubmit}>
-            <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-            <p className="font-cursive text-light">Please Sign in below</p>
-            <label htmlFor="inputEmail" className="sr-only">Username</label>
-            <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control" placeholder="Student Username" required autoFocus />
-            <label htmlFor="inputPassword" className="sr-only">Password</label>
-            <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required />
-            <div className="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" /> Remember me
-              </label>
+      <main>
+        <header>
+        <nav className="site-header fixed-top py-1">
+              <div className="container d-flex flex-column flex-md-row justify-content-between">
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
+                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+              </div>
+            </nav>
+            </header>
+            <div className="text-center bglogin">
+              <div  className = "center-place">
+              <h4 className="Sans6 " >Login</h4>
+              <div className="Sans6border mx-50" ></div>
+              <p  data-aos="fade-up" className="font-ylish text-muted my-5 mx-25">Please Sign in below to access all links. Dont you have an account? <a href="/create_user"> Sign Up </a>now</p>
+                <form className="form-signin" onSubmit={this.onSubmit}>
+                  <label for="inputEmail" className="sr-only">Username</label>
+                  <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>
+                  <label for="inputPassword" className="sr-only">Password</label>
+                  <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required/>
+                  <Link className="btnn btnfont" to="/posts"> Continue </Link>
+                </form>
+              </div>
             </div>
-            <button className="btn btn-lg btn-success btn-sm" type="submit">Sign in</button>
-            <Link to="/sign" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
-            <p className="mt-5 mb-3 text-muted">Dont you have Student/User account<a href="/create_user"> Sign up </a>Now</p>
-          </form>
-          <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-            <a href="#">All Rights Reserved</a>
-          </footer>
-        </div>
-      </div>
+      </main>
     );
   }
 }

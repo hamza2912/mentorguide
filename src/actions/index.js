@@ -13,11 +13,13 @@ export const DELETE_POST = "delete_post";
 const ROOT_URL = "http://localhost:8000";
 
 var ID = 1;
+var rating = 0;
 
 //Creating  Tutor Account
 export function createPost(values, callback) {
 
   values.userId = ID;
+  values.rating = rating;
   ID++;
 
   const request = axios
@@ -54,7 +56,7 @@ export function deletePost(id) {
     };
 }
 
-//creating User Account
+//creating User Accounttt
 export function createUsers(values, callback) {
 
   const request = axios
@@ -113,14 +115,27 @@ export function addMesseges(id, values) {
 }
 
 //Add comments into tutor account
-export function addComments(id, values) {
+export function addComments(id, Comments) {
 
-    const request = axios.put(`${ROOT_URL}/mentorComments:${id}`, Comments);
+    const request = axios.put(`${ROOT_URL}/mentorComments/:${id}`, Comments);
 
   return {
         type: UPDATE_POST,
         payload: request
     };
+}
+
+//Add ratings
+export function addRatings(id, rating) {
+
+  console.log(rating);
+
+  const request = axios.put(`${ROOT_URL}/tutorRating/:${id}`, rating);
+
+return {
+      type: UPDATE_POST,
+      payload: request
+  };
 }
 
 /*import axios from "axios";

@@ -37,7 +37,7 @@ class TutorSignIn extends Component {
     this.props.fetchPosts();
     
     AOS.init({
-      duration : 2000
+      duration : 500
     })
     
   }
@@ -49,12 +49,12 @@ class TutorSignIn extends Component {
          if(post.password===this.state.pass)
          {  
             var Logged = true;
-            var ProfilePage = `/profile/${post.userId}`;
+            var ProfilePage = `/profile/${post._id}`;
             localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
             localStorage.setItem('Logged', JSON.stringify(Logged));
             
           return (
-            this.props.history.push(`/`)
+            this.props.history.push(`/profile/${post._id}`)
           );
         }
       }   
@@ -64,31 +64,37 @@ class TutorSignIn extends Component {
   render() {
     
     return (
-    
-      <div className="text-center dark-color">
-        <div  className = "center-place">
-          <form className="form-signin" onSubmit={this.onSubmit}>
-            <img  data-aos="fade-right"data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="500" src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-            <p className="font-cursive text-light">Please Sign in below</p>
-            <label for="inputEmail" className="sr-only">Username</label>
-            <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>
-            <label for="inputPassword" className="sr-only">Password</label>
-            <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required/>
-            <div className="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"/> Remember me
-              </label>
+
+      <main>
+        <header>
+        <nav className="site-header fixed-top py-1">
+              <div className="container d-flex flex-column flex-md-row justify-content-between">
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
+                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+              </div>
+            </nav>
+            </header>
+            <div className="text-center bglogin">
+              <div  className = "center-place">
+              <h4 className="Sans6" >Login</h4>
+              <div className="Sans6border mx-50" ></div>
+              <p  data-aos="fade-up" className="font-ylish text-muted my-5 mx-25">Please Sign in below to access your account. Dont you have an account? <a href="/create_tutor"> Sign Up </a>now</p>
+                <form className="form-signin" onSubmit={this.onSubmit}>
+                  <label for="inputEmail" className="sr-only">Username</label>
+                  <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>
+                  <label for="inputPassword" className="sr-only">Password</label>
+                  <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required/>
+                  <button className="btnn btnfont mt-3" onClick={this.onSubmit}> Continue </button>
+                </form>
+              </div>
             </div>
-            <button className="btn btn-lg btn-success btn-sm" type="submit">Sign in</button>
-            <Link to="/sign" className="btn btn-lg  btn-danger btn-sm">Cancel</Link>
-            <p className="mt-5 mb-3 text-muted">Dont you have mentor profile<a href="/posts/new"> Sign up </a>Now</p>
-          </form>
-          <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-            <a href="#">All Rights Reserved</a>
-          </footer>
-        </div>
-      </div>
+      </main>
+
     );
   }
 

@@ -39,12 +39,13 @@ class HomePage extends Component {
           <header>
             <nav className="site-header fixed-top py-1">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="./style/tutorlogo1.png"
-                alt="Generic placeholder image" width="120" height="41" />
-                <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
-                <a className="py-2 d-none d-md-inline-block" href="/sign">Search</a>
-                <a className="py-2 d-none d-md-inline-block" href="/sign">Requests</a>
-                <a className="py-2 d-none d-md-inline-block" href="/sign">Sign in</a>
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
+                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
               </div>
             </nav>
           </header>
@@ -53,68 +54,118 @@ class HomePage extends Component {
 
             <div className="carousel-item active">
                   <div className="container">
-                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
-                      <h2>Tutor Guide</h2>
-                      <p>Now get to know all about Tutors in your city while sitting at your home.</p>
-                      <Link className="btn btn-lg btn-warning text-light" to="/create"> Get Started   </Link>
+                    <div data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
+                      <h1 className="Sans1">TUTOR</h1>
+                      <h1 className="gde">G<span className="UI">UI</span>DE</h1>
+                      <p className="tebox">Now get tutors in your city while sitting at your home.</p>
+                      <Link className="bluebutton  text-light" to="/create"> Get Started   </Link>
                     </div>
                   </div>
             </div>
-
-            <div className="container">
-            
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7">
-                    <h2 className="featurette-heading text-light">Search for a Tutor, <span className="text-danger">more than thousands of Tutors.</span></h2>
-                    <p className="text-light">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btn btn-lg btn-primary" to="/sign"> Search Tutor       </Link>
+            <div className="bgSearch ">
+              <div className="container">
+                <div className="separator" align="center">
+                  <div  data-aos="fade-up" data-aos-duration="500">
+                    <h2 className="Sans2" >Search your favorite Tutors</h2>
+                    <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                    <Link className="btnn btnfont" to="/sign"> Search Now       </Link>
                   </div>
-                  <div data-aos='fade-up-left' className="col-md-5">
-                  <img className="featurette-image img-fluid mx-auto" src="./style/search.png" alt="Generic placeholder image" />
+                  <div data-aos='zoom-in'>
+                  <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
                   </div>
                 </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7 order-md-2">
-                    <h2 className="featurette-heading text-light">Become a Tutor, <span className="text-danger">See for yourself.</span></h2>
-                    <p className="text-light">You can easily get Tutors and tutions while siiting at home. All you need
-                      is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
-                      and they would respond to you if they find you suitable for them</p>
-                    <Link className="btn btn-lg btn-primary" to="/create_tutor"> Become Tutor         </Link>
-                  </div>
-                  <div data-aos='fade-up-left' className="col-md-5 order-md-1">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
-                  </div>
-                </div>
-
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7">
-                    <h2 className="featurette-heading text-light">Do the needful, <span className="text-danger">post specific Tutor requests</span></h2>
-                    <p className="text-light">Create your Tutor request by adding details about your requirments and conditions. We
-                      will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
-                    <Link className="btn btn-lg btn-primary" to="/sign"> Create Request       </Link>
-                  </div>
-                  <div  data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/request.png" alt="Generic placeholder image" />
-                  </div>
-                </div>
-                <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
-                  <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/about.png" alt="Generic placeholder image"
-                     width="180" height="180" />
-                    <h1 className="display-4 font-weight-normal text-light">About us</h1>
-                    <p className="text-light font-weight-normal">We at Tutor guide strive to create an educational network
-                    which can promote education by linking Tutors with students. Contact us at</p>
-                    <span data-aos='zoom-in' className="btn btn-outline-warning text-light" ><img className="rounded-circle" src="./style/email.png"
-                    alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
-                  </div>
-                </div>
+              </div>
             </div>
-            <footer className="footer-color">
-                <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot; <a href="#">All Rights Reserved</a></p>
+            <div className="bgGrey">
+              <div className="container">
+                <div align="center">
+                  <div  data-aos-delay='1000' className ='separator2' data-aos="fade-up" data-aos-duration="500">
+                    <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
+                    <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                  </div>
+                  <div class="row comp1 separator3">
+                        <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
+                          <img class="rounded-circle" src="./style/SignUp.png"
+                            alt="Generic placeholder image" width="140" height="140" />
+                          <p class="text-muted text-center smcp">Create your tutor account </p>
+                        </div>
+                        <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" class="col-lg-4">
+                          <img class="rounded-circle" src="./style/toter.png"
+                            alt="Generic placeholder image" width="140" height="140" />
+                          <p class="text-muted text-center smcp">Visit your profile </p>
+                        </div>
+                        <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" class="col-lg-4">
+                          <img class="rounded-circle" src="./style/mess.png"
+                            alt="Generic placeholder image" width="140" height="140" />
+                          <p class="text-muted text-center smcp">Check messegs instantly </p>
+                        </div>
+                   </div>
+                  <div className='separator4'>
+                   <Link className="btnn btnfont" to="/sign"> Create Now       </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='bgScreen'>
+              <div className='container'>
+                <div className="row featurette">
+                  <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
+                    <h2 className="featurette-heading Sans2">Tutor Requests</h2>
+                    <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
+                    <Link className="btnn btnfont" to="/sign"> Post Now </Link>
+                  </div>
+                  <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
+                    <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='bgfooter'>
+            <footer class="container py-5">
+              <div class="row">
+                <div class="col-12 col-md">
+                <img  src="/style/logooo.png"
+                alt="Generic placeholder image" width="200" height="125" />
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Features</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Search tutor</a></li>
+                    <li><a class="text-muted" href="#">Post request</a></li>
+                    <li><a class="text-muted" href="#">Watch lectures</a></li>
+                    <li><a class="text-muted" href="#">Visit tutor profiles</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Account </h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Create tutor account</a></li>
+                    <li><a class="text-muted" href="#">Create user account</a></li>
+                    <li><a class="text-muted" href="#">Check tutor rquests</a></li>
+                    <li><a class="text-muted" href="#">Check messeges</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Log In</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Main Log in</a></li>
+                    <li><a class="text-muted" href="#">Tutor login</a></li>
+                    <li><a class="text-muted" href="#">User login</a></li>
+                    <li><a class="text-muted" href="#">Create account</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>About</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
             </footer>
+            </div>
           </div>
         </main>
       );
@@ -122,15 +173,15 @@ class HomePage extends Component {
     else if (Logged === true) {
       return (
         <main role="main">
-          <header>
-            <nav className="site-header fixed-top py-1">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img src="./style/tutorlogo1.png"
-                 alt="Generic placeholder image" width="120" height="41" />
-                <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
-                <a className="py-2 d-none d-md-inline-block" href="/posts">Search</a>
-                <a className="py-2 d-none d-md-inline-block" href="/checkrequests">Requests</a>
-                <div class="dropdown py-2 d-none d-md-inline-block text-light">
+        <header>
+          <nav className="site-header fixed-top py-1">
+            <div className="container d-flex flex-column flex-md-row justify-content-between">
+              <img  src="/style/logooo.jpg"
+              alt="Generic placeholder image" width="100" height="62.5" />
+              <a className="myNav text-dark" href="/">Home</a>
+              <a className="myNav text-dark" href="/posts">Search</a>
+              <a className="myNav text-dark" href="/lectures">Lectures</a>
+              <a className="myNav text-dark" href="/create_request">Requests</a><div class="dropdown py-2 d-none d-md-inline-block text-light">
                   <span>. . .</span>
                   <div class="dropdown-content">
                   <ul>
@@ -143,78 +194,126 @@ class HomePage extends Component {
                   </ul>
                   </div>
                 </div>
-              </div>
-            </nav>
-          </header>
-          
-          <div className="main-color">
-
-            <div className="carousel-item active">
-                  <div className="container">
-                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
-                      <h2>Tutor Guide</h2>
-                      <p>Now get to know all about Tutors in your city while sitting at your home.</p>
-                      <Link className="btn btn-lg btn-warning text-light" to="/"> Get Started   </Link>
-                    </div>
-                  </div>
             </div>
+          </nav>
+        </header>
+        
+        <div className="main-color">
 
+          <div className="carousel-item active">
+                <div className="container">
+                  <div data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
+                    <h1 className="Sans1">TUTOR</h1>
+                    <h1 className="gde">G<span className="UI">UI</span>DE</h1>
+                    <p className="tebox">Now get tutors in your city while sitting at your home.</p>
+                    <Link className="bluebutton  text-light" to="/create"> Get Started   </Link>
+                  </div>
+                </div>
+          </div>
+          <div className="bgSearch ">
             <div className="container">
-              
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7">
-                    <h2 className="featurette-heading text-light">Search for a Tutor, <span className="text-danger">more than thousands of Tutors.</span></h2>
-                    <p className="text-light">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btn btn-lg btn-primary" to="/posts"> Search Tutor       </Link>
-                  </div>
-                  <div data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/search.png" alt="Generic placeholder image" />
-                  </div>
+              <div className="separator" align="center">
+                <div  data-aos="fade-up" data-aos-duration="500">
+                  <h2 className="Sans2" >Search your favorite Tutors</h2>
+                  <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                  <Link className="btnn btnfont" to="/sign"> Search Now       </Link>
                 </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7 order-md-2">
-                    <h2 className="featurette-heading text-light">Become a Tutor, <span className="text-danger">See for yourself.</span></h2>
-                    <p className="text-light">You can easily get Tutors and tutions while siiting at home. All you need
-                    is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
-                and they would respond to you if they find you suitable for them</p>
-                    <Link className="btn btn-lg btn-primary" to="/"> Become Tutor         </Link>
-                  </div>
-                  <div data-aos='fade-up-left' className="col-md-5 order-md-1">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
-                  </div>
+                <div data-aos='zoom-in'>
+                <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
                 </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7">
-                    <h2 className="featurette-heading text-light">Do the needful, <span className="text-danger">post specific Tutor requests</span></h2>
-                    <p className="text-light">Create your Tutor request by adding details about your requirments and conditions. We
-                will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
-                    <Link className="btn btn-lg btn-primary" to="/create_request"> Create Request       </Link>
-                  </div>
-                  <div  data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/request.png" alt="Generic placeholder image" />
-                  </div>
-                </div>
-
-
-                <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
-                  <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5 ">
-                  <img className="featurette-image img-fluid mx-auto" src="./style/about.png" alt="Generic placeholder image"
-                     width="180" height="180" />
-                    <h1 className="display-4 font-weight-normal text-light">About us</h1>
-                    <p className="text-light font-weight-normal">We at Tutor guide strive to create an educational network
-                    which can promote education by linking Tutors with students. Contact us at</p>
-                    <span data-aos='zoom-in' className="btn btn-outline-secondary text-light" ><img className="rounded-circle" src="./style/email.png"
-                    alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
-                  </div>
-                  <div className="product-device shadow-sm d-none d-md-block"></div>
-                </div>
+              </div>
             </div>
-            <footer className="footer-color">
-                <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot; <a href="#">All Rights Reserved</a></p>
-            </footer>
+          </div>
+          <div className="bgGrey">
+            <div className="container">
+              <div align="center">
+                <div  data-aos-delay='1000' className ='separator2' data-aos="fade-up" data-aos-duration="500">
+                  <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
+                  <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                </div>
+                <div class="row comp1 separator3">
+                      <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
+                        <img class="rounded-circle" src="./style/SignUp.png"
+                          alt="Generic placeholder image" width="140" height="140" />
+                        <p class="text-muted text-center smcp">Create your tutor account </p>
+                      </div>
+                      <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" class="col-lg-4">
+                        <img class="rounded-circle" src="./style/toter.png"
+                          alt="Generic placeholder image" width="140" height="140" />
+                        <p class="text-muted text-center smcp">Visit your profile </p>
+                      </div>
+                      <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" class="col-lg-4">
+                        <img class="rounded-circle" src="./style/mess.png"
+                          alt="Generic placeholder image" width="140" height="140" />
+                        <p class="text-muted text-center smcp">Check messegs instantly </p>
+                      </div>
+                 </div>
+                <div className='separator4'>
+                 <Link className="btnn btnfont" to="/sign"> Create Now       </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='bgScreen'>
+            <div className='container'>
+              <div className="row featurette">
+                <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
+                  <h2 className="featurette-heading Sans2">Tutor Requests</h2>
+                  <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
+                  <Link className="btnn btnfont" to="/posts"> Post Now </Link>
+                </div>
+                <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
+                  <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='bgfooter'>
+          <footer class="container py-5">
+            <div class="row">
+              <div class="col-12 col-md">
+              <img  src="/style/logooo.png"
+              alt="Generic placeholder image" width="200" height="125" />
+              </div>
+              <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#">Search tutor</a></li>
+                  <li><a class="text-muted" href="#">Post request</a></li>
+                  <li><a class="text-muted" href="#">Watch lectures</a></li>
+                  <li><a class="text-muted" href="#">Visit tutor profiles</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md">
+                <h5>Account </h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#">Create tutor account</a></li>
+                  <li><a class="text-muted" href="#">Create user account</a></li>
+                  <li><a class="text-muted" href="#">Check tutor rquests</a></li>
+                  <li><a class="text-muted" href="#">Check messeges</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md">
+                <h5>Log In</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#">Main Log in</a></li>
+                  <li><a class="text-muted" href="#">Tutor login</a></li>
+                  <li><a class="text-muted" href="#">User login</a></li>
+                  <li><a class="text-muted" href="#">Create account</a></li>
+                </ul>
+              </div>
+              <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                  <li><a class="text-muted" href="#">Team</a></li>
+                  <li><a class="text-muted" href="#">Locations</a></li>
+                  <li><a class="text-muted" href="#">Privacy</a></li>
+                  <li><a class="text-muted" href="#">Terms</a></li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+          </div>
         </div>
       </main>
       );
@@ -225,15 +324,20 @@ class HomePage extends Component {
           <header>
             <nav className="site-header fixed-top py-1">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="./style/tutorlogo1.png"
-                alt="Generic placeholder image" width="120" height="41" />
-                <span className="py-2 d-md-inline-block text-muted" href="#">Home</span>
-                <a className="py-2 d-none d-md-inline-block" href="/posts">Search</a>
-                <a className="py-2 d-none d-md-inline-block" href="/create_request">Requests</a>
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
                 <div class="dropdown py-2 d-none d-md-inline-block text-light">
                   <span>. . .</span>
                   <div class="dropdown-content">
-                    <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                  <ul>
+                    <li>
+                      <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                    </li>
+                  </ul>
                   </div>
                 </div>
               </div>
@@ -244,69 +348,120 @@ class HomePage extends Component {
 
             <div className="carousel-item active">
                   <div className="container">
-                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
-                      <h2>Tutor Guide</h2>
-                      <p>Now get to know all about Tutors in your city while sitting at your home.</p>
-                      <Link className="btn btn-lg btn-warning text-light" to="/"> Get Started   </Link>
+                    <div data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
+                      <h1 className="Sans1">TUTOR</h1>
+                      <h1 className="gde">G<span className="UI">UI</span>DE</h1>
+                      <p className="tebox">Now get tutors in your city while sitting at your home.</p>
+                      <Link className="bluebutton  text-light" to="/create"> Get Started   </Link>
                     </div>
                   </div>
             </div>
-
-            <div className="container">
-
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7">
-                    <h2 className="featurette-heading text-light">Search for a Tutor, <span className="text-danger">more than thousands of Tutors.</span></h2>
-                    <p className="text-light">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btn btn-lg btn-primary" to="/posts"> Search Tutor       </Link>
+            <div className="bgSearch ">
+              <div className="container">
+                <div className="separator" align="center">
+                  <div  data-aos="fade-up" data-aos-duration="500">
+                    <h2 className="Sans2" >Search your favorite Tutors</h2>
+                    <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                    <Link className="btnn btnfont" to="/sign"> Search Now       </Link>
                   </div>
-                  <div data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/search.png" alt="Generic placeholder image" />
+                  <div data-aos='zoom-in'>
+                  <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
                   </div>
-                </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7 order-md-2">
-                    <h2 className="featurette-heading text-light">Become a Tutor, <span className="text-danger">See for yourself.</span></h2>
-                    <p className="text-light">You can easily get Tutors and tutions while siiting at home. All you need
-                       is to submit a short form here and become part of our Tutors team. We will show your pofile to our users
-                       and they would respond to you if they find you suitable for them</p>
-                    <Link className="btn btn-lg btn-primary" to="/create"> Become Tutor         </Link>
-                  </div>
-                  <div data-aos='fade-up-left' className="col-md-5 order-md-1">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/tutor.png" alt="Generic placeholder image" />
-                  </div>
-                </div>
-                <hr className="featurette-divider" />
-                <div className="row featurette">
-                  <div data-aos='fade-up-right' className="col-md-7">
-                    <h2 className="featurette-heading text-light">Do the needful, <span className="text-danger">post specific Tutor requests</span></h2>
-                    <p className="text-light">Create your Tutor request by adding details about your requirments and conditions. We
-                        will show it to our Tutors and they will approach you by your contact details if they find themselves appropraite.</p>
-                    <Link className="btn btn-lg btn-primary" to="/create_request"> Create Request       </Link>
-                  </div>
-                  <div  data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/request.png" alt="Generic placeholder image" />
-                  </div>
-              </div>
-              <div className="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center ">
-                <div data-aos='zoom-in' className="col-md-5 p-lg-5 mx-auto my-5">
-                    <img className="featurette-image img-fluid mx-auto" src="./style/about.png" alt="Generic placeholder image"
-                     width="180" height="180" />
-                    <h1 className="display-4 font-weight-normal text-light">About us</h1>
-                    <p className="text-light font-weight-normal">We at Tutor guide strive to create an educational network
-                    which can promote education by linking Tutors with students. Contact us at</p>
-                  <span data-aos='zoom-in' className="btn btn-outline-secondary text-light" ><img className="rounded-circle" src="./style/email.png"
-                  alt="Generic placeholder image" width="50" height="50" />  shamzaali.nq@gmail.com</span>
                 </div>
               </div>
             </div>
-            <footer className="footer-color">
-              <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot; <a href="#">All Rights Reserved</a></p>
+            <div className="bgGrey">
+              <div className="container">
+                <div align="center">
+                  <div  data-aos-delay='1000' className ='separator2' data-aos="fade-up" data-aos-duration="500">
+                    <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
+                    <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                  </div>
+                  <div class="row comp1 separator3">
+                        <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
+                          <img class="rounded-circle" src="./style/SignUp.png"
+                            alt="Generic placeholder image" width="140" height="140" />
+                          <p class="text-muted text-center smcp">Create your tutor account </p>
+                        </div>
+                        <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" class="col-lg-4">
+                          <img class="rounded-circle" src="./style/toter.png"
+                            alt="Generic placeholder image" width="140" height="140" />
+                          <p class="text-muted text-center smcp">Visit your profile </p>
+                        </div>
+                        <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" class="col-lg-4">
+                          <img class="rounded-circle" src="./style/mess.png"
+                            alt="Generic placeholder image" width="140" height="140" />
+                          <p class="text-muted text-center smcp">Check messegs instantly </p>
+                        </div>
+                   </div>
+                  <div className='separator4'>
+                   <Link className="btnn btnfont" to="/sign"> Create Now       </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='bgScreen'>
+              <div className='container'>
+                <div className="row featurette">
+                  <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
+                    <h2 className="featurette-heading Sans2">Tutor Requests</h2>
+                    <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
+                    <Link className="btnn btnfont" to="/posts"> Post Now </Link>
+                  </div>
+                  <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
+                    <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='bgfooter'>
+            <footer class="container py-5">
+              <div class="row">
+                <div class="col-12 col-md">
+                <img  src="/style/logooo.png"
+                alt="Generic placeholder image" width="200" height="125" />
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Features</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Search tutor</a></li>
+                    <li><a class="text-muted" href="#">Post request</a></li>
+                    <li><a class="text-muted" href="#">Watch lectures</a></li>
+                    <li><a class="text-muted" href="#">Visit tutor profiles</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Account </h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Create tutor account</a></li>
+                    <li><a class="text-muted" href="#">Create user account</a></li>
+                    <li><a class="text-muted" href="#">Check tutor rquests</a></li>
+                    <li><a class="text-muted" href="#">Check messeges</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>Log In</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Main Log in</a></li>
+                    <li><a class="text-muted" href="#">Tutor login</a></li>
+                    <li><a class="text-muted" href="#">User login</a></li>
+                    <li><a class="text-muted" href="#">Create account</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 col-md">
+                  <h5>About</h5>
+                  <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                  </ul>
+                </div>
+              </div>
             </footer>
+            </div>
           </div>
-      </main>
+        </main>
       );
     }
   }
@@ -354,3 +509,19 @@ export default connect(mapStateToProps, { fetchPosts })(HomePage);
             </div>
             </div>
             */
+
+/*
+<div class="dropdown py-2 d-none d-md-inline-block text-light">
+                  <span>. . .</span>
+                  <div class="dropdown-content">
+                  <ul>
+                    <li>
+                      <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                    </li>
+                    <li>
+                      <a className="text-light py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
+                    </li>
+                  </ul>
+                  </div>
+                </div>
+                */

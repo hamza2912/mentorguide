@@ -8,18 +8,27 @@ import { connect } from "react-redux";
 
 import { createUsers } from "../actions";
 
+import AOS from 'aos';
+
 
 class CreateUser extends Component {
+
+  componentDidMount() {
+    AOS.init({
+      duration : 500
+    })
+}
+
   
   renderField(field) {
     
     const { meta: { touched, error } } = field;
-    const className = `form-group ${touched && error ? "has-danger" : ""}`;
+    const className = `${touched && error ? "has-danger" : ""}`;
     
     return (    
       <div className={className}>
         <label>{field.label}</label>
-        <input className="form-control" placeholder={field.placeholder} type="text" {...field.input} />
+        <input className="form-account" placeholder={field.placeholder} type="email" {...field.input} />
         <div className="text-help">
           {touched ? error : ""}
         </div>
@@ -30,12 +39,12 @@ class CreateUser extends Component {
   renderFieldPass(field) {
     
     const { meta: { touched, error } } = field;
-    const className = `form-group ${touched && error ? "has-danger" : ""}`;  
+    const className = `${touched && error ? "has-danger" : ""}`;  
     
     return (    
       <div className={className}>
         <label>{field.label}</label>
-        <input className="form-control" placeholder={field.placeholder} type="password" name="password" {...field.input} />
+        <input className="form-account" placeholder={field.placeholder} type="password" name="password" {...field.input} />
           <div className="text-help">
             {touched ? error : ""}
           </div>
@@ -47,7 +56,7 @@ class CreateUser extends Component {
     
     this.props.createUsers(values, () => {
       
-      this.props.history.push("/success2");
+      this.props.history.push("/sign_user");
 
     });
   }
@@ -57,41 +66,46 @@ class CreateUser extends Component {
     
     
     return (
-      <div className = "dark-color">
-    
-        <div className="container">
-          <div className="py-5 text-center">
-            <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-            <p className="text-light font-cursive">Fill the required information below for creating your Student/User account</p>
-          </div>
-          <div className="col-md-8 order-md-1">
-            <h4 className="mb-3 text-light">General</h4>
-              <form className = "text-muted" onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
-                <Field          label="Name" placeholder="Enter your name"
+      <main>
+      <header>
+      <nav className="site-header fixed-top py-1">
+              <div className="container d-flex flex-column flex-md-row justify-content-between">
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
+                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+              </div>
+            </nav>
+            </header>
+      <div className = "text-center bglogin">
+       <div className="center-place">
+        <h4 className="Sans6" >Create Account</h4>
+              <div className="Sans6border mx-50" ></div>
+              <p data-aos="fade-up" className="font-ylish text-muted my-5 mx-25">Please fill in below information to create your account. Already have an account? <a href="/sign_user"> Sign In </a>now</p>  
+              <form className = "form-account" onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
+                <Field          
+                placeholder="Name"
                 name="name"
                 component={this.renderField}
                 />
                 <Field
-                label="Username"
-                placeholder="@Username"
+                placeholder="Username"
                 name="username"
                 component={this.renderField}
                 />
                 <Field
-                label="Password"  placeholder="****"
+                placeholder="Password"
                 name="password"
                 component={this.renderFieldPass}
                 />
-                <button type="submit" className="btn btn-outline-info text-light btn-lg">Continue</button>
-                <Link to="/create" className="btn btn-outline-danger text-light btn-lg">Cancel</Link>
+                <button type="submit" className="btnn btnfont">Continue</button>
               </form>
-          </div>
         </div>
-        <footer className="my-5 pt-5 text-muted text-center text-small">
-          <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-          <a href="#">All Rights Reserved</a>
-        </footer>
       </div>
+      </main>
     );
   }
 }

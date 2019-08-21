@@ -10,6 +10,10 @@ import { fetchTutorRequests } from "../actions";
 
 import AOS from 'aos';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faPhone , faVoicemail } from '@fortawesome/free-solid-svg-icons';
+
 
 class checkRequests extends Component {
   
@@ -17,7 +21,10 @@ class checkRequests extends Component {
   renderChats() {
 
     if (!this.props.posts) {
-      return <div>Loading...</div>;
+        return (
+          <p className="py-3 text-muted font-ylish">No tutor requests yet</p>
+        );
+      
     }
     
     else {
@@ -26,8 +33,8 @@ class checkRequests extends Component {
         return (
           <li>
             <p class=" pb-3   lh-125 border-bottom border-gray">
-              <strong class="d-block text-light">{post.Messege}</strong>
-              <span class="badge badge-danger">{post.Email}</span>
+            <p className='Details mb-0'>{post.Messege}<span className='pl-5 text-primary date1'>14 August</span> </p>
+             <p className='Details mb-0 text-muted'><FontAwesomeIcon className='sttt3' icon={ faPhone }/><span className='pl-1'>{post.Email}</span></p>
             </p>
           </li>
         );
@@ -48,21 +55,26 @@ class checkRequests extends Component {
   render() {
 
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
+
       
     return ( 
       
-      <div class="bk-book">
+      <div class="bg-bowl">
         <header>
-          <nav className="site-header fixed-top py-1">
-            <div className="container d-flex flex-column flex-md-row justify-content-between">
-              <img  src="/style/tutorlogo1.png"
-                    alt="Generic placeholder image" width="120" height="41" />
-              <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
-            </div>
-          </nav>
+        <nav className="site-header fixed-top py-1">
+                          <div className="container d-flex flex-column flex-md-row justify-content-between">
+                            <img  src="/style/logooo.jpg"
+                            alt="Generic placeholder image" width="100" height="62.5" />
+                            <a className="myNav text-dark" href="/">Home</a>
+                            <a className="myNav text-dark" href="/posts">Search</a>
+                            <a className="myNav text-dark" href="/lectures">Lectures</a>
+                            <a className="myNav text-dark" href="/create_request">Requests</a>
+                            <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+                          </div>
+           </nav>
         </header>
         <div className="row">
-          <nav data-aos='fade-right' className="col-md-2 d-none d-md-block bg-light sidebar">
+          <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
             <div className="sidebar-sticky">
               <ul className="nav flex-column">
                 <li className="nav-item">
@@ -79,22 +91,18 @@ class checkRequests extends Component {
             </div>
           </nav>
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div className="my-3 p-3 rounded shadow-sm">
-              <h6 className="border-bottom border-gray pb-2 mb-0 text-light">Tutor Requests</h6>
-                <div className="media text-muted mb-0">
+          <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Tutor Requests</h2>
+          <p className="pl-5 text-info loca" >
+          <span className='pl-1'>Catch recent ones</span></p>
+            <div className="myBox mt-4 ml-3">
+              <h6 className="smhd pb-4">Posts</h6> 
+              <div className="media text-muted mb-0">
                   <ul>
                     {this.renderChats()}
                   </ul>
                 </div>
-                <small className="d-block text-right mt-3">
-                  <a href="">Recent list</a>
-                </small>
-            </div>       
+            </div>      
           </main>
-          <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-            <a href="#">All Rights Reserved</a>
-          </footer>
         </div>      
       </div>    
     );  

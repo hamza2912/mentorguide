@@ -10,6 +10,10 @@ import { fetchPosts, deletePost } from "../actions";
 
 import AOS from 'aos';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+
 
 class Inbox extends Component {
 
@@ -18,20 +22,31 @@ class Inbox extends Component {
     const { id } = this.props.match.params;
     return _.map(this.props.posts, post => {
 
-      var tutorId = post.userId.toString();
+      var tutorId = post._id.toString();
 
       if (tutorId === id) {
         return post.messeges.map((currentPost) => {
+          for (var i = 0; i < currentPost.length; i++) {
+            if(currentPost[i] === ':' ){
+              var user = currentPost.slice(0, i-1);
+              var messege = currentPost.slice(i+1);
+
+            }
+          }
           return (
             <li>
-              <div class="my-3 p-3 bg-white rounded shadow-sm">
-              <p class="pb-3 lh-125">
-                <strong className="d-block text-dark">{currentPost}</strong>
-              </p>
-              </div>
+              <p class=" pb-3   lh-125 border-bottom border-gray">
+              <p className='Details mb-0'>{user}<span className='pl-5 text-primary date1'>14 August</span> </p>
+              <p className='Details mb-0 text-muted'><FontAwesomeIcon className='sttt3' icon={ faEnvelope }/><span className='pl-1'>{messege}</span></p>
+            </p>
             </li>
           );
         });
+      }
+      else{
+        return (
+          <p className="py-3 text-muted font-ylish">You dont have any messeges</p>
+        );
       }
     });    
 
@@ -55,7 +70,7 @@ class Inbox extends Component {
   render() {
 
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
-    
+  
     const { id } = this.props.match.params;
       
     if (!this.props.posts) {
@@ -64,7 +79,7 @@ class Inbox extends Component {
 
     return _.map(this.props.posts, post => {
     
-    var tutorId = post.userId.toString();
+    var tutorId = post._id.toString();
 
     if (tutorId === id) {
 
@@ -79,54 +94,52 @@ class Inbox extends Component {
             
       return (
 
-      <div class="tea-bac">
-
+        <div class="bg-bowl">
         <header>
-          <nav className="site-header fixed-top py-1">
-            <div className="container d-flex flex-column flex-md-row justify-content-between">
-              <img  src="/style/tutorlogo1.png"
-                    alt="Generic placeholder image" width="120" height="41" />
-              <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
-            </div>
-          </nav>
+        <nav className="site-header fixed-top py-1">
+                          <div className="container d-flex flex-column flex-md-row justify-content-between">
+                            <img  src="/style/logooo.jpg"
+                            alt="Generic placeholder image" width="100" height="62.5" />
+                            <a className="myNav text-dark" href="/">Home</a>
+                            <a className="myNav text-dark" href="/posts">Search</a>
+                            <a className="myNav text-dark" href="/lectures">Lectures</a>
+                            <a className="myNav text-dark" href="/create_request">Requests</a>
+                            <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+                          </div>
+           </nav>
         </header>
-
-        <div class="row">
-          <nav data-aos='fade-right' class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">
-                    <span data-feather="home"></span>Messeges <span class="sr-only">(current)</span>
+        <div className="row">
+          <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
+            <div className="sidebar-sticky">
+              <ul className="nav flex-column">
+                <li className="nav-item">
+                  <a className="nav-link active" href="#">
+                  <span data-feather="home"></span>Messeges <span className="sr-only">(current)</span>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link " href={ProfilePage}>
-                  <span data-feather="home"></span>Back to Profile <span class="sr-only">(current)</span>
+                <li className="nav-item">
+                  <a className="nav-link " href={ProfilePage}>
+                  <span data-feather="home"></span>Back to Profile <span className="sr-only">(current)</span>
                   </a>
                 </li>
               </ul>
             </div>
           </nav>
-          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="my-3 p-3  rounded shadow-sm">
-              <h6 class="border-bottom border-gray pb-2 mb-0 text-light">Messeges</h6>
-              <div class="media text-muted mb-0">
-                <ul>
-                  {this.renderChats()}
-                </ul>
-              </div>
-              <small class="d-block text-right mt-3">
-                <a href="">Recent list</a>
-              </small>
-            </div>       
+          <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Inbox</h2>
+          <p className="pl-5 text-info loca" >
+          <span>Catch recent ones</span></p>
+            <div className="myBox mt-4 ml-3">
+              <h6 className="smhd pb-4">Messeges</h6> 
+              <div className="media text-muted mb-0">
+                  <ul>
+                    {this.renderChats()}
+                  </ul>
+                </div>
+            </div>      
           </main>
-          <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-              <a href="#">All Rights Reserved</a>
-          </footer>
         </div>      
-      </div>                  
+      </div>    
       );
       }}   
     }); 

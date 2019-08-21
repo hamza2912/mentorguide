@@ -28,6 +28,7 @@ import Success2 from "./components/success2";
 import Inbox from "./components/inbox";
 import PostsShow from "./components/posts_show";
 import HomePage from "./components/HomePage";
+import Lectures from "./components/Lectures";
 
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -48,10 +49,11 @@ ReactDOM.render(
 <Route path="/sign_tutor" component={TutorSignIn} />
 <Route path="/sign_user" component={UserSignIn} />
 <Route path="/sign" component={SignIn} />
-<Route path="/profile/:id" component={ProfileShow} />
+<Route path="/profile/:id" component={ProfileShow}/>
 <Route path="/success" component={Success} />
 <Route path="/success2" component={Success2} />
 <Route path="/create_request" component={CreateRequest} />
+<Route path="/lectures" component={Lectures} />
 <Route path="/checkrequests" component={checkRequests} />
 <Route path="/inbox/:id" component={Inbox} />
 <Route path="/" component={HomePage} />

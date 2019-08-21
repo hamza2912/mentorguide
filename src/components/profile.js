@@ -10,6 +10,10 @@ import { fetchPosts, deletePost } from "../actions";
 
 import ReactModal from "react-modal";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faCommentMedical , faStar , faPhoneAlt, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+
 import AOS from 'aos';
 
 class ProfileShow extends Component {
@@ -17,11 +21,11 @@ class ProfileShow extends Component {
   constructor(props) {
     super(props);
     this.state = {show1: false, show2: false};
-  
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleOpenModalother = this.handleOpenModalother.bind(this);
     this.handleCloseModalother = this.handleCloseModalother.bind(this);
+    this.renderRatings = this.renderRatings.bind(this);
   }
 
   handleOpenModal () {
@@ -51,6 +55,45 @@ class ProfileShow extends Component {
     this.renderChats();
   }
   
+  renderRatings(rate, pclass, icoclass){
+
+    if (rate > 1 && rate <= 2) {
+      return (
+        <p className={pclass}><span className='pr-1'>{rate}</span>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      </p> 
+      );
+    }
+    else if (rate > 2 && rate <= 3) {
+      return (
+        <p className={pclass}><span className='pr-1'>{rate}</span>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      </p> 
+      );
+    }
+    else if (rate > 3 && rate <= 4 && rate > 4) {
+      return (
+        <p className={pclass}><span className='pr-1'>{rate}</span>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+                      </p> 
+      );
+    }
+    else {
+        return (
+          <p className={pclass}><span className='pr-1'>{rate}</span>
+          <FontAwesomeIcon className={icoclass} icon={ faStar }/>
+          </p>
+        );  
+    }
+
+
+  }
     
   onDeleteClick() {
     
@@ -93,22 +136,28 @@ class ProfileShow extends Component {
   renderChats() {
 
     const { id } = this.props.match.params;
+    
     return _.map(this.props.posts, post => {
 
-      var tutorId = post.userId.toString();
+      var tutorId = post._id.toString();
 
       if (tutorId === id) {
-    
-      return post.comments.map((currentPost) => {
-        return (
-          <li>
-            <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <p className="pb-3 lh-125">
-              <strong className="d-block text-light">{currentPost}</strong>
-            </p>
-            </div>
-          </li>
-        );
+        return post.comments.map((currentPost) => {
+          for (var i = 0; i < currentPost.length; i++) {
+            if(currentPost[i] === ':' ){
+              var user = currentPost.slice(0, i-1);
+              var review = currentPost.slice(i+1);
+
+            }
+          }
+          return (
+              <div className="dp pb-5">       
+                <img  className="" src="/style/dp.png" alt="Generic placeholder image" width="35" height="35" />
+                 <p className="dp-name" >{user}</p>
+                  <p className="dp-name2" > 14 Aug, 2016</p>
+                  <p className="dp-body" >{review}</p>
+              </div>   
+          );
       });
       }
     });
@@ -116,6 +165,7 @@ class ProfileShow extends Component {
  
 
 render() {
+
     //const { post } = this.props;
     const { id } = this.props.match.params;
     console.log(id);
@@ -126,32 +176,34 @@ render() {
 
     return _.map(this.props.posts, post => {
         
-        var tutorId = post.userId.toString();
+        var tutorId = post._id.toString();
       
         if (tutorId === id) {
 
-          var ProfilePage = `/inbox/${id}/inbox`;
+          var ProfilePage = `/profile/${id}/inbox`;
+          localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
+          var mychats = `/inbox/${id}`;
           
           return (                
             
-            <div className="container-fluid tea-bac">
-              
+            <div className="proback">
+    
               <ReactModal 
                   isOpen={this.state.show1}
                   contentLabel="Minimal Modal Example"
                   style={{
-                       content : {
-                         top                   : '50%',
-                         left                  : '50%',
-                         right                 : 'auto',
-                         bottom                : 'auto',
-                         marginRight           : '-50%',
-                       transform             : 'translate(-50%, -50%)'
-                     }
+                      content : {
+                        top                   : '50%',
+                        left                  : '50%',
+                        right                 : 'auto',
+                        bottom                : 'auto',
+                        marginRight           : '-50%',
+                      transform             : 'translate(-50%, -50%)'
+                    }
                   }} >
                   <p className="lead">You are about to delete your mentor profile!</p>
                   <button className="btn btn-dark" onClick={this.onDeleteClick.bind(this)} >
-                     Continue
+                    Continue
                   </button>
                   <button className="btn btn-info" onClick={this.handleCloseModal}>Cancel</button>
               </ReactModal>
@@ -159,32 +211,37 @@ render() {
                   isOpen={this.state.show2}
                   contentLabel="Minimal Modal Example2"
                   style={{
-                     content : {
-                         top                   : '50%',
-                         left                  : '50%',
-                         right                 : 'auto',
-                       bottom                : 'auto',
-                         marginRight           : '-50%',
-                         transform             : 'translate(-50%, -50%)'
-                       }
-                   }} >
+                    content : {
+                        top                   : '50%',
+                        left                  : '50%',
+                        right                 : 'auto',
+                      bottom                : 'auto',
+                        marginRight           : '-50%',
+                        transform             : 'translate(-50%, -50%)'
+                      }
+                  }} >
                   <p className="lead">You are about to delete your this mentor profile and re create it with new details!</p>
                   <button className="btn btn-dark" onClick={this.onDeleteClick1.bind(this)} >
-                     Continue
+                    Continue
                   </button>
                   <button className="btn btn-info" onClick={this.handleCloseModalother}>Cancel</button>
               </ReactModal>
 
               <header>
-                <nav className="site-header fixed-top py-1">
-                  <div className="container d-flex flex-column flex-md-row justify-content-between">
-                    <img  src="/style/tutorlogo1.png" alt="Generic placeholder image" width="120" height="41" />
-                    <a className="py-2 d-none d-md-inline-block" href="/">Back to Home</a>
-                  </div>
-                </nav>
-              </header>
+                    <nav className="site-header fixed-top py-1">
+                    <div className="container d-flex flex-column flex-md-row justify-content-between">
+                      <img  src="/style/logooo.jpg"
+                      alt="Generic placeholder image" width="100" height="62.5" />
+                      <a className="myNav text-dark" href="/">Home</a>
+                      <a className="myNav text-dark" href="/posts">Search</a>
+                      <a className="myNav text-dark" href="/lectures">Lectures</a>
+                      <a className="myNav text-dark" href="/create_request">Requests</a>
+                      <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+                    </div>
+                  </nav>
+                  </header>
               <div className="row">
-                <nav data-aos='fade-right' className="col-md-2 d-none d-md-block bg-light sidebar">
+                <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
                   <div className="sidebar-sticky">
                     <ul className="nav flex-column">
                       <li className="nav-item">
@@ -193,7 +250,7 @@ render() {
                         </a>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href={ProfilePage} >
+                        <a className="nav-link" href={mychats} >
                         <span data-feather="file"></span>
                           Messeges
                         </a>
@@ -234,28 +291,37 @@ render() {
                   </div>
                 </nav>
                 <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
-                  <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 className="display-5 text-light ">Hi! {post.name}</h1>
+                <div>
+                <img  className="ProImage" src="/style/ham.png" alt="Generic placeholder image" width="120" height="120" />
+                <h2 className="Pro-name text-light" >{post.name}</h2>
+                {this.renderRatings(post.rating,'Pro-body2 text-light','stttt1')}
+                <p className='Pro-body text-light pt-4'>@{post.username}</p>
+                <p className='Pro-location text-info pt-4'>Karachi,Pakistan </p>
+                <p className='Pro-des text-muted pt-5'>{post.description}</p>
                   </div>
-                  <h6 className=" text-primary">@{post.username} </h6>
-                    <h6 className="text-warning"><img  src="/style/qua.png" width="20" height="20" />
-                    Qualification: <span className="text-light" > {post.content}</span></h6>
-                    <h6 className="text-warning"><img  src="/style/ava.png" width="20" height="20" />
-                     Available for: <span className="text-light"> {post.classes}</span></h6>
-                    <h6 className="text-warning"><img  src="/style/credit.png" width="20" height="20" />
-                     Tution Fee: <span className="text-light"> {post.salary}</span></h6>
-                    <h6 className="text-warning"><img  src="/style/loc.png" width="20" height="20" />
-                     Location: <span className="text-light"> {post.location}</span></h6>
-                    <h6 className="text-warning"><img  src="/style/cont.png" width="20" height="20" />
-                     Contact Details: <span className="text-light"> {post.number}</span></h6>
-                    <h6 className="text-warning"><img  src="/style/address.png" width="20" height="20" />
-                     Address: <span className="text-light"> {post.mark}</span></h6>
-                    <h5 className="border-bottom text-light">Reviews</h5>
-                    <div className="media text-warning pt-3">
-                      <ul>
-                        {this.renderChats()}
-                      </ul>
-                    </div>    
+                
+                <div className="myBox6 mt-5 ml-3">
+                <h6 className="smhd pb-2">Profile Details</h6>     
+                <p className='Details'>Qualification:<span className='pl-5 text-primary'>{post.content}</span> </p>
+                <p className='Details'>Available for:<span className='pl-5 text-primary'>{post.classes}</span> </p>
+                <p className='Details'>Core Subjects:<span className='details2 text-primary'>{post.subjects}</span> </p>
+                <p className='Details'>Tution fee:<span className='details3 text-primary'>{post.salary}</span> </p>
+                </div>   
+                <div className="myBox7 mt-5">
+                <h6 className="smhd pb-2">Contact Details</h6> 
+                <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faEnvelope }/>Email: </p>
+                      <p className='Details text-primary mb-0 pb-3 pl-5'>{post.email}</p>
+                      <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faPhoneAlt }/>Conatct: </p>
+                      <p className='Details text-primary mb-0 pb-3 pl-5'>{post.number}</p>
+                      <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faAddressCard }/>Address: </p>       
+                      <p className='Details text-primary mb-0 pb-3 pl-5'>{post.mark}</p>
+                </div> 
+                <div className="myBox8 ml-3">
+                <h6 className="smhd pb-4">Reviews</h6>     
+                  {this.renderChats()}
+                </div> 
+                
+                    
                 </main>
               </div>
             </div>
@@ -264,8 +330,9 @@ render() {
       }
     );
   }
-}
 
+
+}
 
 function mapStateToProps(state){  
   return { posts: state.posts };

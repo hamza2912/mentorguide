@@ -15,27 +15,43 @@ class CreateAccount extends Component {
 
   componentDidMount() {
       AOS.init({
-        duration : 2000
+        duration : 500
       })
   }
 
   render() {
       return (
-        <div class="text-center dark-color">
-          <div class = "center-place">
-            <form class="text-center form-signin" >
-              <img data-aos="fade-right"data-aos-anchor="#example-anchor" data-aos-offset="500"data-aos-duration="500" src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
-              <p class="font-cursive text-light">Please Choose Sign up options</p>
-                <Link to="/create_tutor" className="btn btn-block  btn-info btn-sm">Create Mentor Account</Link>
-                <Link to="/create_user" className="btn btn-block  btn-info btn-sm">Create Student/User Account</Link>
-                <Link to="/" className="btn btn-block  btn-danger btn-sm">Cancel</Link>
-            </form>
-            <footer class="my-5 pt-5 text-muted text-center text-small">
-              <p class="text-center text-light">&copy; Pixiv Studios, Inc. &middot;</p>
-              <a href="#">All Rights Reserved</a>
-            </footer>
-          </div>
-        </div>
+        <main>
+        <header>
+        <nav className="site-header fixed-top py-1">
+              <div className="container d-flex flex-column flex-md-row justify-content-between">
+                <img  src="/style/logooo.jpg"
+                alt="Generic placeholder image" width="100" height="62.5" />
+                <a className="myNav text-dark" href="/">Home</a>
+                <a className="myNav text-dark" href="/posts">Search</a>
+                <a className="myNav text-dark" href="/lectures">Lectures</a>
+                <a className="myNav text-dark" href="/create_request">Requests</a>
+                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+              </div>
+            </nav>
+            </header>
+            <div className="text-center bglogin">
+              <div  className = "center-place">
+              <h4 className="Sans6 ">Create Account</h4>
+              <div className="Sans6border mx-50" ></div>
+              <p data-aos="fade-up" className="font-ylish text-muted mt-5 mb-4 mx-25">Please choose sign up options below. Already have an account? <a href="/posts/new"> Sign In </a> now</p>
+              <form className="form-signin" >
+                <div className="py-1">
+                  <Link to="/create_tutor" className="text-center myLink">Create Mentor Account ></Link>
+                </div>
+                <div className="py-1">
+                  <Link to="/create_user" className="text-center myLink">Create User Account ></Link>
+                  </div>
+               </form>
+              
+              </div>
+            </div>
+      </main>
       );
   }
 
