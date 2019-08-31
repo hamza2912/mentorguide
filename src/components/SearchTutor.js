@@ -16,7 +16,7 @@ import { faMapMarkerAlt , faStar , faSearch , faArrowRight } from '@fortawesome/
 
 
 class SearchTutor extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = { Area: "" , check: 1};
@@ -40,7 +40,7 @@ class SearchTutor extends Component {
         <p className={pclass}><span className='pr-1'>{rate}</span>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else if (rate > 2 && rate <= 3) {
@@ -49,7 +49,7 @@ class SearchTutor extends Component {
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else if (rate > 3 && rate <= 4 && rate > 4) {
@@ -59,7 +59,7 @@ class SearchTutor extends Component {
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else {
@@ -67,12 +67,12 @@ class SearchTutor extends Component {
           <p className={pclass}><span className='pr-1'>{rate}</span>
           <FontAwesomeIcon className={icoclass} icon={ faStar }/>
           </p>
-        );  
+        );
     }
 
 
   }
-  
+
   renderPosts() {
 
 
@@ -81,13 +81,13 @@ class SearchTutor extends Component {
     }
 
     else if (this.state.Area !== "") {
-      
+
         return _.map(this.props.posts, post => {
-      
+
             if (post.location === this.state.Area) {
               var ProfilePage = `/posts/${post._id}`;
                 return (
-                    <div className="dp pb-5">        
+                    <div className="dp pb-5">
                       <img   src="/style/dp.png" alt="Generic placeholder image" width="35" height="35" />
                       <p className="dp-name" >{post.name}</p>
                       {this.renderRatings(post.rating, "dp-name2", 'stttt' )}
@@ -99,8 +99,8 @@ class SearchTutor extends Component {
                 );
             }
         });
-    } 
-    return (<p className="py-3 text-muted font-ylish">Select your area above to get list of tutors in your area</p>); 
+    }
+    return (<p className="py-3 text-muted font-ylish">Select your area above to get list of tutors in your area</p>);
   }
 
   handleChange(event) {
@@ -110,10 +110,10 @@ class SearchTutor extends Component {
   render() {
       return (
 
-      <div className="bg-bowl">       
-        
+      <div className="bg-bowl">
+
       <header>
-            <nav className="site-header fixed-top py-1">
+            <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -139,10 +139,10 @@ class SearchTutor extends Component {
                   <label for="thissearch" className="sr-only"><FontAwesomeIcon icon={ faSearch }/>
                   <span className='pl-1'>Hii</span></label>
                     <select  className="form-search" id="thissearch" name="thissearch" onChange = {this.handleChange}>
-                      <option>Find your area</option> <option>Baldia</option> <option>Buffer-Zone</option> <option>Defence</option>  
-                      <option>Fedral-B-Area</option><option>Gadap</option> <option>Gulberg</option> <option>Gulshan</option> 
-                      <option>Gulshan-e-Meymar</option><option>Jamsh1ed Town</option> 
-                      <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option> 
+                      <option>Find your area</option> <option>Baldia</option> <option>Buffer-Zone</option> <option>Defence</option>
+                      <option>Fedral-B-Area</option><option>Gadap</option> <option>Gulberg</option> <option>Gulshan</option>
+                      <option>Gulshan-e-Meymar</option><option>Jamsh1ed Town</option>
+                      <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option>
                       <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
                       <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option>
                     </select>
@@ -157,13 +157,13 @@ class SearchTutor extends Component {
           <FontAwesomeIcon icon={ faMapMarkerAlt }/>
           <span className='pl-1'>Karachi, Pakistan</span></p>
             <div className="myBox mt-4 ml-3">
-              <h6 className="smhd pb-4">Tutors</h6> 
+              <h6 className="smhd pb-4">Tutors</h6>
                  {this.renderPosts()}
-            </div>      
+            </div>
           </main>
-        </div>      
-      </div> 
-    );  
+        </div>
+      </div>
+    );
   }
 
 }

@@ -40,8 +40,8 @@ class UserSignIn extends Component {
   }
 
   onSubmit(values) {
-  
-    return _.map(this.props.posts, post => {     
+
+    return _.map(this.props.posts, post => {
       if (post.username === this.state.Username) {
         if (post.password === this.state.pass) {
             var UserLogin = true;
@@ -60,7 +60,7 @@ class UserSignIn extends Component {
     return (
       <main>
         <header>
-        <nav className="site-header fixed-top py-1">
+        <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -95,7 +95,7 @@ class UserSignIn extends Component {
 function mapStateToProps(state) {
 
   return { posts: state.posts };
-  
+
 }
 
 

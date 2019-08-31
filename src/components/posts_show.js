@@ -41,8 +41,8 @@ class PostsShow extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleOpenModal2 = this.handleOpenModal2.bind(this);
     this.handleCloseModal2 = this.handleCloseModal2.bind(this);
-    
-  
+
+
   }
 
   handleOpenModal () {
@@ -50,7 +50,7 @@ class PostsShow extends Component {
         this.setState({ show1: true });
     }
   }
-  
+
   handleCloseModal () {
     this.setState({ show1: false });
   }
@@ -60,43 +60,43 @@ class PostsShow extends Component {
         this.setState({ show2: true });
     }
   }
-  
+
   handleCloseModal2 () {
     this.setState({ show2: false });
   }
 
   handleChange(event) {
-  
+
     this.setState({Messege: event.target.value});
-    
+
    }
 
   handleChange2(event) {
-  
+
     this.setState({Messege2: event.target.value});
-   
+
 
   }
 
   handleChange3(event) {
-  
+
     this.setState({Rating: event.target.value});
 
   }
 
   componentDidMount() {
-      
+
     this.props.fetchPosts();
     AOS.init({
       duration : 1000
     })
-    
+
 }
 
   renderChats() {
 
     const { id } = this.props.match.params;
-    
+
     return _.map(this.props.posts, post => {
 
       var tutorId = post._id.toString();
@@ -111,12 +111,12 @@ class PostsShow extends Component {
             }
           }
           return (
-              <div className="dp pb-5">       
+              <div className="dp pb-5">
                 <img  className="" src="/style/dp.png" alt="Generic placeholder image" width="35" height="35" />
                  <p className="dp-name" >{user}</p>
                   <p className="dp-name2" > 14 Aug, 2016</p>
                   <p className="dp-body" >{review}</p>
-              </div>   
+              </div>
           );
       });
       }
@@ -128,11 +128,11 @@ class PostsShow extends Component {
     const { id } = this.props.match.params;
 
     var userName = JSON.parse(localStorage.getItem('UserName'));
-    
+
     if(this.state.Messege!== ""){
-    
+
       _.map(this.props.posts, post => {
-  
+
         var tutorId = post._id.toString();
 
         if (tutorId === id) {
@@ -140,7 +140,7 @@ class PostsShow extends Component {
             reviews.push(`${userName}: ${this.state.Messege}`);
             this.props.addComments(tutorId,reviews);
         }
-    }); 
+    });
   }
   window.location.reload();
   }
@@ -148,20 +148,20 @@ class PostsShow extends Component {
   onSubmit2(){
 
     this.setState({ show1: true });
-    
+
   }
 
   onSubmit4(){
 
     this.setState({ show2: true });
-    
+
   }
 
   onSubmit3(){
 
     const { id } = this.props.match.params;
     if(this.state.Messege2!== ""){
-    
+
     var userName = JSON.parse(localStorage.getItem('UserName'));
     return _.map(this.props.posts, post => {
 
@@ -173,7 +173,7 @@ class PostsShow extends Component {
               this.props.addMesseges(tutorId,messeges);
               window.location.reload();
           }
-      }); 
+      });
       }
   }
 
@@ -181,7 +181,7 @@ class PostsShow extends Component {
 
     const { id } = this.props.match.params;
     if(this.state.Rating!== ""){
-    
+
     return _.map(this.props.posts, post => {
 
           var tutorId = post._id.toString();
@@ -194,8 +194,8 @@ class PostsShow extends Component {
               this.props.addRatings(tutorId,rateobject);
               window.location.reload();
           }
-      }); 
-     
+      });
+
       }
   }
 
@@ -206,7 +206,7 @@ class PostsShow extends Component {
         <p className={pclass}><span className='pr-1'>{rate}</span>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else if (rate > 2 && rate <= 3) {
@@ -215,7 +215,7 @@ class PostsShow extends Component {
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else if (rate > 3 && rate <= 4 && rate > 4) {
@@ -225,7 +225,7 @@ class PostsShow extends Component {
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else {
@@ -233,7 +233,7 @@ class PostsShow extends Component {
           <p className={pclass}><span className='pr-1'>{rate}</span>
           <FontAwesomeIcon className={icoclass} icon={ faStar }/>
           </p>
-        );  
+        );
     }
 
 
@@ -242,21 +242,21 @@ class PostsShow extends Component {
   render() {
 
       const { id } = this.props.match.params;
-      
+
       if (!this.props.posts) {
         return <div>Loading...</div>;
       }
 
       return _.map(this.props.posts, post => {
-    
+
         var tutorId = post._id.toString();
 
         if (tutorId === id) {
           return (
 
             <div className="proback">
-        
-        <ReactModal 
+
+        <ReactModal
                   isOpen={this.state.show1}
                   contentLabel="Minimal Modal Example3"
                   style={{
@@ -266,7 +266,7 @@ class PostsShow extends Component {
                         right                 : 'auto',
                         bottom                : 'auto',
                         marginRight           : '-50%',
-                        width                 : '50%', 
+                        width                 : '50%',
                         transform             : 'translate(-50%, -50%)'
                       }
                   }} >
@@ -281,7 +281,7 @@ class PostsShow extends Component {
                   <button className="btn btn-dark" onClick= {this.handleCloseModal} >Cancel</button>
               </ReactModal>
 
-              <ReactModal 
+              <ReactModal
                   isOpen={this.state.show2}
                   contentLabel="Minimal Modal Example3"
                   style={{
@@ -291,7 +291,7 @@ class PostsShow extends Component {
                         right                 : 'auto',
                         bottom                : 'auto',
                         marginRight           : '-50%',
-                        width                 : '50%', 
+                        width                 : '50%',
                         transform             : 'translate(-50%, -50%)'
                       }
                   }} >
@@ -310,7 +310,7 @@ class PostsShow extends Component {
                     <input type="radio" name="stars" value="3" onChange = {this.handleChange3} />
                     <span class="icon">★</span>
                     <span class="icon">★</span>
-                    <span class="icon">★</span>   
+                    <span class="icon">★</span>
                   </label>
                   <label>
                     <input type="radio" name="stars" value="4" onChange = {this.handleChange3} />
@@ -332,9 +332,9 @@ class PostsShow extends Component {
                   <button className="btn btn-info" onClick= {this.onSubmit5} >Rate</button>
                   <button className="btn btn-dark" onClick= {this.handleCloseModal2} >Cancel</button>
               </ReactModal>
-    
+
                     <header>
-                          <nav className="site-header fixed-top py-1">
+                          <nav className="site-header fixed-top">
                           <div className="container d-flex flex-column flex-md-row justify-content-between">
                             <img  src="/style/logooo.jpg"
                             alt="Generic placeholder image" width="100" height="62.5" />
@@ -371,7 +371,7 @@ class PostsShow extends Component {
                                         <span data-feather="file-text"></span>
                                           Send Messege
                                       </button>
-                                    </li>                           
+                                    </li>
                                   </ul>
                                   <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                   <span>Rate This Tutor</span>
@@ -382,7 +382,7 @@ class PostsShow extends Component {
                                         <span data-feather="file-text"></span>
                                           Rate Now
                                       </button>
-                                    </li>                           
+                                    </li>
                                   </ul>
                         </div>
                       </nav>
@@ -395,33 +395,33 @@ class PostsShow extends Component {
                       <p className='Pro-location text-info pt-4'>Karachi,Pakistan </p>
                       <p className='Pro-des text-muted pt-5'>I am an Electrical Engineer from Habib university. We take teaching as my passion and more interested. </p>
                         </div>
-                      
+
                       <div className="myBox6 mt-5 ml-3">
-                      <h6 className="smhd pb-2">Profile Details</h6>     
+                      <h6 className="smhd pb-2">Profile Details</h6>
                       <p className='Details'>Qualification:<span className='pl-5 text-primary'>{post.content}</span> </p>
                       <p className='Details'>Available for:<span className='pl-5 text-primary'>{post.classes}</span> </p>
                       <p className='Details'>Core Subjects:<span className='details2 text-primary'>{post.subjects}</span> </p>
                       <p className='Details'>Tution fee:<span className='details3 text-primary'>{post.salary}</span> </p>
-                      </div>   
+                      </div>
                       <div className="myBox7 mt-5">
-                      <h6 className="smhd pb-2">Contact Details</h6> 
+                      <h6 className="smhd pb-2">Contact Details</h6>
                       <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faEnvelope }/>Email: </p>
                       <p className='Details text-primary mb-0 pb-3 pl-5'>{post.email}</p>
                       <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faPhoneAlt }/>Conatct: </p>
                       <p className='Details text-primary mb-0 pb-3 pl-5'>{post.number}</p>
-                      <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faAddressCard }/>Address: </p>       
+                      <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faAddressCard }/>Address: </p>
                       <p className='Details text-primary mb-0 pb-3 pl-5'>{post.mark}</p>
-                      </div> 
+                      </div>
                       <div className="myBox8 ml-3">
-                      <h6 className="smhd pb-2">Reviews</h6> 
-                      <div className='pb-3'>  
+                      <h6 className="smhd pb-2">Reviews</h6>
+                      <div className='pb-3'>
                       <textarea className="form-review" rows="1" placeholder="Leave a comment.."  onChange = {this.handleChange}></textarea>
                       <button className="myLink2" onClick={this.onSubmit}>
                       <FontAwesomeIcon className='stttt2' icon={ faCommentMedical }/>
-                      </button>  
-                      </div>          
+                      </button>
+                      </div>
                       {this.renderChats()}
-                      </div> 
+                      </div>
                       </main>
                     </div>
                   </div>
@@ -429,8 +429,8 @@ class PostsShow extends Component {
           }
         }
       );
-    
-    } 
+
+    }
 }
 
 

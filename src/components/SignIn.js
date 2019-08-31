@@ -24,7 +24,7 @@ class SignIn extends Component {
     return (
       <main>
         <header>
-        <nav className="site-header fixed-top py-1">
+        <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -49,7 +49,7 @@ class SignIn extends Component {
                   <Link to="/sign_tutor" className="text-center myLink">Sign in as a Tutor ></Link>
                   </div>
                </form>
-              
+
               </div>
             </div>
       </main>

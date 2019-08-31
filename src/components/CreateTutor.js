@@ -45,11 +45,11 @@ class CreateTutor extends Component {
   }
 
   renderFieldPhoto(field) {
-    
+
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? "has-danger" : ""}`;
-    
-    return (    
+
+    return (
       <div className={className}>
         <label>{field.label}</label>
         <input className="form-account" placeholder={field.placeholder}  type="file" onChange={(e)=>this._handleImageChange(e)} />
@@ -59,13 +59,13 @@ class CreateTutor extends Component {
       </div>
     );
   }
-  
+
   renderField(field) {
-    
+
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? "has-danger" : ""}`;
-    
-    return (    
+
+    return (
       <div className={className}>
         <label>{field.label}</label>
         <input className="form-account" placeholder={field.placeholder} type="tutor" {...field.input} />
@@ -77,11 +77,11 @@ class CreateTutor extends Component {
   }
 
   renderFieldPass(field) {
-    
+
     const { meta: { touched, error } } = field;
-    const className = `form-group ${touched && error ? "has-danger" : ""}`;  
-    
-    return (    
+    const className = `form-group ${touched && error ? "has-danger" : ""}`;
+
+    return (
       <div className={className}>
         <label>{field.label}</label>
         <input className="form-account" placeholder={field.placeholder} type="password" name="password" {...field.input} />
@@ -93,61 +93,61 @@ class CreateTutor extends Component {
   }
 
   renderFieldNew(field) {
-    
+
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? "has-danger" : ""}`;
-    
+
     return (
       <div className={className}>
         <label>{field.label}</label>
         <select className="form-account" type="tutor" {...field.input} ><option>Target Area</option>
           <option>Baldia</option><option>Buffer-Zone</option> <option>Defence</option> <option>Fedral-B-Area</option>
-          <option>Gadap</option> <option>Gulberg</option><option>Gulshan-e-Meymar</option> 
-          <option>Gulshan</option> <option>Jamshed Town</option> 
-          <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option> 
+          <option>Gadap</option> <option>Gulberg</option><option>Gulshan-e-Meymar</option>
+          <option>Gulshan</option> <option>Jamshed Town</option>
+          <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option>
           <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
           <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option>
         </select>
         <div className="text-help">
           {touched ? error : ""}
-        </div> 
-     </div> 
+        </div>
+     </div>
     );
   }
-  
+
   renderFieldCity(field) {
-    
+
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? "has-danger" : ""}`;
-    
+
     return (
       <div className={className}>
         <label>{field.label}</label>
         <select className="form-account" type="tutor"  ><option>Karachi</option></select>
         <div className="text-help">
           {touched ? error : ""}
-        </div> 
-      </div> 
+        </div>
+      </div>
     );
   }
 
   onSubmit(values) {
-    
+
     this.props.createPost(values, () => {
-    
+
       this.props.history.push("/sign_tutor");
 
     });
   }
-  
+
   render() {
-    
+
     const { handleSubmit } = this.props;
 
     return (
       <main>
         <header>
-        <nav className="site-header fixed-top py-1">
+        <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -164,19 +164,19 @@ class CreateTutor extends Component {
         <h4 className="Sans6" >Create Account</h4>
               <div className="Sans6border mx-50" ></div>
               <p data-aos="fade-up" className="font-ylish text-muted my-4 mx-25">Please fill in below information to create your account. Do you have an account already? <a href="/sign_user"> Sign In </a>now</p>
-            <form className= "form-account"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
-              <Field         
+            <form className= "form-account"  onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+              <Field
               placeholder="Name"
               name="name"
               component={this.renderField}
               />
-              
+
               <Field
               placeholder="Username"
               name="username"
               component={this.renderField}
               />
-              
+
               <Field
               placeholder="Password"
               name="password"
@@ -187,7 +187,7 @@ class CreateTutor extends Component {
               name="content"
               component={this.renderField}
               />
-              
+
               <Field
               placeholder="Tution classes"
               name="classes"
@@ -205,7 +205,7 @@ class CreateTutor extends Component {
               name="salary"
               component={this.renderField}
               />
-              
+
               <Field
               name="city"
               component={this.renderFieldCity}
@@ -234,15 +234,15 @@ class CreateTutor extends Component {
               component={this.renderField}
               />
 
-              
+
               <Field
               placeholder="Description (One or two Liner)"
               name="description"
               component={this.renderField}
               />
-              
-              
-              
+
+
+
               <button type="submit" className="btnn btnfont">Continue</button>
             </form>
         </div>
@@ -254,14 +254,14 @@ class CreateTutor extends Component {
 
 
 function validate(values) {
-  
+
   const errors = {};
-  
+
   // Validate the inputs from 'values'
   if (!values.name) {
     errors.name = "Enter Your Name";
   }
-  
+
   if (!values.username) {
     errors.username = "Enter your username";
   }
@@ -290,11 +290,11 @@ function validate(values) {
   if (!values.password) {
     errors.password = "Enter password for username";
   }
-  
+
   if (!values.location) {
     errors.location = "Select your location";
   }
-  
+
   return errors;
 }
 
@@ -304,7 +304,7 @@ export default reduxForm({
   form: "PostsNewForm"
 })(connect(null, { createPost })(CreateTutor));
 
-/* 
+/*
 <Field
               placeholder="Photo (optional)"
               name="photo"

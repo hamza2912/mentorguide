@@ -20,7 +20,7 @@ import { Player } from 'video-react';
 
 
 class Lectures extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = { Body: {} , Messege: "" , Email: "" , Messeges: {}, show1: false}
@@ -40,30 +40,30 @@ class Lectures extends Component {
   }
 
   handleOpenModal () {
-    
+
     if(this.state.Messege !== ""){
-      
+
       this.setState({ show1: true });
-    
+
     }
   }
 
   handleCloseModal () {
-    
+
     this.setState({ show1: false });
-  
+
   }
 
   handleChange(event) {
-    
+
     this.setState({Messege: event.target.value});
-    
+
   }
-  
+
   handleChange1(event) {
-      
+
     this.setState({Email: event.target.value});
-      
+
   }
 
   onSubmit(){
@@ -73,17 +73,17 @@ class Lectures extends Component {
       this.state.Body.Email = this.state.Email;
       this.props.createTutorRequest(this.state.Body);
       this.setState({ show1: true });
-    } 
-    
+    }
+
   }
 
   render() {
-      
+
     return (
 
-  
-    <div className="bg-vid">  
-      <ReactModal 
+
+    <div className="bg-vid">
+      <ReactModal
             isOpen={this.state.show1}
             contentLabel="Minimal Modal Example3"
             style={{
@@ -98,9 +98,9 @@ class Lectures extends Component {
             }} >
             <p className="lead">Your Tutor request has been successfully posted.</p>
             <Link className="btn btn-primary" to= "/" >Close</Link>
-        </ReactModal>     
+        </ReactModal>
         <header>
-          <nav className="site-header fixed-top py-1">
+          <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -126,7 +126,7 @@ class Lectures extends Component {
                   </form>
                 <div className="myBox9 mt-4 ml-5">
                 <h6 className="smhd pb-2">Most Popular</h6>
-                <div className='d-flex flex-column flex-md-row justify-content-between'> 
+                <div className='d-flex flex-column flex-md-row justify-content-between'>
                 <Player fluid={false}  width={320} height={200} >
                 <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
 
@@ -140,20 +140,20 @@ class Lectures extends Component {
 
                 </Player>
                 </div>
-                </div>      
+                </div>
               </main>
-            </div>      
-    </div> 
-    );  
-  } 
-  
+            </div>
+    </div>
+    );
+  }
+
 }
 
 
 function mapStateToProps(state) {
-  
+
   return { posts: state.posts };
- 
+
 }
 
 export default connect(mapStateToProps, {createTutorRequest})(Lectures);

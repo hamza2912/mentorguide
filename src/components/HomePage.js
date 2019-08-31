@@ -28,16 +28,16 @@ class HomePage extends Component {
   }
 
   render() {
-    
+
     var Logged = JSON.parse(localStorage.getItem('Logged'));
     var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
-    
+
     if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
       return (
         <main role="main">
           <header>
-            <nav className="site-header fixed-top py-1">
+            <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -45,20 +45,25 @@ class HomePage extends Component {
                 <a className="myNav text-dark" href="/posts">Search</a>
                 <a className="myNav text-dark" href="/lectures">Lectures</a>
                 <a className="myNav text-dark" href="/create_request">Requests</a>
-                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+                <div className='d-flex align-items-center'>
+                  <Link className="btn btn-default" to="/sign">Sign In</Link>
+                </div>
               </div>
             </nav>
           </header>
-          
+
           <div className="main-color">
 
             <div className="carousel-item active">
                   <div className="container">
                     <div data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
-                      <h1 className="Sans1">TUTOR</h1>
-                      <h1 className="gde">G<span className="UI">UI</span>DE</h1>
+                      <h1 className='main-heading'>
+                          Tutor
+                          <br />
+                          Guide
+                        </h1>
                       <p className="tebox">Now get tutors in your city while sitting at your home.</p>
-                      <Link className="bluebutton  text-light" to="/create"> Get Started   </Link>
+                      <Link className="btn btn-default btn-lg" to="/create"> Get Started</Link>
                     </div>
                   </div>
             </div>
@@ -67,8 +72,8 @@ class HomePage extends Component {
                 <div className="separator" align="center">
                   <div  data-aos="fade-up" data-aos-duration="500">
                     <h2 className="Sans2" >Search your favorite Tutors</h2>
-                    <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
-                    <Link className="btnn btnfont" to="/sign"> Search Now       </Link>
+                    <p className="text-muted margin-bottom--x2">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
+                    <Link className="btn btn-secondary" to="/sign"> Search Now       </Link>
                   </div>
                   <div data-aos='zoom-in'>
                   <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
@@ -83,7 +88,7 @@ class HomePage extends Component {
                     <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
                     <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
                   </div>
-                  <div class="row comp1 separator3">
+                  <div class="row comp1 margin-top--x4 margin-bottom--x2">
                         <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
                           <img class="rounded-circle" src="./style/SignUp.png"
                             alt="Generic placeholder image" width="140" height="140" />
@@ -101,7 +106,7 @@ class HomePage extends Component {
                         </div>
                    </div>
                   <div className='separator4'>
-                   <Link className="btnn btnfont" to="/sign"> Create Now       </Link>
+                   <Link className="btn btn-secondary" to="/sign"> Create Now       </Link>
                   </div>
                 </div>
               </div>
@@ -112,7 +117,7 @@ class HomePage extends Component {
                   <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
                     <h2 className="featurette-heading Sans2">Tutor Requests</h2>
                     <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btnn btnfont" to="/sign"> Post Now </Link>
+                    <Link className="btn btn-secondary" to="/sign"> Post Now </Link>
                   </div>
                   <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
                     <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
@@ -174,22 +179,22 @@ class HomePage extends Component {
       return (
         <main role="main">
         <header>
-          <nav className="site-header fixed-top py-1">
+          <nav className="site-header fixed-top">
             <div className="container d-flex flex-column flex-md-row justify-content-between">
               <img  src="/style/logooo.jpg"
               alt="Generic placeholder image" width="100" height="62.5" />
               <a className="myNav text-dark" href="/">Home</a>
               <a className="myNav text-dark" href="/posts">Search</a>
               <a className="myNav text-dark" href="/lectures">Lectures</a>
-              <a className="myNav text-dark" href="/create_request">Requests</a><div class="dropdown py-2 d-none d-md-inline-block text-light">
+              <a className="myNav text-dark" href="/create_request">Requests</a><div class="dropdown py-2 d-none d-md-inline-block ">
                   <span>. . .</span>
                   <div class="dropdown-content">
                   <ul>
                     <li>
-                      <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                      <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
                     </li>
                     <li>
-                      <a className="text-light py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
+                      <a className=" py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
                     </li>
                   </ul>
                   </div>
@@ -197,7 +202,7 @@ class HomePage extends Component {
             </div>
           </nav>
         </header>
-        
+
         <div className="main-color">
 
           <div className="carousel-item active">
@@ -206,7 +211,7 @@ class HomePage extends Component {
                     <h1 className="Sans1">TUTOR</h1>
                     <h1 className="gde">G<span className="UI">UI</span>DE</h1>
                     <p className="tebox">Now get tutors in your city while sitting at your home.</p>
-                    <Link className="bluebutton  text-light" to="/create"> Get Started   </Link>
+                    <Link className="btn btn-default  " to="/create"> Get Started   </Link>
                   </div>
                 </div>
           </div>
@@ -216,7 +221,7 @@ class HomePage extends Component {
                 <div  data-aos="fade-up" data-aos-duration="500">
                   <h2 className="Sans2" >Search your favorite Tutors</h2>
                   <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
-                  <Link className="btnn btnfont" to="/sign"> Search Now       </Link>
+                  <Link className="btn btn-secondary" to="/sign"> Search Now</Link>
                 </div>
                 <div data-aos='zoom-in'>
                 <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
@@ -249,7 +254,7 @@ class HomePage extends Component {
                       </div>
                  </div>
                 <div className='separator4'>
-                 <Link className="btnn btnfont" to="/sign"> Create Now       </Link>
+                 <Link className="btn btn-secondary" to="/sign"> Create Now       </Link>
                 </div>
               </div>
             </div>
@@ -260,7 +265,7 @@ class HomePage extends Component {
                 <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
                   <h2 className="featurette-heading Sans2">Tutor Requests</h2>
                   <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                  <Link className="btnn btnfont" to="/posts"> Post Now </Link>
+                  <Link className="btn btn-secondary" to="/posts"> Post Now </Link>
                 </div>
                 <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
                   <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
@@ -322,7 +327,7 @@ class HomePage extends Component {
       return (
         <main role="main">
           <header>
-            <nav className="site-header fixed-top py-1">
+            <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -330,12 +335,12 @@ class HomePage extends Component {
                 <a className="myNav text-dark" href="/posts">Search</a>
                 <a className="myNav text-dark" href="/lectures">Lectures</a>
                 <a className="myNav text-dark" href="/create_request">Requests</a>
-                <div class="dropdown py-2 d-none d-md-inline-block text-light">
+                <div class="dropdown py-2 d-none d-md-inline-block ">
                   <span>. . .</span>
                   <div class="dropdown-content">
                   <ul>
                     <li>
-                      <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                      <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
                     </li>
                   </ul>
                   </div>
@@ -343,7 +348,7 @@ class HomePage extends Component {
               </div>
             </nav>
           </header>
-          
+
           <div className="main-color">
 
             <div className="carousel-item active">
@@ -352,7 +357,7 @@ class HomePage extends Component {
                       <h1 className="Sans1">TUTOR</h1>
                       <h1 className="gde">G<span className="UI">UI</span>DE</h1>
                       <p className="tebox">Now get tutors in your city while sitting at your home.</p>
-                      <Link className="bluebutton  text-light" to="/create"> Get Started   </Link>
+                      <Link className="btn btn-default  " to="/create"> Get Started   </Link>
                     </div>
                   </div>
             </div>
@@ -362,7 +367,7 @@ class HomePage extends Component {
                   <div  data-aos="fade-up" data-aos-duration="500">
                     <h2 className="Sans2" >Search your favorite Tutors</h2>
                     <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
-                    <Link className="btnn btnfont" to="/sign"> Search Now       </Link>
+                    <Link className="btn btn-secondary" to="/sign"> Search Now       </Link>
                   </div>
                   <div data-aos='zoom-in'>
                   <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
@@ -395,7 +400,7 @@ class HomePage extends Component {
                         </div>
                    </div>
                   <div className='separator4'>
-                   <Link className="btnn btnfont" to="/sign"> Create Now       </Link>
+                   <Link className="btn btn-secondary" to="/sign"> Create Now       </Link>
                   </div>
                 </div>
               </div>
@@ -406,7 +411,7 @@ class HomePage extends Component {
                   <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
                     <h2 className="featurette-heading Sans2">Tutor Requests</h2>
                     <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btnn btnfont" to="/posts"> Post Now </Link>
+                    <Link className="btn btn-secondary" to="/posts"> Post Now </Link>
                   </div>
                   <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
                     <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
@@ -511,15 +516,15 @@ export default connect(mapStateToProps, { fetchPosts })(HomePage);
             */
 
 /*
-<div class="dropdown py-2 d-none d-md-inline-block text-light">
+<div class="dropdown py-2 d-none d-md-inline-block ">
                   <span>. . .</span>
                   <div class="dropdown-content">
                   <ul>
                     <li>
-                      <button className="btnnn text-light py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
+                      <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
                     </li>
                     <li>
-                      <a className="text-light py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
+                      <a className=" py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
                     </li>
                   </ul>
                   </div>

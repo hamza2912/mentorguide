@@ -31,15 +31,15 @@ class ProfileShow extends Component {
   handleOpenModal () {
     this.setState({ show1: true });
   }
-  
+
   handleCloseModal () {
     this.setState({ show1: false });
   }
-  
+
   handleOpenModalother () {
     this.setState({ show2: true });
   }
-  
+
   handleCloseModalother () {
     this.setState({ show2: false });
   }
@@ -54,7 +54,7 @@ class ProfileShow extends Component {
   componentDidUpdate() {
     this.renderChats();
   }
-  
+
   renderRatings(rate, pclass, icoclass){
 
     if (rate > 1 && rate <= 2) {
@@ -62,7 +62,7 @@ class ProfileShow extends Component {
         <p className={pclass}><span className='pr-1'>{rate}</span>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else if (rate > 2 && rate <= 3) {
@@ -71,7 +71,7 @@ class ProfileShow extends Component {
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else if (rate > 3 && rate <= 4 && rate > 4) {
@@ -81,7 +81,7 @@ class ProfileShow extends Component {
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
                       <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p> 
+                      </p>
       );
     }
     else {
@@ -89,18 +89,18 @@ class ProfileShow extends Component {
           <p className={pclass}><span className='pr-1'>{rate}</span>
           <FontAwesomeIcon className={icoclass} icon={ faStar }/>
           </p>
-        );  
+        );
     }
 
 
   }
-    
+
   onDeleteClick() {
-    
+
     const { id } = this.props.match.params;
 
     return _.map(this.props.posts, post => {
-        var tutorId = post.userId.toString();      
+        var tutorId = post.userId.toString();
         if (tutorId === id) {
           this.props.deletePost(id);
           var Logged = false;
@@ -136,7 +136,7 @@ class ProfileShow extends Component {
   renderChats() {
 
     const { id } = this.props.match.params;
-    
+
     return _.map(this.props.posts, post => {
 
       var tutorId = post._id.toString();
@@ -151,18 +151,18 @@ class ProfileShow extends Component {
             }
           }
           return (
-              <div className="dp pb-5">       
+              <div className="dp pb-5">
                 <img  className="" src="/style/dp.png" alt="Generic placeholder image" width="35" height="35" />
                  <p className="dp-name" >{user}</p>
                   <p className="dp-name2" > 14 Aug, 2016</p>
                   <p className="dp-body" >{review}</p>
-              </div>   
+              </div>
           );
       });
       }
     });
   }
- 
+
 
 render() {
 
@@ -175,20 +175,20 @@ render() {
     }
 
     return _.map(this.props.posts, post => {
-        
+
         var tutorId = post._id.toString();
-      
+
         if (tutorId === id) {
 
           var ProfilePage = `/profile/${id}/inbox`;
           localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
           var mychats = `/inbox/${id}`;
-          
-          return (                
-            
+
+          return (
+
             <div className="proback">
-    
-              <ReactModal 
+
+              <ReactModal
                   isOpen={this.state.show1}
                   contentLabel="Minimal Modal Example"
                   style={{
@@ -207,7 +207,7 @@ render() {
                   </button>
                   <button className="btn btn-info" onClick={this.handleCloseModal}>Cancel</button>
               </ReactModal>
-              <ReactModal 
+              <ReactModal
                   isOpen={this.state.show2}
                   contentLabel="Minimal Modal Example2"
                   style={{
@@ -228,7 +228,7 @@ render() {
               </ReactModal>
 
               <header>
-                    <nav className="site-header fixed-top py-1">
+                    <nav className="site-header fixed-top">
                     <div className="container d-flex flex-column flex-md-row justify-content-between">
                       <img  src="/style/logooo.jpg"
                       alt="Generic placeholder image" width="100" height="62.5" />
@@ -299,29 +299,29 @@ render() {
                 <p className='Pro-location text-info pt-4'>Karachi,Pakistan </p>
                 <p className='Pro-des text-muted pt-5'>{post.description}</p>
                   </div>
-                
+
                 <div className="myBox6 mt-5 ml-3">
-                <h6 className="smhd pb-2">Profile Details</h6>     
+                <h6 className="smhd pb-2">Profile Details</h6>
                 <p className='Details'>Qualification:<span className='pl-5 text-primary'>{post.content}</span> </p>
                 <p className='Details'>Available for:<span className='pl-5 text-primary'>{post.classes}</span> </p>
                 <p className='Details'>Core Subjects:<span className='details2 text-primary'>{post.subjects}</span> </p>
                 <p className='Details'>Tution fee:<span className='details3 text-primary'>{post.salary}</span> </p>
-                </div>   
+                </div>
                 <div className="myBox7 mt-5">
-                <h6 className="smhd pb-2">Contact Details</h6> 
+                <h6 className="smhd pb-2">Contact Details</h6>
                 <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faEnvelope }/>Email: </p>
                       <p className='Details text-primary mb-0 pb-3 pl-5'>{post.email}</p>
                       <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faPhoneAlt }/>Conatct: </p>
                       <p className='Details text-primary mb-0 pb-3 pl-5'>{post.number}</p>
-                      <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faAddressCard }/>Address: </p>       
+                      <p className='Details mb-0 pb-0'><FontAwesomeIcon className='stttt8' icon={ faAddressCard }/>Address: </p>
                       <p className='Details text-primary mb-0 pb-3 pl-5'>{post.mark}</p>
-                </div> 
+                </div>
                 <div className="myBox8 ml-3">
-                <h6 className="smhd pb-4">Reviews</h6>     
+                <h6 className="smhd pb-4">Reviews</h6>
                   {this.renderChats()}
-                </div> 
-                
-                    
+                </div>
+
+
                 </main>
               </div>
             </div>
@@ -334,7 +334,7 @@ render() {
 
 }
 
-function mapStateToProps(state){  
+function mapStateToProps(state){
   return { posts: state.posts };
 }
 

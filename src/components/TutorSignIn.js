@@ -14,7 +14,7 @@ class TutorSignIn extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { Username: "" , pass: ""};    
+    this.state = { Username: "" , pass: ""};
     this.updateUsername = this.updateUsername.bind(this);
     this.updatePass = this.updatePass.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -25,7 +25,7 @@ class TutorSignIn extends Component {
       Username: event.target.value
     });
   }
-  
+
   updatePass(event) {
     this.setState({
       pass: event.target.value
@@ -33,41 +33,41 @@ class TutorSignIn extends Component {
   }
 
   componentDidMount() {
-    
+
     this.props.fetchPosts();
-    
+
     AOS.init({
       duration : 500
     })
-    
+
   }
-  
+
   onSubmit(values) {
 
     return _.map(this.props.posts, post => {
        if (post.username === this.state.Username) {
          if(post.password===this.state.pass)
-         {  
+         {
             var Logged = true;
             var ProfilePage = `/profile/${post._id}`;
             localStorage.setItem('ProfilePage', JSON.stringify(ProfilePage));
             localStorage.setItem('Logged', JSON.stringify(Logged));
-            
+
           return (
             this.props.history.push(`/profile/${post._id}`)
           );
         }
-      }   
+      }
     });
   }
 
   render() {
-    
+
     return (
 
       <main>
         <header>
-        <nav className="site-header fixed-top py-1">
+        <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />

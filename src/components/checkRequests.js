@@ -16,7 +16,7 @@ import { faPhone , faVoicemail } from '@fortawesome/free-solid-svg-icons';
 
 
 class checkRequests extends Component {
-  
+
 
   renderChats() {
 
@@ -24,12 +24,12 @@ class checkRequests extends Component {
         return (
           <p className="py-3 text-muted font-ylish">No tutor requests yet</p>
         );
-      
+
     }
-    
+
     else {
       return _.map(this.props.posts, post => {
-        
+
         return (
           <li>
             <p class=" pb-3   lh-125 border-bottom border-gray">
@@ -40,11 +40,11 @@ class checkRequests extends Component {
         );
       });
     }
-    
+
   }
 
   componentDidMount() {
-      
+
     this.props.fetchTutorRequests();
     AOS.init({
       duration : 1000
@@ -56,12 +56,12 @@ class checkRequests extends Component {
 
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
 
-      
-    return ( 
-      
+
+    return (
+
       <div class="bg-bowl">
         <header>
-        <nav className="site-header fixed-top py-1">
+        <nav className="site-header fixed-top">
                           <div className="container d-flex flex-column flex-md-row justify-content-between">
                             <img  src="/style/logooo.jpg"
                             alt="Generic placeholder image" width="100" height="62.5" />
@@ -69,7 +69,7 @@ class checkRequests extends Component {
                             <a className="myNav text-dark" href="/posts">Search</a>
                             <a className="myNav text-dark" href="/lectures">Lectures</a>
                             <a className="myNav text-dark" href="/create_request">Requests</a>
-                            <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
+                            <Link className="btn btn-primary" to="/sign">Sign In</Link>
                           </div>
            </nav>
         </header>
@@ -95,17 +95,17 @@ class checkRequests extends Component {
           <p className="pl-5 text-info loca" >
           <span className='pl-1'>Catch recent ones</span></p>
             <div className="myBox mt-4 ml-3">
-              <h6 className="smhd pb-4">Posts</h6> 
+              <h6 className="smhd pb-4">Posts</h6>
               <div className="media text-muted mb-0">
                   <ul>
                     {this.renderChats()}
                   </ul>
                 </div>
-            </div>      
+            </div>
           </main>
-        </div>      
-      </div>    
-    );  
+        </div>
+      </div>
+    );
   }
 
 }
@@ -114,7 +114,7 @@ class checkRequests extends Component {
 function mapStateToProps(state) {
 
   return { posts: state.posts };
- 
+
 }
 
 export default connect(mapStateToProps, { fetchTutorRequests })(checkRequests);

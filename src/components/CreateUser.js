@@ -19,13 +19,13 @@ class CreateUser extends Component {
     })
 }
 
-  
+
   renderField(field) {
-    
+
     const { meta: { touched, error } } = field;
     const className = `${touched && error ? "has-danger" : ""}`;
-    
-    return (    
+
+    return (
       <div className={className}>
         <label>{field.label}</label>
         <input className="form-account" placeholder={field.placeholder} type="email" {...field.input} />
@@ -37,11 +37,11 @@ class CreateUser extends Component {
   }
 
   renderFieldPass(field) {
-    
+
     const { meta: { touched, error } } = field;
-    const className = `${touched && error ? "has-danger" : ""}`;  
-    
-    return (    
+    const className = `${touched && error ? "has-danger" : ""}`;
+
+    return (
       <div className={className}>
         <label>{field.label}</label>
         <input className="form-account" placeholder={field.placeholder} type="password" name="password" {...field.input} />
@@ -53,22 +53,22 @@ class CreateUser extends Component {
   }
 
   onSubmit(values) {
-    
+
     this.props.createUsers(values, () => {
-      
+
       this.props.history.push("/sign_user");
 
     });
   }
-  
+
   render() {
     const { handleSubmit } = this.props;
-    
-    
+
+
     return (
       <main>
       <header>
-      <nav className="site-header fixed-top py-1">
+      <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
                 <img  src="/style/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
@@ -84,9 +84,9 @@ class CreateUser extends Component {
        <div className="center-place">
         <h4 className="Sans6" >Create Account</h4>
               <div className="Sans6border mx-50" ></div>
-              <p data-aos="fade-up" className="font-ylish text-muted my-5 mx-25">Please fill in below information to create your account. Already have an account? <a href="/sign_user"> Sign In </a>now</p>  
-              <form className = "form-account" onSubmit={handleSubmit(this.onSubmit.bind(this))}>     
-                <Field          
+              <p data-aos="fade-up" className="font-ylish text-muted my-5 mx-25">Please fill in below information to create your account. Already have an account? <a href="/sign_user"> Sign In </a>now</p>
+              <form className = "form-account" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <Field
                 placeholder="Name"
                 name="name"
                 component={this.renderField}
@@ -112,22 +112,22 @@ class CreateUser extends Component {
 
 
 function validate(values) {
-  
+
   const errors = {};
-  
+
   // Validate the inputs from 'values'
   if (!values.name) {
     errors.name = "Enter Your Name";
   }
-  
+
   if (!values.username) {
     errors.username = "Enter your username";
   }
 
- 
+
   if (!values.password) {
     errors.password = "Enter password for username";
-  } 
+  }
   return errors;
 }
 
