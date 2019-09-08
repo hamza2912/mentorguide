@@ -243,7 +243,7 @@ class CreateTutor extends Component {
 
 
 
-              <button type="submit" className="btnn btnfont">Continue</button>
+              <button type="submit" className="btn btn-secondary">Continue</button>
             </form>
         </div>
       </div>

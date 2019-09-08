@@ -89,7 +89,7 @@ class TutorSignIn extends Component {
                   <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>
                   <label for="inputPassword" className="sr-only">Password</label>
                   <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required/>
-                  <button className="btnn btnfont mt-3" onClick={this.onSubmit}> Continue </button>
+                  <button className="btn btn-secondary mt-3" onClick={this.onSubmit}> Continue </button>
                 </form>
               </div>
             </div>

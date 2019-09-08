@@ -120,7 +120,7 @@ class CreateRequest extends Component {
                 <h6 className="smhd pb-3">Post Request</h6>
                     <textarea className='form-request' id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a Tutor for my child which is in 5 class. Tutor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
                     <input className='form-request' type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />
-                    <button className="btnn btnfont mt-2"  onClick={this.onSubmit}>
+                    <button className="btn btn-secondary mt-2"  onClick={this.onSubmit}>
                     Submit
                     </button>
 

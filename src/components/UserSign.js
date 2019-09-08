@@ -82,7 +82,7 @@ class UserSignIn extends Component {
                   <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>
                   <label for="inputPassword" className="sr-only">Password</label>
                   <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required/>
-                  <Link className="btnn btnfont" to="/posts"> Continue </Link>
+                  <Link className="btn btn-secondary" to="/posts"> Continue </Link>
                 </form>
               </div>
             </div>

@@ -840,6 +840,14 @@ color: #343a40;
 
 }
 
+.mac {
+  position: relative;
+  margin-top: -400px;
+  margin-left: 320px;
+  z-index:-1;
+
+}
+
 .UI {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bold;

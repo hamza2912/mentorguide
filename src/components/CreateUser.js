@@ -101,7 +101,7 @@ class CreateUser extends Component {
                 name="password"
                 component={this.renderFieldPass}
                 />
-                <button type="submit" className="btnn btnfont">Continue</button>
+                <button type="submit" className="btn btn-secondary">Continue</button>
               </form>
         </div>
       </div>

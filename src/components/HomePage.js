@@ -56,14 +56,15 @@ class HomePage extends Component {
 
             <div className="carousel-item active">
                   <div className="container">
-                    <div data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="carousel-caption text-left">
-                      <h1 className='main-heading'>
+                    <div  className="carousel-caption text-left">
+                      <h1 data-aos="fade-right" data-aos-anchor-placement="top-bottom" className='main-heading'>
                           Tutor
                           <br />
                           Guide
                         </h1>
-                      <p className="tebox">Now get tutors in your city while sitting at your home.</p>
-                      <Link className="btn btn-default btn-lg" to="/create"> Get Started</Link>
+                      <p data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="tebox">Now get tutors in your city while sitting at your home.</p>
+                      <Link data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="btn btn-default btn-lg" to="/create"> Get Started</Link>
+                      <img  src="/style/mac.png" class='mac' alt="Generic placeholder image" width="1000" height="600" />
                     </div>
                   </div>
             </div>
