@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { createPost } from "../actions";
 
 import AOS from 'aos';
+import Header from "./Header";
 
 
 class CreateTutor extends Component {
@@ -146,19 +147,7 @@ class CreateTutor extends Component {
 
     return (
       <main>
-        <header>
-        <nav className="site-header fixed-top">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
-                alt="Generic placeholder image" width="100" height="62.5" />
-                <a className="myNav text-dark" href="/">Home</a>
-                <a className="myNav text-dark" href="/posts">Search</a>
-                <a className="myNav text-dark" href="/lectures">Lectures</a>
-                <a className="myNav text-dark" href="/create_request">Requests</a>
-                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-              </div>
-            </nav>
-            </header>
+        <Header />
       <div className = "text-center bgCreate" >
         <div className="center-place">
         <h4 className="Sans6" >Create Account</h4>

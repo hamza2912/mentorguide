@@ -13,6 +13,7 @@ import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faMapMarkerAlt , faStar , faSearch , faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import Header from "./Header";
 
 
 class SearchTutor extends Component {
@@ -112,19 +113,7 @@ class SearchTutor extends Component {
 
       <div className="bg-bowl">
 
-      <header>
-            <nav className="site-header fixed-top">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
-                alt="Generic placeholder image" width="100" height="62.5" />
-                <a className="myNav text-dark" href="/">Home</a>
-                <a className="myNav text-dark" href="/posts">Search</a>
-                <a className="myNav text-dark" href="/lectures">Lectures</a>
-                <a className="myNav text-dark" href="/create_request">Requests</a>
-                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-              </div>
-            </nav>
-        </header>
+      <Header />
         <div className="row">
           <nav  data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
             <div className="sidebar-sticky">

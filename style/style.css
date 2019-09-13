@@ -11,9 +11,12 @@
   --btn-red: rgb(232, 65, 4);
 }
 
-
 body {
   background-color: white;
+}
+
+.myapp-container {
+  overflow: hidden;
 }
 
 .container {
@@ -830,7 +833,7 @@ color: #343a40;
 }
 .carousel-item > img {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   min-width: 100%;
   height: 32rem;
@@ -840,12 +843,21 @@ color: #343a40;
 
 }
 
-.mac {
-  position: relative;
-  margin-top: -400px;
-  margin-left: 320px;
-  z-index:-1;
+.intro-section {
+  background: url(back2.jpg) bottom no-repeat;
+  background-size: cover;
+}
 
+.intro-section .container {
+  position: relative;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.intro-section__image {
+  position: absolute;
+  right: -50%;
+  bottom: 0;
 }
 
 .UI {

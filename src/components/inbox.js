@@ -13,6 +13,7 @@ import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Header from "./Header";
 
 
 class Inbox extends Component {
@@ -35,7 +36,7 @@ class Inbox extends Component {
           }
           return (
             <li>
-              <p class=" pb-3   lh-125 border-bottom border-gray">
+              <p className="pb-3 lh-125 border-bottom border-gray">
                 <p className='Details mb-0'>{user}<span className='pl-5 text-primary date1'>14 August</span> </p>
                 <p className='Details mb-0 text-muted'><FontAwesomeIcon className='sttt3' icon={faEnvelope} /><span className='pl-1'>{messege}</span></p>
               </p>
@@ -94,20 +95,8 @@ class Inbox extends Component {
 
           return (
 
-            <div class="bg-bowl">
-              <header>
-                <nav className="site-header fixed-top">
-                  <div className="container d-flex flex-column flex-md-row justify-content-between">
-                    <img src="/style/logooo.jpg"
-                      alt="Generic placeholder image" width="100" height="62.5" />
-                    <a className="myNav text-dark" href="/">Home</a>
-                    <a className="myNav text-dark" href="/posts">Search</a>
-                    <a className="myNav text-dark" href="/lectures">Lectures</a>
-                    <a className="myNav text-dark" href="/create_request">Requests</a>
-                    <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-                  </div>
-                </nav>
-              </header>
+            <div className="bg-bowl">
+              <Header />
               <div className="row">
                 <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
                   <div className="sidebar-sticky">

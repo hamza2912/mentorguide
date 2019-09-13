@@ -21,6 +21,7 @@ import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faCommentMedical , faStar , faPhoneAlt, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import Header from "./Header";
 
 
 class PostsShow extends Component {
@@ -333,19 +334,7 @@ class PostsShow extends Component {
                   <button className="btn btn-dark" onClick= {this.handleCloseModal2} >Cancel</button>
               </ReactModal>
 
-                    <header>
-                          <nav className="site-header fixed-top">
-                          <div className="container d-flex flex-column flex-md-row justify-content-between">
-                            <img  src="/style/logooo.jpg"
-                            alt="Generic placeholder image" width="100" height="62.5" />
-                            <a className="myNav text-dark" href="/">Home</a>
-                            <a className="myNav text-dark" href="/posts">Search</a>
-                            <a className="myNav text-dark" href="/lectures">Lectures</a>
-                            <a className="myNav text-dark" href="/create_request">Requests</a>
-                            <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-                          </div>
-                        </nav>
-                        </header>
+                    <Header />
                     <div className="row">
                       <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
                         <div className="sidebar-sticky">

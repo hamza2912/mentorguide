@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { fetchUsers } from "../actions";
 
 import AOS from 'aos';
+import Header from "./Header";
 
 class UserSignIn extends Component {
 
@@ -40,7 +41,6 @@ class UserSignIn extends Component {
   }
 
   onSubmit(values) {
-
     return _.map(this.props.posts, post => {
       if (post.username === this.state.Username) {
         if (post.password === this.state.pass) {
@@ -59,19 +59,7 @@ class UserSignIn extends Component {
   render() {
     return (
       <main>
-        <header>
-        <nav className="site-header fixed-top">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
-                alt="Generic placeholder image" width="100" height="62.5" />
-                <a className="myNav text-dark" href="/">Home</a>
-                <a className="myNav text-dark" href="/posts">Search</a>
-                <a className="myNav text-dark" href="/lectures">Lectures</a>
-                <a className="myNav text-dark" href="/create_request">Requests</a>
-                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-              </div>
-            </nav>
-            </header>
+        <Header />
             <div className="text-center bglogin">
               <div  className = "center-place">
               <h4 className="Sans6 " >Login</h4>
@@ -82,7 +70,7 @@ class UserSignIn extends Component {
                   <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>
                   <label for="inputPassword" className="sr-only">Password</label>
                   <input type="password" value={this.state.pass} onChange={this.updatePass} id="inputPassword" className="form-control" placeholder="Password" required/>
-                  <Link className="btn btn-secondary" to="/posts"> Continue </Link>
+                  <button className="btn btn-secondary"> Continue </button>
                 </form>
               </div>
             </div>

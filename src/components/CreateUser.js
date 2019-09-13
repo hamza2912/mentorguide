@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { createUsers } from "../actions";
 
 import AOS from 'aos';
+import Header from "./Header";
 
 
 class CreateUser extends Component {
@@ -28,7 +29,7 @@ class CreateUser extends Component {
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <input className="form-account" placeholder={field.placeholder} type="email" {...field.input} />
+        <input className="form-account" placeholder={field.placeholder} type="text" {...field.input} />
         <div className="text-help">
           {touched ? error : ""}
         </div>
@@ -67,19 +68,7 @@ class CreateUser extends Component {
 
     return (
       <main>
-      <header>
-      <nav className="site-header fixed-top">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
-                alt="Generic placeholder image" width="100" height="62.5" />
-                <a className="myNav text-dark" href="/">Home</a>
-                <a className="myNav text-dark" href="/posts">Search</a>
-                <a className="myNav text-dark" href="/lectures">Lectures</a>
-                <a className="myNav text-dark" href="/create_request">Requests</a>
-                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-              </div>
-            </nav>
-            </header>
+      <Header />
       <div className = "text-center bglogin">
        <div className="center-place">
         <h4 className="Sans6" >Create Account</h4>

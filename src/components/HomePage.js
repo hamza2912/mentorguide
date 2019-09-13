@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
 
+import Header from "./Header";
+
 import { fetchPosts } from "../actions";
 
 import AOS from 'aos';
@@ -36,38 +38,22 @@ class HomePage extends Component {
     if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
       return (
         <main role="main">
-          <header>
-            <nav className="site-header fixed-top">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
-                alt="Generic placeholder image" width="100" height="62.5" />
-                <a className="myNav text-dark" href="/">Home</a>
-                <a className="myNav text-dark" href="/posts">Search</a>
-                <a className="myNav text-dark" href="/lectures">Lectures</a>
-                <a className="myNav text-dark" href="/create_request">Requests</a>
-                <div className='d-flex align-items-center'>
-                  <Link className="btn btn-default" to="/sign">Sign In</Link>
-                </div>
-              </div>
-            </nav>
-          </header>
+
+          <Header />
 
           <div className="main-color">
 
-            <div className="carousel-item active">
-                  <div className="container">
-                    <div  className="carousel-caption text-left">
-                      <h1 data-aos="fade-right" data-aos-anchor-placement="top-bottom" className='main-heading'>
-                          Tutor
-                          <br />
-                          Guide
-                        </h1>
-                      <p data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="tebox">Now get tutors in your city while sitting at your home.</p>
-                      <Link data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="btn btn-default btn-lg" to="/create"> Get Started</Link>
-                      <img  src="/style/mac.png" class='mac' alt="Generic placeholder image" width="1000" height="600" />
-                    </div>
-                  </div>
+            <div className="intro-section">
+              <div className="container">
+                <h1 data-aos="fade-right" data-aos-anchor-placement="top-bottom" className='main-heading'>
+                  Tutor<br />Guide
+                </h1>
+                <p data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="tebox">Now get tutors in your city while sitting at your home.</p>
+                <Link data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="btn btn-default btn-lg" to="/create"> Get Started</Link>
+                <img src="/style/mac.png" className='intro-section__image' alt="Generic placeholder image" width="1000" height="600" />
+              </div>
             </div>
+
             <div className="bgSearch ">
               <div className="container">
                 <div className="separator" align="center">
@@ -89,21 +75,21 @@ class HomePage extends Component {
                     <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
                     <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
                   </div>
-                  <div class="row comp1 margin-top--x4 margin-bottom--x2">
-                        <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
-                          <img class="rounded-circle" src="./style/SignUp.png"
+                  <div className="row comp1 margin-top--x4 margin-bottom--x2">
+                        <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" className="col-lg-4">
+                          <img className="rounded-circle" src="./style/SignUp.png"
                             alt="Generic placeholder image" width="140" height="140" />
-                          <p class="text-muted text-center smcp">Create your tutor account </p>
+                          <p className="text-muted text-center smcp">Create your tutor account </p>
                         </div>
-                        <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" class="col-lg-4">
-                          <img class="rounded-circle" src="./style/toter.png"
+                        <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" className="col-lg-4">
+                          <img className="rounded-circle" src="./style/toter.png"
                             alt="Generic placeholder image" width="140" height="140" />
-                          <p class="text-muted text-center smcp">Visit your profile </p>
+                          <p className="text-muted text-center smcp">Visit your profile </p>
                         </div>
-                        <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" class="col-lg-4">
-                          <img class="rounded-circle" src="./style/mess.png"
+                        <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" className="col-lg-4">
+                          <img className="rounded-circle" src="./style/mess.png"
                             alt="Generic placeholder image" width="140" height="140" />
-                          <p class="text-muted text-center smcp">Check messegs instantly </p>
+                          <p className="text-muted text-center smcp">Check messegs instantly </p>
                         </div>
                    </div>
                   <div className='separator4'>
@@ -127,46 +113,46 @@ class HomePage extends Component {
               </div>
             </div>
             <div className='bgfooter'>
-            <footer class="container py-5">
-              <div class="row">
-                <div class="col-12 col-md">
+            <footer className="container py-5">
+              <div className="row">
+                <div className="col-12 col-md">
                 <img  src="/style/logooo.png"
                 alt="Generic placeholder image" width="200" height="125" />
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>Features</h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Search tutor</a></li>
-                    <li><a class="text-muted" href="#">Post request</a></li>
-                    <li><a class="text-muted" href="#">Watch lectures</a></li>
-                    <li><a class="text-muted" href="#">Visit tutor profiles</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Search tutor</a></li>
+                    <li><a className="text-muted" href="#">Post request</a></li>
+                    <li><a className="text-muted" href="#">Watch lectures</a></li>
+                    <li><a className="text-muted" href="#">Visit tutor profiles</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>Account </h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Create tutor account</a></li>
-                    <li><a class="text-muted" href="#">Create user account</a></li>
-                    <li><a class="text-muted" href="#">Check tutor rquests</a></li>
-                    <li><a class="text-muted" href="#">Check messeges</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Create tutor account</a></li>
+                    <li><a className="text-muted" href="#">Create user account</a></li>
+                    <li><a className="text-muted" href="#">Check tutor rquests</a></li>
+                    <li><a className="text-muted" href="#">Check messeges</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>Log In</h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Main Log in</a></li>
-                    <li><a class="text-muted" href="#">Tutor login</a></li>
-                    <li><a class="text-muted" href="#">User login</a></li>
-                    <li><a class="text-muted" href="#">Create account</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Main Log in</a></li>
+                    <li><a className="text-muted" href="#">Tutor login</a></li>
+                    <li><a className="text-muted" href="#">User login</a></li>
+                    <li><a className="text-muted" href="#">Create account</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>About</h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Team</a></li>
-                    <li><a class="text-muted" href="#">Locations</a></li>
-                    <li><a class="text-muted" href="#">Privacy</a></li>
-                    <li><a class="text-muted" href="#">Terms</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Team</a></li>
+                    <li><a className="text-muted" href="#">Locations</a></li>
+                    <li><a className="text-muted" href="#">Privacy</a></li>
+                    <li><a className="text-muted" href="#">Terms</a></li>
                   </ul>
                 </div>
               </div>
@@ -187,9 +173,9 @@ class HomePage extends Component {
               <a className="myNav text-dark" href="/">Home</a>
               <a className="myNav text-dark" href="/posts">Search</a>
               <a className="myNav text-dark" href="/lectures">Lectures</a>
-              <a className="myNav text-dark" href="/create_request">Requests</a><div class="dropdown py-2 d-none d-md-inline-block ">
+              <a className="myNav text-dark" href="/create_request">Requests</a><div className="dropdown py-2 d-none d-md-inline-block ">
                   <span>. . .</span>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                   <ul>
                     <li>
                       <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
@@ -237,21 +223,21 @@ class HomePage extends Component {
                   <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
                   <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
                 </div>
-                <div class="row comp1 separator3">
-                      <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
-                        <img class="rounded-circle" src="./style/SignUp.png"
+                <div className="row comp1 separator3">
+                      <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" className="col-lg-4">
+                        <img className="rounded-circle" src="./style/SignUp.png"
                           alt="Generic placeholder image" width="140" height="140" />
-                        <p class="text-muted text-center smcp">Create your tutor account </p>
+                        <p className="text-muted text-center smcp">Create your tutor account </p>
                       </div>
-                      <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" class="col-lg-4">
-                        <img class="rounded-circle" src="./style/toter.png"
+                      <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" className="col-lg-4">
+                        <img className="rounded-circle" src="./style/toter.png"
                           alt="Generic placeholder image" width="140" height="140" />
-                        <p class="text-muted text-center smcp">Visit your profile </p>
+                        <p className="text-muted text-center smcp">Visit your profile </p>
                       </div>
-                      <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" class="col-lg-4">
-                        <img class="rounded-circle" src="./style/mess.png"
+                      <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" className="col-lg-4">
+                        <img className="rounded-circle" src="./style/mess.png"
                           alt="Generic placeholder image" width="140" height="140" />
-                        <p class="text-muted text-center smcp">Check messegs instantly </p>
+                        <p className="text-muted text-center smcp">Check messegs instantly </p>
                       </div>
                  </div>
                 <div className='separator4'>
@@ -275,46 +261,46 @@ class HomePage extends Component {
             </div>
           </div>
           <div className='bgfooter'>
-          <footer class="container py-5">
-            <div class="row">
-              <div class="col-12 col-md">
+          <footer className="container py-5">
+            <div className="row">
+              <div className="col-12 col-md">
               <img  src="/style/logooo.png"
               alt="Generic placeholder image" width="200" height="125" />
               </div>
-              <div class="col-6 col-md">
+              <div className="col-6 col-md">
                 <h5>Features</h5>
-                <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Search tutor</a></li>
-                  <li><a class="text-muted" href="#">Post request</a></li>
-                  <li><a class="text-muted" href="#">Watch lectures</a></li>
-                  <li><a class="text-muted" href="#">Visit tutor profiles</a></li>
+                <ul className="list-unstyled text-small">
+                  <li><a className="text-muted" href="#">Search tutor</a></li>
+                  <li><a className="text-muted" href="#">Post request</a></li>
+                  <li><a className="text-muted" href="#">Watch lectures</a></li>
+                  <li><a className="text-muted" href="#">Visit tutor profiles</a></li>
                 </ul>
               </div>
-              <div class="col-6 col-md">
+              <div className="col-6 col-md">
                 <h5>Account </h5>
-                <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Create tutor account</a></li>
-                  <li><a class="text-muted" href="#">Create user account</a></li>
-                  <li><a class="text-muted" href="#">Check tutor rquests</a></li>
-                  <li><a class="text-muted" href="#">Check messeges</a></li>
+                <ul className="list-unstyled text-small">
+                  <li><a className="text-muted" href="#">Create tutor account</a></li>
+                  <li><a className="text-muted" href="#">Create user account</a></li>
+                  <li><a className="text-muted" href="#">Check tutor rquests</a></li>
+                  <li><a className="text-muted" href="#">Check messeges</a></li>
                 </ul>
               </div>
-              <div class="col-6 col-md">
+              <div className="col-6 col-md">
                 <h5>Log In</h5>
-                <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Main Log in</a></li>
-                  <li><a class="text-muted" href="#">Tutor login</a></li>
-                  <li><a class="text-muted" href="#">User login</a></li>
-                  <li><a class="text-muted" href="#">Create account</a></li>
+                <ul className="list-unstyled text-small">
+                  <li><a className="text-muted" href="#">Main Log in</a></li>
+                  <li><a className="text-muted" href="#">Tutor login</a></li>
+                  <li><a className="text-muted" href="#">User login</a></li>
+                  <li><a className="text-muted" href="#">Create account</a></li>
                 </ul>
               </div>
-              <div class="col-6 col-md">
+              <div className="col-6 col-md">
                 <h5>About</h5>
-                <ul class="list-unstyled text-small">
-                  <li><a class="text-muted" href="#">Team</a></li>
-                  <li><a class="text-muted" href="#">Locations</a></li>
-                  <li><a class="text-muted" href="#">Privacy</a></li>
-                  <li><a class="text-muted" href="#">Terms</a></li>
+                <ul className="list-unstyled text-small">
+                  <li><a className="text-muted" href="#">Team</a></li>
+                  <li><a className="text-muted" href="#">Locations</a></li>
+                  <li><a className="text-muted" href="#">Privacy</a></li>
+                  <li><a className="text-muted" href="#">Terms</a></li>
                 </ul>
               </div>
             </div>
@@ -336,9 +322,9 @@ class HomePage extends Component {
                 <a className="myNav text-dark" href="/posts">Search</a>
                 <a className="myNav text-dark" href="/lectures">Lectures</a>
                 <a className="myNav text-dark" href="/create_request">Requests</a>
-                <div class="dropdown py-2 d-none d-md-inline-block ">
+                <div className="dropdown py-2 d-none d-md-inline-block ">
                   <span>. . .</span>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                   <ul>
                     <li>
                       <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
@@ -383,21 +369,21 @@ class HomePage extends Component {
                     <h2 className="Sans2 text-center" >Create your own Tutor profile</h2>
                     <p className="text-muted">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
                   </div>
-                  <div class="row comp1 separator3">
-                        <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" class="col-lg-4">
-                          <img class="rounded-circle" src="./style/SignUp.png"
+                  <div className="row comp1 separator3">
+                        <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" className="col-lg-4">
+                          <img className="rounded-circle" src="./style/SignUp.png"
                             alt="Generic placeholder image" width="140" height="140" />
-                          <p class="text-muted text-center smcp">Create your tutor account </p>
+                          <p className="text-muted text-center smcp">Create your tutor account </p>
                         </div>
-                        <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" class="col-lg-4">
-                          <img class="rounded-circle" src="./style/toter.png"
+                        <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" className="col-lg-4">
+                          <img className="rounded-circle" src="./style/toter.png"
                             alt="Generic placeholder image" width="140" height="140" />
-                          <p class="text-muted text-center smcp">Visit your profile </p>
+                          <p className="text-muted text-center smcp">Visit your profile </p>
                         </div>
-                        <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" class="col-lg-4">
-                          <img class="rounded-circle" src="./style/mess.png"
+                        <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" className="col-lg-4">
+                          <img className="rounded-circle" src="./style/mess.png"
                             alt="Generic placeholder image" width="140" height="140" />
-                          <p class="text-muted text-center smcp">Check messegs instantly </p>
+                          <p className="text-muted text-center smcp">Check messegs instantly </p>
                         </div>
                    </div>
                   <div className='separator4'>
@@ -421,46 +407,46 @@ class HomePage extends Component {
               </div>
             </div>
             <div className='bgfooter'>
-            <footer class="container py-5">
-              <div class="row">
-                <div class="col-12 col-md">
+            <footer className="container py-5">
+              <div className="row">
+                <div className="col-12 col-md">
                 <img  src="/style/logooo.png"
                 alt="Generic placeholder image" width="200" height="125" />
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>Features</h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Search tutor</a></li>
-                    <li><a class="text-muted" href="#">Post request</a></li>
-                    <li><a class="text-muted" href="#">Watch lectures</a></li>
-                    <li><a class="text-muted" href="#">Visit tutor profiles</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Search tutor</a></li>
+                    <li><a className="text-muted" href="#">Post request</a></li>
+                    <li><a className="text-muted" href="#">Watch lectures</a></li>
+                    <li><a className="text-muted" href="#">Visit tutor profiles</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>Account </h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Create tutor account</a></li>
-                    <li><a class="text-muted" href="#">Create user account</a></li>
-                    <li><a class="text-muted" href="#">Check tutor rquests</a></li>
-                    <li><a class="text-muted" href="#">Check messeges</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Create tutor account</a></li>
+                    <li><a className="text-muted" href="#">Create user account</a></li>
+                    <li><a className="text-muted" href="#">Check tutor rquests</a></li>
+                    <li><a className="text-muted" href="#">Check messeges</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>Log In</h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Main Log in</a></li>
-                    <li><a class="text-muted" href="#">Tutor login</a></li>
-                    <li><a class="text-muted" href="#">User login</a></li>
-                    <li><a class="text-muted" href="#">Create account</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Main Log in</a></li>
+                    <li><a className="text-muted" href="#">Tutor login</a></li>
+                    <li><a className="text-muted" href="#">User login</a></li>
+                    <li><a className="text-muted" href="#">Create account</a></li>
                   </ul>
                 </div>
-                <div class="col-6 col-md">
+                <div className="col-6 col-md">
                   <h5>About</h5>
-                  <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Team</a></li>
-                    <li><a class="text-muted" href="#">Locations</a></li>
-                    <li><a class="text-muted" href="#">Privacy</a></li>
-                    <li><a class="text-muted" href="#">Terms</a></li>
+                  <ul className="list-unstyled text-small">
+                    <li><a className="text-muted" href="#">Team</a></li>
+                    <li><a className="text-muted" href="#">Locations</a></li>
+                    <li><a className="text-muted" href="#">Privacy</a></li>
+                    <li><a className="text-muted" href="#">Terms</a></li>
                   </ul>
                 </div>
               </div>
@@ -517,9 +503,9 @@ export default connect(mapStateToProps, { fetchPosts })(HomePage);
             */
 
 /*
-<div class="dropdown py-2 d-none d-md-inline-block ">
+<div className="dropdown py-2 d-none d-md-inline-block ">
                   <span>. . .</span>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                   <ul>
                     <li>
                       <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>

@@ -15,6 +15,7 @@ import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faMapMarkerAlt , faStar , faSearch } from '@fortawesome/free-solid-svg-icons';
+import Header from "./Header";
 
 
 class CreateRequest extends Component {
@@ -97,19 +98,7 @@ class CreateRequest extends Component {
             <p className="lead">Your Tutor request has been successfully posted.</p>
             <Link className="btn btn-primary" to= "/" >Close</Link>
         </ReactModal>
-        <header>
-          <nav className="site-header fixed-top">
-              <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
-                alt="Generic placeholder image" width="100" height="62.5" />
-                <a className="myNav text-dark" href="/">Home</a>
-                <a className="myNav text-dark" href="/posts">Search</a>
-                <a className="myNav text-dark" href="/lectures">Lectures</a>
-                <a className="myNav text-dark" href="/create_request">Requests</a>
-                <Link className="bluebutton boorder text-light font-ylish" to="/sign">Sign In</Link>
-              </div>
-            </nav>
-        </header>
+        <Header />
             <div className="row">
               <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
               <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Post your own request for tutor</h2>

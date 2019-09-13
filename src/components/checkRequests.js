@@ -13,26 +13,22 @@ import AOS from 'aos';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faPhone , faVoicemail } from '@fortawesome/free-solid-svg-icons';
+import Header from "./Header";
 
 
 class checkRequests extends Component {
-
-
   renderChats() {
-
     if (!this.props.posts) {
         return (
           <p className="py-3 text-muted font-ylish">No tutor requests yet</p>
         );
-
     }
 
     else {
       return _.map(this.props.posts, post => {
-
         return (
           <li>
-            <p class=" pb-3   lh-125 border-bottom border-gray">
+            <p className=" pb-3   lh-125 border-bottom border-gray">
             <p className='Details mb-0'>{post.Messege}<span className='pl-5 text-primary date1'>14 August</span> </p>
              <p className='Details mb-0 text-muted'><FontAwesomeIcon className='sttt3' icon={ faPhone }/><span className='pl-1'>{post.Email}</span></p>
             </p>
@@ -40,39 +36,21 @@ class checkRequests extends Component {
         );
       });
     }
-
   }
 
   componentDidMount() {
-
     this.props.fetchTutorRequests();
     AOS.init({
       duration : 1000
     })
-
   }
 
   render() {
-
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
 
-
     return (
-
       <div class="bg-bowl">
-        <header>
-        <nav className="site-header fixed-top">
-                          <div className="container d-flex flex-column flex-md-row justify-content-between">
-                            <img  src="/style/logooo.jpg"
-                            alt="Generic placeholder image" width="100" height="62.5" />
-                            <a className="myNav text-dark" href="/">Home</a>
-                            <a className="myNav text-dark" href="/posts">Search</a>
-                            <a className="myNav text-dark" href="/lectures">Lectures</a>
-                            <a className="myNav text-dark" href="/create_request">Requests</a>
-                            <Link className="btn btn-primary" to="/sign">Sign In</Link>
-                          </div>
-           </nav>
-        </header>
+        <Header />
         <div className="row">
           <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
             <div className="sidebar-sticky">
