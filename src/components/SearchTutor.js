@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchPosts } from "../actions";
+import LeftNav from "./leftNav";
 
 import AOS from 'aos';
 
@@ -14,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faMapMarkerAlt , faStar , faSearch , faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Header from "./Header";
-
+import RenderRatings from "./RenderRatings";
 
 class SearchTutor extends Component {
 
@@ -22,7 +23,7 @@ class SearchTutor extends Component {
     super(props);
     this.state = { Area: "" , check: 1};
     this.handleChange = this.handleChange.bind(this);
-    this.renderRatings = this.renderRatings.bind(this);
+    this.renderPosts = this.renderPosts.bind(this);
 
   }
 
@@ -34,53 +35,14 @@ class SearchTutor extends Component {
 
   }
 
-  renderRatings(rate, pclass, icoclass){
-
-    if (rate > 1 && rate <= 2) {
-      return (
-        <p className={pclass}><span className='pr-1'>{rate}</span>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p>
-      );
-    }
-    else if (rate > 2 && rate <= 3) {
-      return (
-        <p className={pclass}><span className='pr-1'>{rate}</span>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p>
-      );
-    }
-    else if (rate > 3 && rate <= 4 && rate > 4) {
-      return (
-        <p className={pclass}><span className='pr-1'>{rate}</span>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-                      </p>
-      );
-    }
-    else {
-        return (
-          <p className={pclass}><span className='pr-1'>{rate}</span>
-          <FontAwesomeIcon className={icoclass} icon={ faStar }/>
-          </p>
-        );
-    }
-
-
-  }
 
   renderPosts() {
-
 
     if (!this.props.posts) {
         return <div>Loading...</div>;
     }
-
+  
+    
     else if (this.state.Area !== "") {
 
         return _.map(this.props.posts, post => {
@@ -91,7 +53,7 @@ class SearchTutor extends Component {
                     <div className="dp pb-5">
                       <img   src="/style/dp.png" alt="Generic placeholder image" width="35" height="35" />
                       <p className="dp-name" >{post.name}</p>
-                      {this.renderRatings(post.rating, "dp-name2", 'stttt' )}
+                      <RenderRatings rate={post.rating} pclass='dp-name2' icoclass='stttt' />
                       <a className="dp-nameS" href={ProfilePage} >Visit Profile
                       <FontAwesomeIcon className='stttt3' icon={ faArrowRight }/>
                     </a>
@@ -105,41 +67,20 @@ class SearchTutor extends Component {
   }
 
   handleChange(event) {
-  this.setState({Area: event.target.value});
+    var area = JSON.parse(localStorage.getItem('Area'));
+    this.setState({ Area: area });
   }
 
   render() {
+
+    
       return (
 
       <div className="bg-bowl">
 
       <Header />
         <div className="row">
-          <nav  data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
-            <div className="sidebar-sticky">
-              <ul className="nav flex-column">
-                <li className="nav-item">
-                  <a className="nav-link active" href="#">
-                  <span data-feather="home"></span>Tutors' Gallery <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <form className="form-control-dark my-2 my-lg-0 mrg ml-2 pt-2">
-                  <label for="thissearch" className="sr-only"><FontAwesomeIcon icon={ faSearch }/>
-                  <span className='pl-1'>Hii</span></label>
-                    <select  className="form-search" id="thissearch" name="thissearch" onChange = {this.handleChange}>
-                      <option>Find your area</option> <option>Baldia</option> <option>Buffer-Zone</option> <option>Defence</option>
-                      <option>Fedral-B-Area</option><option>Gadap</option> <option>Gulberg</option> <option>Gulshan</option>
-                      <option>Gulshan-e-Meymar</option><option>Jamsh1ed Town</option>
-                      <option>Johar</option> <option>Korangi</option> <option>Landhi</option> <option>Liaquatabad</option>
-                      <option>Lyari</option> <option>Malir</option> <option>New Karchi</option> <option>Nazimabad</option>
-                      <option>Orangi Town</option><option>Saddar</option><option>Shah Faisal Town</option>
-                    </select>
-                  </form>
-                </li>
-              </ul>
-            </div>
-          </nav>
+         <LeftNav type='search'/>
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
           <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Search your favorite Tutors</h2>
           <p className="pl-5 text-info loca" >

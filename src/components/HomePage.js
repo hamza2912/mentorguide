@@ -35,7 +35,7 @@ class HomePage extends Component {
     var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
 
-    if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
+   // if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
       return (
         <main role="main">
 
@@ -161,7 +161,7 @@ class HomePage extends Component {
           </div>
         </main>
       );
-    }
+      /*
     else if (Logged === true) {
       return (
         <main role="main">
@@ -455,7 +455,7 @@ class HomePage extends Component {
           </div>
         </main>
       );
-    }
+    }*/
   }
 
 }

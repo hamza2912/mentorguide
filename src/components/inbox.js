@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Header from "./Header";
+import LeftNav from "./leftNav";
 
 
 class Inbox extends Component {
@@ -98,22 +99,7 @@ class Inbox extends Component {
             <div className="bg-bowl">
               <Header />
               <div className="row">
-                <nav data-aos='fade-right' className="col-md-2 d-none d-md-block sidebar">
-                  <div className="sidebar-sticky">
-                    <ul className="nav flex-column">
-                      <li className="nav-item">
-                        <a className="nav-link active" href="#">
-                          <span data-feather="home"></span>Messeges <span className="sr-only">(current)</span>
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a className="nav-link " href={ProfilePage}>
-                          <span data-feather="home"></span>Back to Profile <span className="sr-only">(current)</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
+                <LeftNav type='inbox' />
                 <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                   <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Inbox</h2>
                   <p className="pl-5 text-info loca" >

@@ -148,27 +148,29 @@ body .margin-right {
 
 .bgGrey{
   overflow: hidden;
-  background-size: cover;
   height: 45rem;
   background: url('greyish.jpg') no-repeat top center;
+  background-size: cover;
 }
 
 .bgfooter{
-  background-size: cover;
+  
   height: 20rem;
   background: url('footer.jpg') no-repeat center;
+  background-size: cover;
 }
 
 .bgScreen{
+  height: 33rem;
+  background: url('bgscreen.jpg') bottom no-repeat;
   background-size: cover;
-  height: 50rem;
-  background: url('bgscreen.jpg') no-repeat center;
 }
 
 .main-heading {
   font-size: 6rem;
   line-height: 1;
   text-transform: uppercase;
+  color: #fff;
 }
 
 .myBox{
