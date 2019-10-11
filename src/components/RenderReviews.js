@@ -29,7 +29,7 @@ class RenderReviews extends Component {
           }
           return (
               <div className="dp pb-5">
-                <img  className="" src="/style/dp.png" alt="Generic placeholder image" width="35" height="35" />
+                <img  className="" src="/images/dp.png" alt="Generic placeholder image" width="35" height="35" />
                  <p className="dp-name" >{user}</p>
                   <p className="dp-name2" > 14 Aug, 2016</p>
                   <p className="dp-body" >{review}</p>
@@ -41,12 +41,12 @@ class RenderReviews extends Component {
 
   }
 
-   
+
 }
 
 
 function mapStateToProps(state){
     return { posts: state.posts };
   }
-  
+
   export default connect(mapStateToProps, { fetchPosts })(RenderReviews);

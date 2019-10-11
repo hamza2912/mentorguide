@@ -70,9 +70,11 @@ class TutorSignIn extends Component {
         <Header />
             <div className="text-center bglogin">
               <div  className = "center-place">
-              <h4 className="Sans6" >Login</h4>
-              <div className="Sans6border mx-50" ></div>
-              <p  data-aos="fade-up" className="font-ylish text-muted my-5 mx-25">Please Sign in below to access your account. Dont you have an account? <a href="/create_tutor"> Sign Up </a>now</p>
+              <div className='sans-heading'>
+                <h4 className="Sans6" >Login</h4>
+                <div className="Sans6border " ></div>
+              </div>
+              <p  data-aos="fade-up" className="font-ylish text-muted my-5 ">Please Sign in below to access your account. Dont you have an account? <a href="/create_tutor"> Sign Up </a>now</p>
                 <form className="form-signin" onSubmit={this.onSubmit}>
                   <label for="inputEmail" className="sr-only">Username</label>
                   <input type="username" value={this.state.username} onChange={this.updateUsername} id="inputEmail" className="form-control"  placeholder="Username" required autofocus/>

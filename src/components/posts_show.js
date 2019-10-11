@@ -30,7 +30,7 @@ class PostsShow extends Component {
 
 }
 
- 
+
   render() {
 
       const { id } = this.props.match.params;
@@ -49,13 +49,13 @@ class PostsShow extends Component {
 
             <div className="proback">
 
-       
+
                     <Header />
                     <div className="row">
                       <LeftNav type='posts_show' Profile_id={Profile_id}/>
                       <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
                       <div>
-                      <img  className="ProImage" src="/style/ham.png" alt="Generic placeholder image" width="120" height="120" />
+                      <img  className="ProImage" src="/images/ham.png" alt="Generic placeholder image" width="120" height="120" />
                       <h2 className="Pro-name text-light" >{post.name}</h2>
                       <RenderRatings rate={post.rating} pclass='Pro-body2 text-light' icoclass='stttt1' />
                       <p className='Pro-body text-light pt-4'>@{post.username}</p>

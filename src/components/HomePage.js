@@ -50,7 +50,7 @@ class HomePage extends Component {
                 </h1>
                 <p data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="tebox">Now get tutors in your city while sitting at your home.</p>
                 <Link data-aos="fade-right" data-aos-anchor-placement="top-bottom" className="btn btn-default btn-lg" to="/create"> Get Started</Link>
-                <img src="/style/mac.png" className='intro-section__image' alt="Generic placeholder image" width="1000" height="600" />
+                <img src="/images/mac.png" className='intro-section__image' alt="Generic placeholder image" width="1000" height="600" />
               </div>
             </div>
 
@@ -63,7 +63,7 @@ class HomePage extends Component {
                     <Link className="btn btn-secondary" to="/sign"> Search Now       </Link>
                   </div>
                   <div data-aos='zoom-in'>
-                  <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
+                  <img className="featurette-image img-fluid mx-auto" src="/images/maps.png" width='700' height='350' alt="Generic placeholder image" />
                   </div>
                 </div>
               </div>
@@ -77,17 +77,17 @@ class HomePage extends Component {
                   </div>
                   <div className="row comp1 margin-top--x4 margin-bottom--x2">
                         <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" className="col-lg-4">
-                          <img className="rounded-circle" src="./style/SignUp.png"
+                          <img className="rounded-circle" src="./images/SignUp.png"
                             alt="Generic placeholder image" width="140" height="140" />
                           <p className="text-muted text-center smcp">Create your tutor account </p>
                         </div>
                         <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" className="col-lg-4">
-                          <img className="rounded-circle" src="./style/toter.png"
+                          <img className="rounded-circle" src="./images/toter.png"
                             alt="Generic placeholder image" width="140" height="140" />
                           <p className="text-muted text-center smcp">Visit your profile </p>
                         </div>
                         <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" className="col-lg-4">
-                          <img className="rounded-circle" src="./style/mess.png"
+                          <img className="rounded-circle" src="./images/mess.png"
                             alt="Generic placeholder image" width="140" height="140" />
                           <p className="text-muted text-center smcp">Check messegs instantly </p>
                         </div>
@@ -107,7 +107,7 @@ class HomePage extends Component {
                     <Link className="btn btn-secondary" to="/sign"> Post Now </Link>
                   </div>
                   <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
+                    <img className="featurette-image img-fluid mx-auto mt-5" src="./images/screen1.png" alt="Generic placeholder image" />
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@ class HomePage extends Component {
             <footer className="container py-5">
               <div className="row">
                 <div className="col-12 col-md">
-                <img  src="/style/logooo.png"
+                <img  src="/images/logooo.png"
                 alt="Generic placeholder image" width="200" height="125" />
                 </div>
                 <div className="col-6 col-md">
@@ -168,7 +168,7 @@ class HomePage extends Component {
         <header>
           <nav className="site-header fixed-top">
             <div className="container d-flex flex-column flex-md-row justify-content-between">
-              <img  src="/style/logooo.jpg"
+              <img  src="/images/logooo.jpg"
               alt="Generic placeholder image" width="100" height="62.5" />
               <a className="myNav text-dark" href="/">Home</a>
               <a className="myNav text-dark" href="/posts">Search</a>
@@ -211,7 +211,7 @@ class HomePage extends Component {
                   <Link className="btn btn-secondary" to="/sign"> Search Now</Link>
                 </div>
                 <div data-aos='zoom-in'>
-                <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
+                <img className="featurette-image img-fluid mx-auto" src="/images/maps.png" width='700' height='350' alt="Generic placeholder image" />
                 </div>
               </div>
             </div>
@@ -225,17 +225,17 @@ class HomePage extends Component {
                 </div>
                 <div className="row comp1 separator3">
                       <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" className="col-lg-4">
-                        <img className="rounded-circle" src="./style/SignUp.png"
+                        <img className="rounded-circle" src="./images/SignUp.png"
                           alt="Generic placeholder image" width="140" height="140" />
                         <p className="text-muted text-center smcp">Create your tutor account </p>
                       </div>
                       <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" className="col-lg-4">
-                        <img className="rounded-circle" src="./style/toter.png"
+                        <img className="rounded-circle" src="./images/toter.png"
                           alt="Generic placeholder image" width="140" height="140" />
                         <p className="text-muted text-center smcp">Visit your profile </p>
                       </div>
                       <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" className="col-lg-4">
-                        <img className="rounded-circle" src="./style/mess.png"
+                        <img className="rounded-circle" src="./images/mess.png"
                           alt="Generic placeholder image" width="140" height="140" />
                         <p className="text-muted text-center smcp">Check messegs instantly </p>
                       </div>
@@ -255,7 +255,7 @@ class HomePage extends Component {
                   <Link className="btn btn-secondary" to="/posts"> Post Now </Link>
                 </div>
                 <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
-                  <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
+                  <img className="featurette-image img-fluid mx-auto mt-5" src="./images/screen1.png" alt="Generic placeholder image" />
                 </div>
               </div>
             </div>
@@ -264,7 +264,7 @@ class HomePage extends Component {
           <footer className="container py-5">
             <div className="row">
               <div className="col-12 col-md">
-              <img  src="/style/logooo.png"
+              <img  src="/images/logooo.png"
               alt="Generic placeholder image" width="200" height="125" />
               </div>
               <div className="col-6 col-md">
@@ -316,7 +316,7 @@ class HomePage extends Component {
           <header>
             <nav className="site-header fixed-top">
               <div className="container d-flex flex-column flex-md-row justify-content-between">
-                <img  src="/style/logooo.jpg"
+                <img  src="/images/logooo.jpg"
                 alt="Generic placeholder image" width="100" height="62.5" />
                 <a className="myNav text-dark" href="/">Home</a>
                 <a className="myNav text-dark" href="/posts">Search</a>
@@ -357,7 +357,7 @@ class HomePage extends Component {
                     <Link className="btn btn-secondary" to="/sign"> Search Now       </Link>
                   </div>
                   <div data-aos='zoom-in'>
-                  <img className="featurette-image img-fluid mx-auto" src="/style/maps.png" width='700' height='350' alt="Generic placeholder image" />
+                  <img className="featurette-image img-fluid mx-auto" src="/images/maps.png" width='700' height='350' alt="Generic placeholder image" />
                   </div>
                 </div>
               </div>
@@ -371,17 +371,17 @@ class HomePage extends Component {
                   </div>
                   <div className="row comp1 separator3">
                         <div data-aos-delay='1000' data-aos="zoom-in"  data-aos-duration="1000" align="center" className="col-lg-4">
-                          <img className="rounded-circle" src="./style/SignUp.png"
+                          <img className="rounded-circle" src="./images/SignUp.png"
                             alt="Generic placeholder image" width="140" height="140" />
                           <p className="text-muted text-center smcp">Create your tutor account </p>
                         </div>
                         <div data-aos-delay='1500'  data-aos="zoom-in"  data-aos-duration="1000"  align="center" className="col-lg-4">
-                          <img className="rounded-circle" src="./style/toter.png"
+                          <img className="rounded-circle" src="./images/toter.png"
                             alt="Generic placeholder image" width="140" height="140" />
                           <p className="text-muted text-center smcp">Visit your profile </p>
                         </div>
                         <div data-aos-delay='2000' data-aos="zoom-in" data-aos-duration="1000" align="center" className="col-lg-4">
-                          <img className="rounded-circle" src="./style/mess.png"
+                          <img className="rounded-circle" src="./images/mess.png"
                             alt="Generic placeholder image" width="140" height="140" />
                           <p className="text-muted text-center smcp">Check messegs instantly </p>
                         </div>
@@ -401,7 +401,7 @@ class HomePage extends Component {
                     <Link className="btn btn-secondary" to="/posts"> Post Now </Link>
                   </div>
                   <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
-                    <img className="featurette-image img-fluid mx-auto mt-5" src="./style/screen1.png" alt="Generic placeholder image" />
+                    <img className="featurette-image img-fluid mx-auto mt-5" src="./images/screen1.png" alt="Generic placeholder image" />
                   </div>
                 </div>
               </div>
@@ -410,7 +410,7 @@ class HomePage extends Component {
             <footer className="container py-5">
               <div className="row">
                 <div className="col-12 col-md">
-                <img  src="/style/logooo.png"
+                <img  src="/images/logooo.png"
                 alt="Generic placeholder image" width="200" height="125" />
                 </div>
                 <div className="col-6 col-md">

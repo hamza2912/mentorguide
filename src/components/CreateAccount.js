@@ -26,9 +26,11 @@ class CreateAccount extends Component {
         <Header />
             <div className="text-center bglogin">
               <div  className = "center-place">
-              <h4 className="Sans6 ">Create Account</h4>
-              <div className="Sans6border mx-50" ></div>
-              <p data-aos="fade-up" className="font-ylish text-muted mt-5 mb-4 mx-25">Please choose sign up options below. Already have an account? <a href="/posts/new"> Sign In </a> now</p>
+              <div className='sans-heading'>
+                <h4 className="Sans6" >Create Account</h4>
+                <div className="Sans6border " ></div>
+              </div>
+              <p data-aos="fade-up" className="font-ylish text-muted mt-5 mb-4 ">Please choose sign up options below. Already have an account? <a href="/posts/new"> Sign In </a> now</p>
               <form className="form-signin" >
                 <div className="py-1">
                   <Link to="/create_tutor" className="text-center myLink">Create Mentor Account ></Link>

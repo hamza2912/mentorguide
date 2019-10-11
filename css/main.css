@@ -1,0 +1,54 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 1, ../scss/partials/_header.scss */
+header {
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+  background: white;
+  font-size: 15px;
+}
+/* line 6, ../scss/partials/_header.scss */
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+/* line 11, ../scss/partials/_header.scss */
+header .myNav {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+/* line 16, ../scss/partials/_header.scss */
+header .myNav:after {
+  content: '';
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: black;
+  bottom: 10px;
+  width: 0;
+  height: 3px;
+  left: 50%;
+  position: absolute;
+}
+/* line 28, ../scss/partials/_header.scss */
+header .myNav:hover {
+  text-decoration: none;
+}
+/* line 31, ../scss/partials/_header.scss */
+header .myNav:hover:after {
+  left: 0;
+  width: 100%;
+}
+
+/* line 12, ../scss/main.scss */
+body {
+  font-family: 'Lato', sans-serif;
+}

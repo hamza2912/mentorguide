@@ -33,7 +33,7 @@ export default class Header extends Component {
 
         if (Logged === true) {
             loginStatus = (
-                <div className="dropdown py-2 d-none d-md-inline-block ">
+                <div className="dropdown d-flex align-items-center ">
                   <span>. . .</span>
                   <div className="dropdown-content">
                   <ul>
@@ -51,7 +51,7 @@ export default class Header extends Component {
 
         else if (UserLogin === true) {
             loginStatus = (
-                <div className="dropdown py-2 d-none d-md-inline-block ">
+                <div className="dropdown d-flex align-items-center ">
                 <span>. . .</span>
                 <div className="dropdown-content">
                 <ul>
@@ -62,25 +62,23 @@ export default class Header extends Component {
                 </div>
               </div>
             )
-            
+
         }
 
 
-        
+
 
         return (
-            <header>
-                <nav className="site-header fixed-top">
-                    <div className="container d-flex flex-column flex-md-row justify-content-between">
-                        <img src="/style/logooo.jpg"
-                            alt="Generic placeholder image" width="100" height="62.5" />
-                        <a className="myNav text-dark" href="/">{'Home'}</a>
-                        <a className="myNav text-dark" href="/posts">{'Search'}</a>
-                        <a className="myNav text-dark" href="/lectures">{'Lectures'}</a>
-                        <a className="myNav text-dark" href="/create_request">{'Requests'}</a>
-                        {loginStatus}
-                    </div>
-                </nav>
+            <header className='fixed-top'>
+                  <div className="container">
+                      <img src="/images/logooo.jpg"
+                          alt="Generic placeholder image" width="100" height="62.5" />
+                      <a className="myNav text-dark" href="/">{'Home'}</a>
+                      <a className="myNav text-dark" href="/posts">{'Search'}</a>
+                      <a className="myNav text-dark" href="/lectures">{'Lectures'}</a>
+                      <a className="myNav text-dark" href="/create_request">{'Requests'}</a>
+                      {loginStatus}
+                  </div>
             </header>
         );
     }

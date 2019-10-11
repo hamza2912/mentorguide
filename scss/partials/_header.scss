@@ -1,0 +1,37 @@
+header {
+    @include box-shadow(0 8px 6px -6px #999);
+    background: white;
+    font-size: 15px;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .myNav {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &:after {
+            content: '';
+            @include single-transition(all, .25s, ease);
+            @include border-radius(5px);
+            background: black;
+            bottom: 10px;
+            width: 0;
+            height: 3px;
+            left: 50%;
+            position: absolute;
+        }
+
+        &:hover {
+            text-decoration: none;
+
+            &:after {
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+}

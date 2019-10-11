@@ -14,12 +14,12 @@ export default class Success extends Component {
   }
 
   render() {
-      
+
       return (
 
         <div className="text-center dark-color">
           <div className = "center-place">
-            <img src="./style/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
+            <img src="./images/tutorlogo1.png" alt="Generic placeholder image" width="250" height="80" />
             <div className="dark-color">
               <h1 className = "text-light">You're Done!</h1>
               <h4 className="text-light font-cursive">Your Tutor profile has been successfully created.</h4>
@@ -30,7 +30,7 @@ export default class Success extends Component {
               <a href="#">All Rights Reserved</a>
             </footer>
           </div>
-        </div> 
+        </div>
     );
   }
 
