@@ -106,35 +106,32 @@ body .margin-right {
 
 .bg-bowl {
   background-size: cover;
-  height: 49rem;
+  height: 100vh;
   background: url('../images/indors.jpg') no-repeat center;
+  background-size: 100% 100%;
 }
 
 .proback {
   background-size: cover;
-  height: 70rem;
+  height: 100vh;
   background: url('../images/proback.jpg') no-repeat center;
+  background-size: 100% 100%;
 }
 
 .bg-req {
   background-size: cover;
-  height: 49rem;
+  height: 100vh;
   background: url('../images/announ.jpg') no-repeat center;
+  background-size: 100% 100%;
 }
 
 .bg-vid {
   background-size: cover;
-  height: 49rem;
+  height: 100vh;
   background: url('../images/videooo.jpg') no-repeat center;
+  background-size: 100% 100%;
 }
 
-.bk-book {
-  background: url('../images/books.jpg');
-}
-
-.tea-bac {
-  background: url('../images/tea.jpeg');
-}
 
 .bglogin {
   background-size: cover;
@@ -145,8 +142,9 @@ body .margin-right {
 
 .bgCreate {
   background-size: cover;
-  height: 80rem;
+  height: 100vh;
   background: url('../images/bgCreate.jpg') no-repeat center;
+  background-size: 100% 100%;
 }
 
 .bgSearch {
@@ -209,7 +207,6 @@ body .margin-right {
   height: 300px;
   border-radius: 6px;
   position: relative;
-  ;
   padding-top: 15px;
   padding-left: 32px;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
@@ -263,7 +260,6 @@ body .margin-right {
   width: 900px;
   border-radius: 6px;
   position: relative;
-  z-index: 100;
   padding-top: 15px;
   padding-bottom: 40px;
   padding-left: 32px;
@@ -1169,9 +1165,33 @@ body .margin-right {
   display: inline-block;
 }
 
+.droplist {
+  list-style-type: none;
+  justify-content: space-between;
+
+}
+
+.drop_a{
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  color: orangered;
+  text-decoration: none;
+}
+
+.drop_a:hover {
+  font-size: 17px;
+  text-decoration: none;
+  color: orangered;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 25px;
   background-color: none;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);

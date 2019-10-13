@@ -50,11 +50,11 @@ class checkRequests extends Component {
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
 
     return (
-      <div class="bg-bowl">
+      <div class="proback">
         <Header />
         <div className="row">
         <LeftNav type='checkRequests'/>
-          <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <main role="main" className="container col-md-9 ml-sm-auto col-lg-10 px-4">
           <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Tutor Requests</h2>
           <p className="pl-5 text-info loca" >
           <span className='pl-1'>Catch recent ones</span></p>

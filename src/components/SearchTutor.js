@@ -64,7 +64,7 @@ class SearchTutor extends Component {
             type='search'
             updateState={this.updateState}
           />
-          <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <main role="main" className="container col-md-9 ml-sm-auto col-lg-10 px-4">
             <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Search your favorite Tutors</h2>
             <p className="pl-5 text-info loca">
               <FontAwesomeIcon icon={faMapMarkerAlt} />

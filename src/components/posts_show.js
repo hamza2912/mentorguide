@@ -8,11 +8,13 @@ import { Link } from "react-router-dom";
 
 import { fetchPosts  } from "../actions";
 
+import { addComments } from "../actions";
+
 import AOS from 'aos';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faCommentMedical , faStar , faPhoneAlt, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faCommentMedical , faMapMarkerAlt , faPhoneAlt, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 import Header from "./Header";
 import LeftNav from "./leftNav";
 import RenderRatings from "./RenderRatings";
@@ -20,6 +22,13 @@ import RenderReviews from "./RenderReviews";
 
 
 class PostsShow extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { Messege: ""};
+    this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
   componentDidMount() {
 
@@ -30,11 +39,40 @@ class PostsShow extends Component {
 
 }
 
+handleChange(event) {
+
+  this.setState({ Messege: event.target.value });
+
+}
+
+onSubmit() {
+
+  const { id } = this.props.match.params;
+
+  var userName = JSON.parse(localStorage.getItem('UserName'));
+
+  if (this.state.Messege !== "") {
+
+    _.map(this.props.posts, post => {
+
+      var tutorId = post._id.toString();
+
+      if (tutorId === id) {
+        var reviews = post.comments;
+        reviews.push(`${userName}: ${this.state.Messege}`);
+        this.props.addComments(tutorId, reviews);
+      }
+    });
+  }
+  window.location.reload();
+}
+
 
   render() {
 
       const { id } = this.props.match.params;
       var Profile_id = id;
+      console.log(Profile_id);
 
       if (!this.props.posts) {
         return <div>Loading...</div>;
@@ -53,14 +91,19 @@ class PostsShow extends Component {
                     <Header />
                     <div className="row">
                       <LeftNav type='posts_show' Profile_id={Profile_id}/>
-                      <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+                      <main role="main" className="container col-md-9 ml-sm-auto col-lg-10 px-4">
+                      <div className='d-flex align-items-start pt-5'>
                       <div>
                       <img  className="ProImage" src="/images/ham.png" alt="Generic placeholder image" width="120" height="120" />
-                      <h2 className="Pro-name text-light" >{post.name}</h2>
-                      <RenderRatings rate={post.rating} pclass='Pro-body2 text-light' icoclass='stttt1' />
-                      <p className='Pro-body text-light pt-4'>@{post.username}</p>
-                      <p className='Pro-location text-info pt-4'>Karachi,Pakistan </p>
-                      <p className='Pro-des text-muted pt-5'>I am an Electrical Engineer from Habib university. We take teaching as my passion and more interested. </p>
+                      </div>
+                      <div class="pl-4">
+                      <h2 className="text-light" >{post.name}</h2>
+                      <RenderRatings rate={post.rating} pclass='text-light' icoclass='stttt1' />
+                      <div className='text-light'>@{post.username}</div>
+                      <div className='text-info'> <p ><FontAwesomeIcon icon={faMapMarkerAlt} />
+                      <span className='pl-1'>Karachi, Pakistan</span></p> </div>
+                      <div className='text-muted'>{post.description}</div>
+                  </div>
                         </div>
 
                       <div className="myBox6 mt-5 ml-3">
@@ -105,4 +148,4 @@ function mapStateToProps(state){
   return { posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts  })(PostsShow);
+export default connect(mapStateToProps, { fetchPosts , addComments })(PostsShow);

@@ -12,7 +12,7 @@ import LeftNav from "./leftNav";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faCommentMedical, faStar, faPhoneAlt, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faStar, faPhoneAlt, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 import AOS from 'aos';
 import Header from "./Header";
@@ -69,7 +69,8 @@ class ProfileShow extends Component {
                       <h2 className="text-light" >{post.name}</h2>
                       <RenderRatings rate={post.rating} pclass='text-light' icoclass='stttt1' />
                       <div className='text-light'>@{post.username}</div>
-                      <div className='text-info'>Karachi,Pakistan </div>
+                      <div className='text-info'> <p ><FontAwesomeIcon icon={faMapMarkerAlt} />
+                      <span className='pl-1'>Karachi, Pakistan</span></p> </div>
                       <div className='text-muted'>{post.description}</div>
                   </div>
                 </div>

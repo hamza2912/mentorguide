@@ -16,7 +16,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        include: paths.appSrc,
+        
         loaders: ["style", "css", "sass"]
       },
     ]

@@ -100,12 +100,12 @@ class CreateRequest extends Component {
         </ReactModal>
         <Header />
             <div className="row">
-              <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-4">
+              <main role="main"  className="container col-md-9 ml-sm-auto col-lg-10 px-4">
               <h2 className="Sans21 pt-8 pl-5 text-light mb-0" >Post your own request for tutor</h2>
               <p className="pl-5 text-info loca" >
               <FontAwesomeIcon icon={ faMapMarkerAlt }/>
               <span className='pl-1'>Karachi, Pakistan</span></p>
-                <div className="myBox2 mt-4 ml-3">
+                <div data-aos='zoom-in' className="myBox2 mt-4 ml-3">
                 <h6 className="smhd pb-3">Post Request</h6>
                     <textarea className='form-request' id="exampleTextarea" rows="3" placeholder="Details, for example Hi, My name is Salim, I live in Johar and need a Tutor for my child which is in 5 class. Tutor should fullfill these requirments.. etc" onChange = {this.handleChange}></textarea>
                     <input className='form-request' type="text" placeholder="Email or Contact number"  onChange={this.handleChange1} />

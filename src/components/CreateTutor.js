@@ -145,7 +145,7 @@ class CreateTutor extends Component {
               <h4 className="Sans6" >Create Account</h4>
               <div className="Sans6border " ></div>
             </div>
-            <p data-aos="fade-up" className="font-ylish text-muted my-4 ">Please fill in below information to create your account. Do you have an account already? <a href="/sign_user"> Sign In </a>now</p>
+            <p data-aos="fade-up" className="font-ylish text-muted my-4 ">Please fill in below information to create your account. Do you have an account already? <a href="/sign_tutor"> Sign In </a>now</p>
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
               <Field
                 placeholder="Name"

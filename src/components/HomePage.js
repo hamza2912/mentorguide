@@ -23,16 +23,27 @@ class HomePage extends Component {
     this.props.history.push("/");
   }
 
+  checkSign() {
+    var Logged = JSON.parse(localStorage.getItem('Logged'));
+    var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
+    if(Logged || UserLogin ){
+        return (this.props.history.push("/posts"));
+    }
+    else{
+      return (this.props.history.push("/sign"));
+    }
+  }
+
   componentDidMount() {
     AOS.init({
       duration : 2000
     })
   }
+  
 
   render() {
 
-    var Logged = JSON.parse(localStorage.getItem('Logged'));
-    var UserLogin = JSON.parse(localStorage.getItem('UserLogin'));
+    
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
 
    // if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
@@ -60,7 +71,7 @@ class HomePage extends Component {
                   <div  data-aos="fade-up" data-aos-duration="500">
                     <h2 className="Sans2" >Search your favorite Tutors</h2>
                     <p className="text-muted margin-bottom--x2">We have thousand of tutors avvailable. You can find Tutors nearby your areas.</p>
-                    <Link className="btn btn-secondary" to="/sign"> Search Now       </Link>
+                    <button className="btn btn-secondary" onClick={this.checkSign.bind(this)}> Search Now       </button>
                   </div>
                   <div data-aos='zoom-in'>
                   <img className="featurette-image img-fluid mx-auto" src="/images/maps.png" width='700' height='350' alt="Generic placeholder image" />
@@ -93,7 +104,7 @@ class HomePage extends Component {
                         </div>
                    </div>
                   <div className='separator4'>
-                   <Link className="btn btn-secondary" to="/sign"> Create Now       </Link>
+                   <Link className="btn btn-secondary" to="/create_tutor"> Create Now       </Link>
                   </div>
                 </div>
               </div>
@@ -104,7 +115,7 @@ class HomePage extends Component {
                   <div data-aos='fade-up'data-aos-duration="500" className="col-md-7">
                     <h2 className="featurette-heading Sans2">Tutor Requests</h2>
                     <p className="text-muted">We have the best Tutors and tutors throughout the city. You can find Tutors available in your areas and could reach them easily.</p>
-                    <Link className="btn btn-secondary" to="/sign"> Post Now </Link>
+                    <Link className="btn btn-secondary" to="/create_request"> Post Now </Link>
                   </div>
                   <div data-aos-delay='2000' data-aos='fade-up-left' className="col-md-5">
                     <img className="featurette-image img-fluid mx-auto mt-5" src="./images/screen1.png" alt="Generic placeholder image" />

@@ -16,7 +16,7 @@ export default class Header extends Component {
         var Logged = false;
         localStorage.setItem('UserLogin', JSON.stringify(UserLogin));
         localStorage.setItem('Logged', JSON.stringify(Logged));
-        this.props.history.push("/");
+        window.location.reload();
       }
 
     render() {
@@ -31,22 +31,30 @@ export default class Header extends Component {
             </div>
         )
 
+        let searchStatus = (
+            <a className="myNav text-dark" href="/sign">{'Search'}</a>
+        )
+
         if (Logged === true) {
             loginStatus = (
-                <div className="dropdown d-flex align-items-center ">
+                <div className="dropdown d-flex align-items-center justify-content-between">
                   <span>. . .</span>
                   <div className="dropdown-content">
-                  <ul>
+                  <ul className='droplist'>
                     <li>
                       <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
                     </li>
                     <li>
-                      <a className=" py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
+                      <a className="btn btn-secondary  py-2 d-none d-md-inline-block" href={ProfilePage}>Profile</a>
                     </li>
                   </ul>
                   </div>
                 </div>
             )
+            searchStatus = (
+                <a className="myNav text-dark" href="/posts">{'Search'}</a>
+            )
+    
         }
 
         else if (UserLogin === true) {
@@ -54,7 +62,7 @@ export default class Header extends Component {
                 <div className="dropdown d-flex align-items-center ">
                 <span>. . .</span>
                 <div className="dropdown-content">
-                <ul>
+                <ul className='droplist'>
                   <li>
                     <button className="btn btn-secondary  py-2 d-none d-md-inline-block" onClick={this.Signout.bind(this)}>Sign out</button>
                   </li>
@@ -62,11 +70,12 @@ export default class Header extends Component {
                 </div>
               </div>
             )
+            searchStatus = (
+                <a className="myNav text-dark" href="/posts">{'Search'}</a>
+            )
+    
 
         }
-
-
-
 
         return (
             <header className='fixed-top'>
@@ -74,7 +83,7 @@ export default class Header extends Component {
                       <img src="/images/logooo.jpg"
                           alt="Generic placeholder image" width="100" height="62.5" />
                       <a className="myNav text-dark" href="/">{'Home'}</a>
-                      <a className="myNav text-dark" href="/posts">{'Search'}</a>
+                      {searchStatus}
                       <a className="myNav text-dark" href="/lectures">{'Lectures'}</a>
                       <a className="myNav text-dark" href="/create_request">{'Requests'}</a>
                       {loginStatus}

@@ -11,6 +11,12 @@ class RenderReviews extends Component {
         Profile_id: PropTypes.string
     }
 
+    componentDidMount() {
+
+      this.props.fetchPosts();
+  
+  }
+
 
   render() {
 

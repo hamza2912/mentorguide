@@ -113,7 +113,7 @@ class Lectures extends Component {
               <div className="input-group add-on">
               </div>
             </form>
-            <div className="myBox9 mt-4 ml-5">
+            <div data-aos='zoom-in' className="myBox9 mt-4 ml-5">
               <h6 className="smhd pb-2">Most Popular</h6>
               <div className='d-flex flex-column flex-md-row justify-content-between'>
                 <Player fluid={false} width={320} height={200} >

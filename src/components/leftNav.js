@@ -40,7 +40,6 @@ class LeftNav extends Component {
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange4 = this.handleChange4.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
     this.onSubmit3 = this.onSubmit3.bind(this);
     this.onSubmit2 = this.onSubmit2.bind(this);
     this.onSubmit4 = this.onSubmit4.bind(this);
@@ -102,6 +101,7 @@ class LeftNav extends Component {
 
   handleChange3(event) {
     this.setState({ Rating: event.target.value });
+    
   }
 
   handleChange4(event) {
@@ -110,11 +110,10 @@ class LeftNav extends Component {
 
   onDeleteClick() {
 
-    const { id } = this.props.Profile_id;
 
     return _.map(this.props.posts, post => {
       var tutorId = post.userId.toString();
-      if (tutorId === id) {
+      if (tutorId === this.props.Profile_id) {
         this.props.deletePost(id);
         var Logged = false;
         localStorage.setItem('UserLogin', JSON.stringify(Logged));
@@ -124,11 +123,11 @@ class LeftNav extends Component {
   }
 
   onDeleteClick1() {
-    const { id } = this.props.Profile_id;
+  
 
     return _.map(this.props.posts, post => {
       var tutorId = post.userId.toString();
-      if (tutorId === id) {
+      if (tutorId === this.props.Profile_id) {
         this.props.deletePost(id);
         var Logged = false;
         localStorage.setItem('UserLogin', JSON.stringify(Logged));
@@ -147,27 +146,6 @@ class LeftNav extends Component {
   }
 
 
-  onSubmit() {
-
-    const { id } = this.props.Profile_id;
-
-    var userName = JSON.parse(localStorage.getItem('UserName'));
-
-    if (this.state.Messege !== "") {
-
-      _.map(this.props.posts, post => {
-
-        var tutorId = post._id.toString();
-
-        if (tutorId === id) {
-          var reviews = post.comments;
-          reviews.push(`${userName}: ${this.state.Messege}`);
-          this.props.addComments(tutorId, reviews);
-        }
-      });
-    }
-    window.location.reload();
-  }
 
   onSubmit2() {
 
@@ -183,7 +161,6 @@ class LeftNav extends Component {
 
   onSubmit3() {
 
-    const { id } = this.props.Profile_id;
     if (this.state.Messege2 !== "") {
 
       var userName = JSON.parse(localStorage.getItem('UserName'));
@@ -191,7 +168,7 @@ class LeftNav extends Component {
 
         var tutorId = post._id.toString();
 
-        if (tutorId === id) {
+        if (tutorId === this.props.Profile_id) {
           var messeges = post.messeges;
           messeges.push(`${userName}: ${this.state.Messege2}`)
           this.props.addMesseges(tutorId, messeges);
@@ -203,14 +180,20 @@ class LeftNav extends Component {
 
   onSubmit5() {
 
-    const { id } = this.props.Profile_id;
-    if (this.state.Rating !== "") {
+
+    
+    if (this.state.Rating !== null) {
+
 
       return _.map(this.props.posts, post => {
 
-        var tutorId = post._id.toString();
+        
 
-        if (tutorId === id) {
+        var tutorId = post._id.toString();
+        console.log(tutorId);
+
+        if (tutorId === this.props.Profile_id) {
+          console.log("hereee");
           var rating = post.rating;
           rating = (rating + Number(this.state.Rating)) / 2;
           var rateobject = {};
