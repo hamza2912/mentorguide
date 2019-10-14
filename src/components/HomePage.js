@@ -42,8 +42,7 @@ class HomePage extends Component {
   
 
   render() {
-
-    
+  
     var ProfilePage = JSON.parse(localStorage.getItem('ProfilePage'));
 
    // if ((Logged === false && UserLogin === false) || Logged === null || UserLogin === null) {
